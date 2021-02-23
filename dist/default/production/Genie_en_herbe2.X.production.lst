@@ -1,0 +1,1569 @@
+
+
+Microchip Technology PIC LITE Macro Assembler V1.45 build -152302408 
+                                                                                               Sat Jan 09 10:12:23 2021
+
+Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160504
+     1                           	processor	16F887
+     2                           	opt	pw 120
+     3                           	opt	lm
+     4                           	psect	strings,global,class=STRING,delta=2
+     5                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     6                           	psect	bssCOMMON,global,class=COMMON,space=1,delta=1
+     7                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+     8                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1
+     9                           	psect	maintext,global,class=CODE,split=1,delta=2
+    10                           	psect	text1,local,class=CODE,merge=1,delta=2
+    11                           	psect	text2,local,class=CODE,merge=1,delta=2
+    12                           	psect	intentry,global,class=CODE,delta=2
+    13                           	psect	text3,local,class=CODE,merge=1,delta=2
+    14                           	psect	text4,local,class=CODE,merge=1,delta=2
+    15                           	dabs	1,0x7E,2
+    16  0000                     
+    17                           ; Version 1.45
+    18                           ; Generated 16/11/2017 GMT
+    19                           ; 
+    20                           ; Copyright © 2017, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    21                           ; All rights reserved.
+    22                           ; 
+    23                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    24                           ; 
+    25                           ; Redistribution and use in source and binary forms, with or without modification, are
+    26                           ; permitted provided that the following conditions are met:
+    27                           ; 
+    28                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    29                           ;        conditions and the following disclaimer.
+    30                           ; 
+    31                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    32                           ;        of conditions and the following disclaimer in the documentation and/or other
+    33                           ;        materials provided with the distribution.
+    34                           ; 
+    35                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    36                           ;        software without specific prior written permission.
+    37                           ; 
+    38                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    39                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    40                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    41                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    42                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    43                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    44                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    45                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    46                           ; 
+    47                           ; 
+    48                           ; Code-generator required, PIC16F887 Definitions
+    49                           ; 
+    50                           ; SFR Addresses
+    51  0000                     	;# 
+    52  0001                     	;# 
+    53  0002                     	;# 
+    54  0003                     	;# 
+    55  0004                     	;# 
+    56  0005                     	;# 
+    57  0006                     	;# 
+    58  0007                     	;# 
+    59  0008                     	;# 
+    60  0009                     	;# 
+    61  000A                     	;# 
+    62  000B                     	;# 
+    63  000C                     	;# 
+    64  000D                     	;# 
+    65  000E                     	;# 
+    66  000E                     	;# 
+    67  000F                     	;# 
+    68  0010                     	;# 
+    69  0011                     	;# 
+    70  0012                     	;# 
+    71  0013                     	;# 
+    72  0014                     	;# 
+    73  0015                     	;# 
+    74  0015                     	;# 
+    75  0016                     	;# 
+    76  0017                     	;# 
+    77  0018                     	;# 
+    78  0019                     	;# 
+    79  001A                     	;# 
+    80  001B                     	;# 
+    81  001B                     	;# 
+    82  001C                     	;# 
+    83  001D                     	;# 
+    84  001E                     	;# 
+    85  001F                     	;# 
+    86  0081                     	;# 
+    87  0085                     	;# 
+    88  0086                     	;# 
+    89  0087                     	;# 
+    90  0088                     	;# 
+    91  0089                     	;# 
+    92  008C                     	;# 
+    93  008D                     	;# 
+    94  008E                     	;# 
+    95  008F                     	;# 
+    96  0090                     	;# 
+    97  0091                     	;# 
+    98  0092                     	;# 
+    99  0093                     	;# 
+   100  0093                     	;# 
+   101  0093                     	;# 
+   102  0094                     	;# 
+   103  0095                     	;# 
+   104  0096                     	;# 
+   105  0097                     	;# 
+   106  0098                     	;# 
+   107  0099                     	;# 
+   108  009A                     	;# 
+   109  009B                     	;# 
+   110  009C                     	;# 
+   111  009D                     	;# 
+   112  009E                     	;# 
+   113  009F                     	;# 
+   114  0105                     	;# 
+   115  0107                     	;# 
+   116  0108                     	;# 
+   117  0109                     	;# 
+   118  010C                     	;# 
+   119  010C                     	;# 
+   120  010D                     	;# 
+   121  010E                     	;# 
+   122  010F                     	;# 
+   123  0185                     	;# 
+   124  0187                     	;# 
+   125  0188                     	;# 
+   126  0189                     	;# 
+   127  018C                     	;# 
+   128  018D                     	;# 
+   129  0006                     _PORTB	set	6
+   130  001A                     _RCREG	set	26
+   131  0019                     _TXREG	set	25
+   132  0037                     _RB7	set	55
+   133  0036                     _RB6	set	54
+   134  0035                     _RB5	set	53
+   135  0034                     _RB4	set	52
+   136  0033                     _RB3	set	51
+   137  0032                     _RB2	set	50
+   138  0031                     _RB1	set	49
+   139  0030                     _RB0	set	48
+   140  0058                     _RBIF	set	88
+   141  0047                     _RD7	set	71
+   142  0046                     _RD6	set	70
+   143  0045                     _RD5	set	69
+   144  0044                     _RD4	set	68
+   145  0043                     _RD3	set	67
+   146  0042                     _RD2	set	66
+   147  0041                     _RD1	set	65
+   148  0040                     _RD0	set	64
+   149  0065                     _RCIF	set	101
+   150  005B                     _RBIE	set	91
+   151  005C                     _INTE	set	92
+   152  005E                     _PEIE	set	94
+   153  005F                     _GIE	set	95
+   154  00C4                     _CREN	set	196
+   155  00C7                     _SPEN	set	199
+   156  0096                     _IOCB	set	150
+   157  0099                     _SPBRG	set	153
+   158  0447                     _TRISD7	set	1095
+   159  0446                     _TRISD6	set	1094
+   160  0445                     _TRISD5	set	1093
+   161  0444                     _TRISD4	set	1092
+   162  0443                     _TRISD3	set	1091
+   163  0442                     _TRISD2	set	1090
+   164  0441                     _TRISD1	set	1089
+   165  0440                     _TRISD0	set	1088
+   166  04C1                     _TRMT	set	1217
+   167  0465                     _RCIE	set	1125
+   168  04C2                     _BRGH	set	1218
+   169  04C4                     _SYNC	set	1220
+   170  04C5                     _TXEN	set	1221
+   171  0189                     _ANSELH	set	393
+   172  0188                     _ANSEL	set	392
+   173  0C3B                     _BRG16	set	3131
+   174                           
+   175                           	psect	strings
+   176  01AC                     __pstrings:	
+   177  01AC                     stringtab:	
+   178  01AC                     __stringtab:	
+   179  01AC                     stringcode:	
+   180                           ;	String table - string pointers are 1 byte each
+   181                           
+   182  01AC                     stringdir:	
+   183  01AC  3001               	movlw	high stringdir
+   184  01AD  008A               	movwf	10
+   185  01AE  0804               	movf	4,w
+   186  01AF  0A84               	incf	4,f
+   187  01B0  0782               	addwf	2,f
+   188  01B1                     __stringbase:	
+   189  01B1  3400               	retlw	0
+   190  01B2                     __end_of__stringtab:	
+   191  01B2                     STR_1:	
+   192  01B2  344C               	retlw	76	;'L'
+   193  01B3  3427               	retlw	39	;'''
+   194  01B4  3445               	retlw	69	;'E'
+   195  01B5  3471               	retlw	113	;'q'
+   196  01B6  3475               	retlw	117	;'u'
+   197  01B7  3469               	retlw	105	;'i'
+   198  01B8  3470               	retlw	112	;'p'
+   199  01B9  3465               	retlw	101	;'e'
+   200  01BA  3420               	retlw	32	;' '
+   201  01BB  3441               	retlw	65	;'A'
+   202  01BC  3420               	retlw	32	;' '
+   203  01BD  3461               	retlw	97	;'a'
+   204  01BE  3420               	retlw	32	;' '
+   205  01BF  346C               	retlw	108	;'l'
+   206  01C0  3461               	retlw	97	;'a'
+   207  01C1  3420               	retlw	32	;' '
+   208  01C2  346D               	retlw	109	;'m'
+   209  01C3  3461               	retlw	97	;'a'
+   210  01C4  3469               	retlw	105	;'i'
+   211  01C5  346E               	retlw	110	;'n'
+   212  01C6  3400               	retlw	0
+   213  01C7                     STR_2:	
+   214  01C7  344C               	retlw	76	;'L'
+   215  01C8  3427               	retlw	39	;'''
+   216  01C9  3445               	retlw	69	;'E'
+   217  01CA  3471               	retlw	113	;'q'
+   218  01CB  3475               	retlw	117	;'u'
+   219  01CC  3469               	retlw	105	;'i'
+   220  01CD  3470               	retlw	112	;'p'
+   221  01CE  3465               	retlw	101	;'e'
+   222  01CF  3420               	retlw	32	;' '
+   223  01D0  3442               	retlw	66	;'B'
+   224  01D1  3420               	retlw	32	;' '
+   225  01D2  3461               	retlw	97	;'a'
+   226  01D3  3420               	retlw	32	;' '
+   227  01D4  346C               	retlw	108	;'l'
+   228  01D5  3461               	retlw	97	;'a'
+   229  01D6  3420               	retlw	32	;' '
+   230  01D7  346D               	retlw	109	;'m'
+   231  01D8  3461               	retlw	97	;'a'
+   232  01D9  3469               	retlw	105	;'i'
+   233  01DA  346E               	retlw	110	;'n'
+   234  01DB  3400               	retlw	0
+   235  01B2                     
+   236                           ; #config settings
+   237  0000                     
+   238                           	psect	cinit
+   239  0015                     start_initialization:	
+   240  0015                     __initialization:	
+   241                           
+   242                           ; Clear objects allocated to COMMON
+   243  0015  01FA               	clrf	__pbssCOMMON& (0+127)
+   244  0016  01FB               	clrf	(__pbssCOMMON+1)& (0+127)
+   245  0017  01FC               	clrf	(__pbssCOMMON+2)& (0+127)
+   246  0018  01FD               	clrf	(__pbssCOMMON+3)& (0+127)
+   247  0019                     end_of_initialization:	
+   248                           ;End of C runtime variable initialization code
+   249                           
+   250  0019                     __end_of__initialization:	
+   251  0019  0183               	clrf	3
+   252  001A  120A  118A  2A03   	ljmp	_main	;jump to C main() function
+   253                           
+   254                           	psect	bssCOMMON
+   255  007A                     __pbssCOMMON:	
+   256  007A                     _phase:	
+   257  007A                     	ds	2
+   258  007C                     _t:	
+   259  007C                     	ds	1
+   260  007D                     _c:	
+   261  007D                     	ds	1
+   262                           
+   263                           	psect	cstackCOMMON
+   264  0070                     __pcstackCOMMON:	
+   265  0070                     ?_uart_unit:	
+   266  0070                     ?_uart_txChar:	
+   267                           ; 1 bytes @ 0x0
+   268                           
+   269  0070                     ??_uart_txChar:	
+   270                           ; 1 bytes @ 0x0
+   271                           
+   272  0070                     ?_uart_txStr:	
+   273                           ; 1 bytes @ 0x0
+   274                           
+   275  0070                     ?_jdk1:	
+   276                           ; 1 bytes @ 0x0
+   277                           
+   278  0070                     ?_main:	
+   279                           ; 1 bytes @ 0x0
+   280                           
+   281  0070                     uart_txChar@ch:	
+   282                           ; 1 bytes @ 0x0
+   283                           
+   284                           
+   285                           ; 1 bytes @ 0x0
+   286  0070                     	ds	1
+   287  0071                     ??_uart_txStr:	
+   288                           
+   289                           ; 1 bytes @ 0x1
+   290  0071                     	ds	1
+   291  0072                     uart_txStr@str:	
+   292                           
+   293                           ; 1 bytes @ 0x2
+   294  0072                     	ds	1
+   295  0073                     ??_jdk1:	
+   296                           
+   297                           ; 1 bytes @ 0x3
+   298  0073                     	ds	7
+   299                           
+   300                           	psect	cstackBANK0
+   301  0000                     __pcstackBANK0:	
+   302  0000                     ??_uart_unit:	
+   303  0000                     ??_main:	
+   304                           ; 1 bytes @ 0x0
+   305                           
+   306                           
+   307                           	psect	maintext
+   308  0203                     __pmaintext:	
+   309                           ; 1 bytes @ 0x0
+   310 ;;
+   311 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   312 ;;
+   313 ;; *************** function _main *****************
+   314 ;; Defined at:
+   315 ;;		line 251 in file "genie_en_herbe.c"
+   316 ;; Parameters:    Size  Location     Type
+   317 ;;		None
+   318 ;; Auto vars:     Size  Location     Type
+   319 ;;		None
+   320 ;; Return value:  Size  Location     Type
+   321 ;;                  1    wreg      void 
+   322 ;; Registers used:
+   323 ;;		wreg, status,2, status,0, pclath, cstack
+   324 ;; Tracked objects:
+   325 ;;		On entry : B00/0
+   326 ;;		On exit  : 0/0
+   327 ;;		Unchanged: 0/0
+   328 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   329 ;;      Params:         0       0       0       0       0
+   330 ;;      Locals:         0       0       0       0       0
+   331 ;;      Temps:          0       0       0       0       0
+   332 ;;      Totals:         0       0       0       0       0
+   333 ;;Total ram usage:        0 bytes
+   334 ;; Hardware stack levels required when called:    4
+   335 ;; This function calls:
+   336 ;;		_uart_unit
+   337 ;; This function is called by:
+   338 ;;		Startup code after reset
+   339 ;; This function uses a non-reentrant model
+   340 ;;
+   341                           
+   342                           
+   343                           ;psect for function _main
+   344  0203                     _main:	
+   345                           
+   346                           ;genie_en_herbe.c: 252: ANSEL = 0;
+   347                           
+   348                           ;incstack = 0
+   349                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+   350  0203  1683               	bsf	3,5	;RP0=1, select bank3
+   351  0204  1703               	bsf	3,6	;RP1=1, select bank3
+   352  0205  0188               	clrf	8	;volatile
+   353                           
+   354                           ;genie_en_herbe.c: 253: ANSELH = 0;
+   355  0206  0189               	clrf	9	;volatile
+   356                           
+   357                           ;genie_en_herbe.c: 254: TRISD0 = 0;
+   358  0207  1683               	bsf	3,5	;RP0=1, select bank1
+   359  0208  1303               	bcf	3,6	;RP1=0, select bank1
+   360  0209  1008               	bcf	8,0	;volatile
+   361                           
+   362                           ;genie_en_herbe.c: 255: TRISD1 = 0;
+   363  020A  1088               	bcf	8,1	;volatile
+   364                           
+   365                           ;genie_en_herbe.c: 256: TRISD2 = 0;
+   366  020B  1108               	bcf	8,2	;volatile
+   367                           
+   368                           ;genie_en_herbe.c: 257: TRISD3 = 0;
+   369  020C  1188               	bcf	8,3	;volatile
+   370                           
+   371                           ;genie_en_herbe.c: 258: TRISD4 = 0;
+   372  020D  1208               	bcf	8,4	;volatile
+   373                           
+   374                           ;genie_en_herbe.c: 259: TRISD5 = 0;
+   375  020E  1288               	bcf	8,5	;volatile
+   376                           
+   377                           ;genie_en_herbe.c: 260: TRISD6 = 0;
+   378  020F  1308               	bcf	8,6	;volatile
+   379                           
+   380                           ;genie_en_herbe.c: 261: TRISD7 = 0;
+   381  0210  1388               	bcf	8,7	;volatile
+   382                           
+   383                           ;genie_en_herbe.c: 262: RD0 = 0;
+   384  0211  1283               	bcf	3,5	;RP0=0, select bank0
+   385  0212  1303               	bcf	3,6	;RP1=0, select bank0
+   386  0213  1008               	bcf	8,0	;volatile
+   387                           
+   388                           ;genie_en_herbe.c: 263: RD1 = 0;
+   389  0214  1088               	bcf	8,1	;volatile
+   390                           
+   391                           ;genie_en_herbe.c: 264: RD2 = 0;
+   392  0215  1108               	bcf	8,2	;volatile
+   393                           
+   394                           ;genie_en_herbe.c: 265: RD3 = 0;
+   395  0216  1188               	bcf	8,3	;volatile
+   396                           
+   397                           ;genie_en_herbe.c: 266: RD4 = 0;
+   398  0217  1208               	bcf	8,4	;volatile
+   399                           
+   400                           ;genie_en_herbe.c: 267: RD5 = 0;
+   401  0218  1288               	bcf	8,5	;volatile
+   402                           
+   403                           ;genie_en_herbe.c: 268: RD6 = 0;
+   404  0219  1308               	bcf	8,6	;volatile
+   405                           
+   406                           ;genie_en_herbe.c: 269: RD7 = 0;
+   407  021A  1388               	bcf	8,7	;volatile
+   408                           
+   409                           ;genie_en_herbe.c: 270: uart_unit();
+   410  021B  120A  118A  2221  120A  118A  	fcall	_uart_unit
+   411  0220                     l171:	
+   412                           ;genie_en_herbe.c: 271: while (1);
+   413                           
+   414  0220  2A20               	goto	l171
+   415  0221                     __end_of_main:	
+   416                           
+   417                           	psect	text1
+   418  0221                     __ptext1:	
+   419 ;; *************** function _uart_unit *****************
+   420 ;; Defined at:
+   421 ;;		line 57 in file "genie_en_herbe.c"
+   422 ;; Parameters:    Size  Location     Type
+   423 ;;		None
+   424 ;; Auto vars:     Size  Location     Type
+   425 ;;		None
+   426 ;; Return value:  Size  Location     Type
+   427 ;;                  1    wreg      void 
+   428 ;; Registers used:
+   429 ;;		wreg
+   430 ;; Tracked objects:
+   431 ;;		On entry : 0/0
+   432 ;;		On exit  : 0/0
+   433 ;;		Unchanged: 0/0
+   434 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   435 ;;      Params:         0       0       0       0       0
+   436 ;;      Locals:         0       0       0       0       0
+   437 ;;      Temps:          0       0       0       0       0
+   438 ;;      Totals:         0       0       0       0       0
+   439 ;;Total ram usage:        0 bytes
+   440 ;; Hardware stack levels used:    1
+   441 ;; Hardware stack levels required when called:    3
+   442 ;; This function calls:
+   443 ;;		Nothing
+   444 ;; This function is called by:
+   445 ;;		_main
+   446 ;; This function uses a non-reentrant model
+   447 ;;
+   448                           
+   449                           
+   450                           ;psect for function _uart_unit
+   451  0221                     _uart_unit:	
+   452                           
+   453                           ;genie_en_herbe.c: 58: TXEN = 1;
+   454                           
+   455                           ;incstack = 0
+   456                           ; Regs used in _uart_unit: [wreg]
+   457  0221  1683               	bsf	3,5	;RP0=1, select bank1
+   458  0222  1303               	bcf	3,6	;RP1=0, select bank1
+   459  0223  1698               	bsf	24,5	;volatile
+   460                           
+   461                           ;genie_en_herbe.c: 59: SYNC = 0;
+   462  0224  1218               	bcf	24,4	;volatile
+   463                           
+   464                           ;genie_en_herbe.c: 60: BRGH = 1;
+   465  0225  1518               	bsf	24,2	;volatile
+   466                           
+   467                           ;genie_en_herbe.c: 61: BRG16 = 0;
+   468  0226  1683               	bsf	3,5	;RP0=1, select bank3
+   469  0227  1703               	bsf	3,6	;RP1=1, select bank3
+   470  0228  1187               	bcf	7,3	;volatile
+   471                           
+   472                           ;genie_en_herbe.c: 62: SPBRG = 129;
+   473  0229  3081               	movlw	129
+   474  022A  1683               	bsf	3,5	;RP0=1, select bank1
+   475  022B  1303               	bcf	3,6	;RP1=0, select bank1
+   476  022C  0099               	movwf	25	;volatile
+   477                           
+   478                           ;genie_en_herbe.c: 63: SPEN = 1;
+   479  022D  1283               	bcf	3,5	;RP0=0, select bank0
+   480  022E  1303               	bcf	3,6	;RP1=0, select bank0
+   481  022F  1798               	bsf	24,7	;volatile
+   482                           
+   483                           ;genie_en_herbe.c: 64: CREN = 1;
+   484  0230  1618               	bsf	24,4	;volatile
+   485                           
+   486                           ;genie_en_herbe.c: 65: GIE = 1;
+   487  0231  178B               	bsf	11,7	;volatile
+   488                           
+   489                           ;genie_en_herbe.c: 66: PEIE = 1;
+   490  0232  170B               	bsf	11,6	;volatile
+   491                           
+   492                           ;genie_en_herbe.c: 67: INTE = 1;
+   493  0233  160B               	bsf	11,4	;volatile
+   494                           
+   495                           ;genie_en_herbe.c: 68: RCIE = 1;
+   496  0234  1683               	bsf	3,5	;RP0=1, select bank1
+   497  0235  1303               	bcf	3,6	;RP1=0, select bank1
+   498  0236  168C               	bsf	12,5	;volatile
+   499                           
+   500                           ;genie_en_herbe.c: 69: RBIE = 1;
+   501  0237  158B               	bsf	11,3	;volatile
+   502                           
+   503                           ;genie_en_herbe.c: 70: IOCB = 0xFF;
+   504  0238  30FF               	movlw	255
+   505  0239  0096               	movwf	22	;volatile
+   506  023A  0008               	return
+   507  023B                     __end_of_uart_unit:	
+   508                           
+   509                           	psect	text2
+   510  001D                     __ptext2:	
+   511 ;; *************** function _jdk1 *****************
+   512 ;; Defined at:
+   513 ;;		line 101 in file "genie_en_herbe.c"
+   514 ;; Parameters:    Size  Location     Type
+   515 ;;		None
+   516 ;; Auto vars:     Size  Location     Type
+   517 ;;		None
+   518 ;; Return value:  Size  Location     Type
+   519 ;;                  1    wreg      void 
+   520 ;; Registers used:
+   521 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   522 ;; Tracked objects:
+   523 ;;		On entry : 0/0
+   524 ;;		On exit  : 0/0
+   525 ;;		Unchanged: 0/0
+   526 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   527 ;;      Params:         0       0       0       0       0
+   528 ;;      Locals:         0       0       0       0       0
+   529 ;;      Temps:          7       0       0       0       0
+   530 ;;      Totals:         7       0       0       0       0
+   531 ;;Total ram usage:        7 bytes
+   532 ;; Hardware stack levels used:    1
+   533 ;; Hardware stack levels required when called:    2
+   534 ;; This function calls:
+   535 ;;		_uart_txStr
+   536 ;; This function is called by:
+   537 ;;		Interrupt level 1
+   538 ;; This function uses a non-reentrant model
+   539 ;;
+   540                           
+   541                           
+   542                           ;psect for function _jdk1
+   543  001D                     _jdk1:	
+   544                           
+   545                           ;genie_en_herbe.c: 102: if (RCIF) {
+   546  001D  1E8C               	btfss	12,5	;volatile
+   547  001E  2846               	goto	i1l892
+   548                           
+   549                           ;genie_en_herbe.c: 103: RCIF = 0;
+   550  001F  128C               	bcf	12,5	;volatile
+   551                           
+   552                           ;genie_en_herbe.c: 104: if (RCREG == 'I') {
+   553  0020  3049               	movlw	73
+   554  0021  061A               	xorwf	26,w	;volatile
+   555  0022  1D03               	btfss	3,2
+   556  0023  282E               	goto	i1l880
+   557                           
+   558                           ;genie_en_herbe.c: 105: RD0 = 0;
+   559  0024  1008               	bcf	8,0	;volatile
+   560                           
+   561                           ;genie_en_herbe.c: 106: RD1 = 0;
+   562  0025  1088               	bcf	8,1	;volatile
+   563                           
+   564                           ;genie_en_herbe.c: 107: RD2 = 0;
+   565  0026  1108               	bcf	8,2	;volatile
+   566                           
+   567                           ;genie_en_herbe.c: 108: RD3 = 0;
+   568  0027  1188               	bcf	8,3	;volatile
+   569                           
+   570                           ;genie_en_herbe.c: 109: RD4 = 0;
+   571  0028  1208               	bcf	8,4	;volatile
+   572                           
+   573                           ;genie_en_herbe.c: 110: RD5 = 0;
+   574  0029  1288               	bcf	8,5	;volatile
+   575                           
+   576                           ;genie_en_herbe.c: 111: RD6 = 0;
+   577  002A  1308               	bcf	8,6	;volatile
+   578                           
+   579                           ;genie_en_herbe.c: 112: RD7 = 0;
+   580  002B  1388               	bcf	8,7	;volatile
+   581                           
+   582                           ;genie_en_herbe.c: 113: phase=0;
+   583  002C  01FA               	clrf	_phase
+   584  002D  01FB               	clrf	_phase+1
+   585  002E                     i1l880:	
+   586                           
+   587                           ;genie_en_herbe.c: 114: }
+   588                           ;genie_en_herbe.c: 115: if (RCREG == 'B') {
+   589  002E  3042               	movlw	66
+   590  002F  061A               	xorwf	26,w	;volatile
+   591  0030  1D03               	btfss	3,2
+   592  0031  283A               	goto	i1l886
+   593                           
+   594                           ;genie_en_herbe.c: 116: RD0 = 0;
+   595  0032  1008               	bcf	8,0	;volatile
+   596                           
+   597                           ;genie_en_herbe.c: 117: RD1 = 0;
+   598  0033  1088               	bcf	8,1	;volatile
+   599                           
+   600                           ;genie_en_herbe.c: 118: RD2 = 0;
+   601  0034  1108               	bcf	8,2	;volatile
+   602                           
+   603                           ;genie_en_herbe.c: 119: RD3 = 0;
+   604  0035  1188               	bcf	8,3	;volatile
+   605                           
+   606                           ;genie_en_herbe.c: 120: phase = 1;
+   607  0036  3001               	movlw	1
+   608  0037  00FA               	movwf	_phase
+   609  0038  3000               	movlw	0
+   610  0039  00FB               	movwf	_phase+1
+   611  003A                     i1l886:	
+   612                           
+   613                           ;genie_en_herbe.c: 121: }
+   614                           ;genie_en_herbe.c: 122: if (RCREG == 'A') {
+   615  003A  3041               	movlw	65
+   616  003B  061A               	xorwf	26,w	;volatile
+   617  003C  1D03               	btfss	3,2
+   618  003D  2846               	goto	i1l892
+   619                           
+   620                           ;genie_en_herbe.c: 123: RD4 = 0;
+   621  003E  1208               	bcf	8,4	;volatile
+   622                           
+   623                           ;genie_en_herbe.c: 124: RD5 = 0;
+   624  003F  1288               	bcf	8,5	;volatile
+   625                           
+   626                           ;genie_en_herbe.c: 125: RD6 = 0;
+   627  0040  1308               	bcf	8,6	;volatile
+   628                           
+   629                           ;genie_en_herbe.c: 126: RD7 = 0;
+   630  0041  1388               	bcf	8,7	;volatile
+   631                           
+   632                           ;genie_en_herbe.c: 127: phase = 2;
+   633  0042  3002               	movlw	2
+   634  0043  00FA               	movwf	_phase
+   635  0044  3000               	movlw	0
+   636  0045  00FB               	movwf	_phase+1
+   637  0046                     i1l892:	
+   638                           
+   639                           ;genie_en_herbe.c: 128: }
+   640                           ;genie_en_herbe.c: 130: }
+   641                           ;genie_en_herbe.c: 134: if (RBIF) {
+   642  0046  1C0B               	btfss	11,0	;volatile
+   643  0047  299F               	goto	i1l166
+   644                           
+   645                           ;genie_en_herbe.c: 135: c = PORTB;
+   646  0048  0806               	movf	6,w	;volatile
+   647  0049  00F3               	movwf	??_jdk1
+   648  004A  0873               	movf	??_jdk1,w
+   649  004B  00FD               	movwf	_c
+   650                           
+   651                           ;genie_en_herbe.c: 136: RBIF = 0;
+   652  004C  100B               	bcf	11,0	;volatile
+   653                           
+   654                           ;genie_en_herbe.c: 137: if (RB0 == 0 && (phase==0 || phase==2)) {
+   655  004D  1806               	btfsc	6,0	;volatile
+   656  004E  2877               	goto	i1l135
+   657  004F  087A               	movf	_phase,w
+   658  0050  047B               	iorwf	_phase+1,w
+   659  0051  1903               	btfsc	3,2
+   660  0052  2858               	goto	i1l137
+   661  0053  3002               	movlw	2
+   662  0054  067A               	xorwf	_phase,w
+   663  0055  047B               	iorwf	_phase+1,w
+   664  0056  1D03               	btfss	3,2
+   665  0057  2877               	goto	i1l135
+   666  0058                     i1l137:	
+   667                           
+   668                           ;genie_en_herbe.c: 138: RD0 = 1;
+   669  0058  1408               	bsf	8,0	;volatile
+   670                           
+   671                           ;genie_en_herbe.c: 139: RD1 = 0;
+   672  0059  1088               	bcf	8,1	;volatile
+   673                           
+   674                           ;genie_en_herbe.c: 140: RD2 = 0;
+   675  005A  1108               	bcf	8,2	;volatile
+   676                           
+   677                           ;genie_en_herbe.c: 141: RD3 = 0;
+   678  005B  1188               	bcf	8,3	;volatile
+   679                           
+   680                           ;genie_en_herbe.c: 142: RD4 = 0;
+   681  005C  1208               	bcf	8,4	;volatile
+   682                           
+   683                           ;genie_en_herbe.c: 143: RD5 = 0;
+   684  005D  1288               	bcf	8,5	;volatile
+   685                           
+   686                           ;genie_en_herbe.c: 144: RD6 = 0;
+   687  005E  1308               	bcf	8,6	;volatile
+   688                           
+   689                           ;genie_en_herbe.c: 145: RD7 = 0;
+   690  005F  1388               	bcf	8,7	;volatile
+   691                           
+   692                           ;genie_en_herbe.c: 146: uart_txStr("L'Equipe A a la main");
+   693  0060  3001               	movlw	(low ((STR_1-__stringbase)| (0+32768)))& (0+255)
+   694  0061  120A  118A  21DC  120A  118A  	fcall	_uart_txStr
+   695                           
+   696                           ;genie_en_herbe.c: 147: _delay((unsigned long)((5000)*(20e6/4000.0)));
+   697  0066  307F               	movlw	127
+   698  0067  00F5               	movwf	??_jdk1+2
+   699  0068  30D4               	movlw	212
+   700  0069  00F4               	movwf	??_jdk1+1
+   701  006A  3031               	movlw	49
+   702  006B  00F3               	movwf	??_jdk1
+   703  006C                     u64_27:	
+   704  006C  0BF3               	decfsz	??_jdk1,f
+   705  006D  286C               	goto	u64_27
+   706  006E  0BF4               	decfsz	??_jdk1+1,f
+   707  006F  286C               	goto	u64_27
+   708  0070  0BF5               	decfsz	??_jdk1+2,f
+   709  0071  286C               	goto	u64_27
+   710  0072  2873               	nop2
+   711                           
+   712                           ;genie_en_herbe.c: 148: RD0 = 0;
+   713  0073  1283               	bcf	3,5	;RP0=0, select bank0
+   714  0074  1303               	bcf	3,6	;RP1=0, select bank0
+   715  0075  1008               	bcf	8,0	;volatile
+   716  0076  28F4               	goto	L4
+   717  0077                     i1l135:	
+   718                           ;genie_en_herbe.c: 150: } else if (RB1 == 0 && (phase==0 || phase==2)) {
+   719                           
+   720                           ;genie_en_herbe.c: 149: uart_txStr("L'Equipe B a la main");
+   721                           
+   722  0077  1886               	btfsc	6,1	;volatile
+   723  0078  28A1               	goto	i1l139
+   724  0079  087A               	movf	_phase,w
+   725  007A  047B               	iorwf	_phase+1,w
+   726  007B  1903               	btfsc	3,2
+   727  007C  2882               	goto	i1l141
+   728  007D  3002               	movlw	2
+   729  007E  067A               	xorwf	_phase,w
+   730  007F  047B               	iorwf	_phase+1,w
+   731  0080  1D03               	btfss	3,2
+   732  0081  28A1               	goto	i1l139
+   733  0082                     i1l141:	
+   734                           
+   735                           ;genie_en_herbe.c: 151: RD1 = 1;
+   736  0082  1488               	bsf	8,1	;volatile
+   737                           
+   738                           ;genie_en_herbe.c: 152: RD0 = 0;
+   739  0083  1008               	bcf	8,0	;volatile
+   740                           
+   741                           ;genie_en_herbe.c: 153: RD2 = 0;
+   742  0084  1108               	bcf	8,2	;volatile
+   743                           
+   744                           ;genie_en_herbe.c: 154: RD3 = 0;
+   745  0085  1188               	bcf	8,3	;volatile
+   746                           
+   747                           ;genie_en_herbe.c: 155: RD4 = 0;
+   748  0086  1208               	bcf	8,4	;volatile
+   749                           
+   750                           ;genie_en_herbe.c: 156: RD5 = 0;
+   751  0087  1288               	bcf	8,5	;volatile
+   752                           
+   753                           ;genie_en_herbe.c: 157: RD6 = 0;
+   754  0088  1308               	bcf	8,6	;volatile
+   755                           
+   756                           ;genie_en_herbe.c: 158: RD7 = 0;
+   757  0089  1388               	bcf	8,7	;volatile
+   758                           
+   759                           ;genie_en_herbe.c: 159: uart_txStr("L'Equipe A a la main");
+   760  008A  3001               	movlw	(low ((STR_1-__stringbase)| (0+32768)))& (0+255)
+   761  008B  120A  118A  21DC  120A  118A  	fcall	_uart_txStr
+   762                           
+   763                           ;genie_en_herbe.c: 160: _delay((unsigned long)((5000)*(20e6/4000.0)));
+   764  0090  307F               	movlw	127
+   765  0091  00F5               	movwf	??_jdk1+2
+   766  0092  30D4               	movlw	212
+   767  0093  00F4               	movwf	??_jdk1+1
+   768  0094  3031               	movlw	49
+   769  0095  00F3               	movwf	??_jdk1
+   770  0096                     u65_27:	
+   771  0096  0BF3               	decfsz	??_jdk1,f
+   772  0097  2896               	goto	u65_27
+   773  0098  0BF4               	decfsz	??_jdk1+1,f
+   774  0099  2896               	goto	u65_27
+   775  009A  0BF5               	decfsz	??_jdk1+2,f
+   776  009B  2896               	goto	u65_27
+   777  009C  289D               	nop2
+   778                           
+   779                           ;genie_en_herbe.c: 161: RD1 = 0;
+   780  009D  1283               	bcf	3,5	;RP0=0, select bank0
+   781  009E  1303               	bcf	3,6	;RP1=0, select bank0
+   782  009F  1088               	bcf	8,1	;volatile
+   783  00A0  28F4               	goto	L4
+   784  00A1                     i1l139:	
+   785                           ;genie_en_herbe.c: 163: } else if (RB2 == 0 && (phase==0 || phase==2)) {
+   786                           
+   787                           ;genie_en_herbe.c: 162: uart_txStr("L'Equipe B a la main");
+   788                           
+   789  00A1  1906               	btfsc	6,2	;volatile
+   790  00A2  28CB               	goto	i1l143
+   791  00A3  087A               	movf	_phase,w
+   792  00A4  047B               	iorwf	_phase+1,w
+   793  00A5  1903               	btfsc	3,2
+   794  00A6  28AC               	goto	i1l145
+   795  00A7  3002               	movlw	2
+   796  00A8  067A               	xorwf	_phase,w
+   797  00A9  047B               	iorwf	_phase+1,w
+   798  00AA  1D03               	btfss	3,2
+   799  00AB  28CB               	goto	i1l143
+   800  00AC                     i1l145:	
+   801                           
+   802                           ;genie_en_herbe.c: 164: RD2 = 1;
+   803  00AC  1508               	bsf	8,2	;volatile
+   804                           
+   805                           ;genie_en_herbe.c: 165: RD0 = 0;
+   806  00AD  1008               	bcf	8,0	;volatile
+   807                           
+   808                           ;genie_en_herbe.c: 166: RD1 = 0;
+   809  00AE  1088               	bcf	8,1	;volatile
+   810                           
+   811                           ;genie_en_herbe.c: 167: RD3 = 0;
+   812  00AF  1188               	bcf	8,3	;volatile
+   813                           
+   814                           ;genie_en_herbe.c: 168: RD4 = 0;
+   815  00B0  1208               	bcf	8,4	;volatile
+   816                           
+   817                           ;genie_en_herbe.c: 169: RD5 = 0;
+   818  00B1  1288               	bcf	8,5	;volatile
+   819                           
+   820                           ;genie_en_herbe.c: 170: RD6 = 0;
+   821  00B2  1308               	bcf	8,6	;volatile
+   822                           
+   823                           ;genie_en_herbe.c: 171: RD7 = 0;
+   824  00B3  1388               	bcf	8,7	;volatile
+   825                           
+   826                           ;genie_en_herbe.c: 172: uart_txStr("L'Equipe A a la main");
+   827  00B4  3001               	movlw	(low ((STR_1-__stringbase)| (0+32768)))& (0+255)
+   828  00B5  120A  118A  21DC  120A  118A  	fcall	_uart_txStr
+   829                           
+   830                           ;genie_en_herbe.c: 173: _delay((unsigned long)((5000)*(20e6/4000.0)));
+   831  00BA  307F               	movlw	127
+   832  00BB  00F5               	movwf	??_jdk1+2
+   833  00BC  30D4               	movlw	212
+   834  00BD  00F4               	movwf	??_jdk1+1
+   835  00BE  3031               	movlw	49
+   836  00BF  00F3               	movwf	??_jdk1
+   837  00C0                     u66_27:	
+   838  00C0  0BF3               	decfsz	??_jdk1,f
+   839  00C1  28C0               	goto	u66_27
+   840  00C2  0BF4               	decfsz	??_jdk1+1,f
+   841  00C3  28C0               	goto	u66_27
+   842  00C4  0BF5               	decfsz	??_jdk1+2,f
+   843  00C5  28C0               	goto	u66_27
+   844  00C6  28C7               	nop2
+   845                           
+   846                           ;genie_en_herbe.c: 174: RD2 = 0;
+   847  00C7  1283               	bcf	3,5	;RP0=0, select bank0
+   848  00C8  1303               	bcf	3,6	;RP1=0, select bank0
+   849  00C9  1108               	bcf	8,2	;volatile
+   850  00CA  28F4               	goto	L4
+   851  00CB                     i1l143:	
+   852                           ;genie_en_herbe.c: 176: } else if (RB3 == 0 && (phase==0 || phase==2)) {
+   853                           
+   854                           ;genie_en_herbe.c: 175: uart_txStr("L'Equipe B a la main");
+   855                           
+   856  00CB  1986               	btfsc	6,3	;volatile
+   857  00CC  28F6               	goto	i1l147
+   858  00CD  087A               	movf	_phase,w
+   859  00CE  047B               	iorwf	_phase+1,w
+   860  00CF  1903               	btfsc	3,2
+   861  00D0  28D6               	goto	i1l149
+   862  00D1  3002               	movlw	2
+   863  00D2  067A               	xorwf	_phase,w
+   864  00D3  047B               	iorwf	_phase+1,w
+   865  00D4  1D03               	btfss	3,2
+   866  00D5  28F6               	goto	i1l147
+   867  00D6                     i1l149:	
+   868                           
+   869                           ;genie_en_herbe.c: 177: RD3 = 1;
+   870  00D6  1588               	bsf	8,3	;volatile
+   871                           
+   872                           ;genie_en_herbe.c: 178: RD0 = 0;
+   873  00D7  1008               	bcf	8,0	;volatile
+   874                           
+   875                           ;genie_en_herbe.c: 179: RD1 = 0;
+   876  00D8  1088               	bcf	8,1	;volatile
+   877                           
+   878                           ;genie_en_herbe.c: 180: RD2 = 0;
+   879  00D9  1108               	bcf	8,2	;volatile
+   880                           
+   881                           ;genie_en_herbe.c: 181: RD4 = 0;
+   882  00DA  1208               	bcf	8,4	;volatile
+   883                           
+   884                           ;genie_en_herbe.c: 182: RD5 = 0;
+   885  00DB  1288               	bcf	8,5	;volatile
+   886                           
+   887                           ;genie_en_herbe.c: 183: RD6 = 0;
+   888  00DC  1308               	bcf	8,6	;volatile
+   889                           
+   890                           ;genie_en_herbe.c: 184: RD7 = 0;
+   891  00DD  1388               	bcf	8,7	;volatile
+   892                           
+   893                           ;genie_en_herbe.c: 185: uart_txStr("L'Equipe A a la main");
+   894  00DE  3001               	movlw	(low ((STR_1-__stringbase)| (0+32768)))& (0+255)
+   895  00DF  120A  118A  21DC  120A  118A  	fcall	_uart_txStr
+   896                           
+   897                           ;genie_en_herbe.c: 186: _delay((unsigned long)((5000)*(20e6/4000.0)));
+   898  00E4  307F               	movlw	127
+   899  00E5  00F5               	movwf	??_jdk1+2
+   900  00E6  30D4               	movlw	212
+   901  00E7  00F4               	movwf	??_jdk1+1
+   902  00E8  3031               	movlw	49
+   903  00E9  00F3               	movwf	??_jdk1
+   904  00EA                     u67_27:	
+   905  00EA  0BF3               	decfsz	??_jdk1,f
+   906  00EB  28EA               	goto	u67_27
+   907  00EC  0BF4               	decfsz	??_jdk1+1,f
+   908  00ED  28EA               	goto	u67_27
+   909  00EE  0BF5               	decfsz	??_jdk1+2,f
+   910  00EF  28EA               	goto	u67_27
+   911  00F0  28F1               	nop2
+   912                           
+   913                           ;genie_en_herbe.c: 187: RD3 = 0;
+   914  00F1  1283               	bcf	3,5	;RP0=0, select bank0
+   915  00F2  1303               	bcf	3,6	;RP1=0, select bank0
+   916  00F3  1188               	bcf	8,3	;volatile
+   917  00F4                     L4:	
+   918                           
+   919                           ;genie_en_herbe.c: 188: uart_txStr("L'Equipe B a la main");
+   920  00F4  3016               	movlw	(low ((STR_2-__stringbase)| (0+32768)))& (0+255)
+   921  00F5  299A               	goto	L1
+   922  00F6                     i1l147:	
+   923                           ;genie_en_herbe.c: 190: } else if (RB4 == 0 && (phase==0 || phase==1)) {
+   924                           
+   925  00F6  1A06               	btfsc	6,4	;volatile
+   926  00F7  291F               	goto	i1l151
+   927  00F8  087A               	movf	_phase,w
+   928  00F9  047B               	iorwf	_phase+1,w
+   929  00FA  1903               	btfsc	3,2
+   930  00FB  2900               	goto	i1l153
+   931  00FC  037A               	decf	_phase,w
+   932  00FD  047B               	iorwf	_phase+1,w
+   933  00FE  1D03               	btfss	3,2
+   934  00FF  291F               	goto	i1l151
+   935  0100                     i1l153:	
+   936                           
+   937                           ;genie_en_herbe.c: 191: RD4 = 1;
+   938  0100  1608               	bsf	8,4	;volatile
+   939                           
+   940                           ;genie_en_herbe.c: 192: RD0 = 0;
+   941  0101  1008               	bcf	8,0	;volatile
+   942                           
+   943                           ;genie_en_herbe.c: 193: RD1 = 0;
+   944  0102  1088               	bcf	8,1	;volatile
+   945                           
+   946                           ;genie_en_herbe.c: 194: RD2 = 0;
+   947  0103  1108               	bcf	8,2	;volatile
+   948                           
+   949                           ;genie_en_herbe.c: 195: RD3 = 0;
+   950  0104  1188               	bcf	8,3	;volatile
+   951                           
+   952                           ;genie_en_herbe.c: 196: RD5 = 0;
+   953  0105  1288               	bcf	8,5	;volatile
+   954                           
+   955                           ;genie_en_herbe.c: 197: RD6 = 0;
+   956  0106  1308               	bcf	8,6	;volatile
+   957                           
+   958                           ;genie_en_herbe.c: 198: RD7 = 0;
+   959  0107  1388               	bcf	8,7	;volatile
+   960                           
+   961                           ;genie_en_herbe.c: 199: uart_txStr("L'Equipe B a la main");
+   962  0108  3016               	movlw	(low ((STR_2-__stringbase)| (0+32768)))& (0+255)
+   963  0109  120A  118A  21DC  120A  118A  	fcall	_uart_txStr
+   964                           
+   965                           ;genie_en_herbe.c: 200: _delay((unsigned long)((5000)*(20e6/4000.0)));
+   966  010E  307F               	movlw	127
+   967  010F  00F5               	movwf	??_jdk1+2
+   968  0110  30D4               	movlw	212
+   969  0111  00F4               	movwf	??_jdk1+1
+   970  0112  3031               	movlw	49
+   971  0113  00F3               	movwf	??_jdk1
+   972  0114                     u68_27:	
+   973  0114  0BF3               	decfsz	??_jdk1,f
+   974  0115  2914               	goto	u68_27
+   975  0116  0BF4               	decfsz	??_jdk1+1,f
+   976  0117  2914               	goto	u68_27
+   977  0118  0BF5               	decfsz	??_jdk1+2,f
+   978  0119  2914               	goto	u68_27
+   979  011A  291B               	nop2
+   980                           
+   981                           ;genie_en_herbe.c: 201: RD4 = 0;
+   982  011B  1283               	bcf	3,5	;RP0=0, select bank0
+   983  011C  1303               	bcf	3,6	;RP1=0, select bank0
+   984  011D  1208               	bcf	8,4	;volatile
+   985  011E  2999               	goto	L5
+   986  011F                     i1l151:	
+   987                           ;genie_en_herbe.c: 204: } else if (RB5 == 0 && (phase==0 || phase==1)) {
+   988                           
+   989                           ;genie_en_herbe.c: 202: uart_txStr("L'Equipe A a la main");
+   990                           
+   991  011F  1A86               	btfsc	6,5	;volatile
+   992  0120  2948               	goto	i1l155
+   993  0121  087A               	movf	_phase,w
+   994  0122  047B               	iorwf	_phase+1,w
+   995  0123  1903               	btfsc	3,2
+   996  0124  2929               	goto	i1l157
+   997  0125  037A               	decf	_phase,w
+   998  0126  047B               	iorwf	_phase+1,w
+   999  0127  1D03               	btfss	3,2
+  1000  0128  2948               	goto	i1l155
+  1001  0129                     i1l157:	
+  1002                           
+  1003                           ;genie_en_herbe.c: 205: RD5 = 1;
+  1004  0129  1688               	bsf	8,5	;volatile
+  1005                           
+  1006                           ;genie_en_herbe.c: 206: RD0 = 0;
+  1007  012A  1008               	bcf	8,0	;volatile
+  1008                           
+  1009                           ;genie_en_herbe.c: 207: RD1 = 0;
+  1010  012B  1088               	bcf	8,1	;volatile
+  1011                           
+  1012                           ;genie_en_herbe.c: 208: RD2 = 0;
+  1013  012C  1108               	bcf	8,2	;volatile
+  1014                           
+  1015                           ;genie_en_herbe.c: 209: RD3 = 0;
+  1016  012D  1188               	bcf	8,3	;volatile
+  1017                           
+  1018                           ;genie_en_herbe.c: 210: RD4 = 0;
+  1019  012E  1208               	bcf	8,4	;volatile
+  1020                           
+  1021                           ;genie_en_herbe.c: 211: RD6 = 0;
+  1022  012F  1308               	bcf	8,6	;volatile
+  1023                           
+  1024                           ;genie_en_herbe.c: 212: RD7 = 0;
+  1025  0130  1388               	bcf	8,7	;volatile
+  1026                           
+  1027                           ;genie_en_herbe.c: 213: uart_txStr("L'Equipe B a la main");
+  1028  0131  3016               	movlw	(low ((STR_2-__stringbase)| (0+32768)))& (0+255)
+  1029  0132  120A  118A  21DC  120A  118A  	fcall	_uart_txStr
+  1030                           
+  1031                           ;genie_en_herbe.c: 214: _delay((unsigned long)((5000)*(20e6/4000.0)));
+  1032  0137  307F               	movlw	127
+  1033  0138  00F5               	movwf	??_jdk1+2
+  1034  0139  30D4               	movlw	212
+  1035  013A  00F4               	movwf	??_jdk1+1
+  1036  013B  3031               	movlw	49
+  1037  013C  00F3               	movwf	??_jdk1
+  1038  013D                     u69_27:	
+  1039  013D  0BF3               	decfsz	??_jdk1,f
+  1040  013E  293D               	goto	u69_27
+  1041  013F  0BF4               	decfsz	??_jdk1+1,f
+  1042  0140  293D               	goto	u69_27
+  1043  0141  0BF5               	decfsz	??_jdk1+2,f
+  1044  0142  293D               	goto	u69_27
+  1045  0143  2944               	nop2
+  1046                           
+  1047                           ;genie_en_herbe.c: 215: RD5 = 0;
+  1048  0144  1283               	bcf	3,5	;RP0=0, select bank0
+  1049  0145  1303               	bcf	3,6	;RP1=0, select bank0
+  1050  0146  1288               	bcf	8,5	;volatile
+  1051  0147  2999               	goto	L5
+  1052  0148                     i1l155:	
+  1053                           ;genie_en_herbe.c: 217: } else if (RB6 == 0 && (phase==0 || phase==1)) {
+  1054                           
+  1055                           ;genie_en_herbe.c: 216: uart_txStr("L'Equipe A a la main");
+  1056                           
+  1057  0148  1B06               	btfsc	6,6	;volatile
+  1058  0149  2971               	goto	i1l159
+  1059  014A  087A               	movf	_phase,w
+  1060  014B  047B               	iorwf	_phase+1,w
+  1061  014C  1903               	btfsc	3,2
+  1062  014D  2952               	goto	i1l161
+  1063  014E  037A               	decf	_phase,w
+  1064  014F  047B               	iorwf	_phase+1,w
+  1065  0150  1D03               	btfss	3,2
+  1066  0151  2971               	goto	i1l159
+  1067  0152                     i1l161:	
+  1068                           
+  1069                           ;genie_en_herbe.c: 218: RD6 = 1;
+  1070  0152  1708               	bsf	8,6	;volatile
+  1071                           
+  1072                           ;genie_en_herbe.c: 219: RD0 = 0;
+  1073  0153  1008               	bcf	8,0	;volatile
+  1074                           
+  1075                           ;genie_en_herbe.c: 220: RD1 = 0;
+  1076  0154  1088               	bcf	8,1	;volatile
+  1077                           
+  1078                           ;genie_en_herbe.c: 221: RD2 = 0;
+  1079  0155  1108               	bcf	8,2	;volatile
+  1080                           
+  1081                           ;genie_en_herbe.c: 222: RD3 = 0;
+  1082  0156  1188               	bcf	8,3	;volatile
+  1083                           
+  1084                           ;genie_en_herbe.c: 223: RD4 = 0;
+  1085  0157  1208               	bcf	8,4	;volatile
+  1086                           
+  1087                           ;genie_en_herbe.c: 224: RD5 = 0;
+  1088  0158  1288               	bcf	8,5	;volatile
+  1089                           
+  1090                           ;genie_en_herbe.c: 225: RD7 = 0;
+  1091  0159  1388               	bcf	8,7	;volatile
+  1092                           
+  1093                           ;genie_en_herbe.c: 226: uart_txStr("L'Equipe B a la main");
+  1094  015A  3016               	movlw	(low ((STR_2-__stringbase)| (0+32768)))& (0+255)
+  1095  015B  120A  118A  21DC  120A  118A  	fcall	_uart_txStr
+  1096                           
+  1097                           ;genie_en_herbe.c: 227: _delay((unsigned long)((5000)*(20e6/4000.0)));
+  1098  0160  307F               	movlw	127
+  1099  0161  00F5               	movwf	??_jdk1+2
+  1100  0162  30D4               	movlw	212
+  1101  0163  00F4               	movwf	??_jdk1+1
+  1102  0164  3031               	movlw	49
+  1103  0165  00F3               	movwf	??_jdk1
+  1104  0166                     u70_27:	
+  1105  0166  0BF3               	decfsz	??_jdk1,f
+  1106  0167  2966               	goto	u70_27
+  1107  0168  0BF4               	decfsz	??_jdk1+1,f
+  1108  0169  2966               	goto	u70_27
+  1109  016A  0BF5               	decfsz	??_jdk1+2,f
+  1110  016B  2966               	goto	u70_27
+  1111  016C  296D               	nop2
+  1112                           
+  1113                           ;genie_en_herbe.c: 228: RD6 = 0;
+  1114  016D  1283               	bcf	3,5	;RP0=0, select bank0
+  1115  016E  1303               	bcf	3,6	;RP1=0, select bank0
+  1116  016F  1308               	bcf	8,6	;volatile
+  1117  0170  2999               	goto	L5
+  1118  0171                     i1l159:	
+  1119                           ;genie_en_herbe.c: 231: } else if (RB7 == 0 && (phase==0 || phase==1)) {
+  1120                           
+  1121                           ;genie_en_herbe.c: 229: uart_txStr("L'Equipe A a la main");
+  1122                           
+  1123  0171  1B86               	btfsc	6,7	;volatile
+  1124  0172  299F               	goto	i1l166
+  1125  0173  087A               	movf	_phase,w
+  1126  0174  047B               	iorwf	_phase+1,w
+  1127  0175  1903               	btfsc	3,2
+  1128  0176  297B               	goto	i1l165
+  1129  0177  037A               	decf	_phase,w
+  1130  0178  047B               	iorwf	_phase+1,w
+  1131  0179  1D03               	btfss	3,2
+  1132  017A  299F               	goto	i1l166
+  1133  017B                     i1l165:	
+  1134                           
+  1135                           ;genie_en_herbe.c: 232: RD7 = 1;
+  1136  017B  1788               	bsf	8,7	;volatile
+  1137                           
+  1138                           ;genie_en_herbe.c: 233: RD0 = 0;
+  1139  017C  1008               	bcf	8,0	;volatile
+  1140                           
+  1141                           ;genie_en_herbe.c: 234: RD1 = 0;
+  1142  017D  1088               	bcf	8,1	;volatile
+  1143                           
+  1144                           ;genie_en_herbe.c: 235: RD2 = 0;
+  1145  017E  1108               	bcf	8,2	;volatile
+  1146                           
+  1147                           ;genie_en_herbe.c: 236: RD3 = 0;
+  1148  017F  1188               	bcf	8,3	;volatile
+  1149                           
+  1150                           ;genie_en_herbe.c: 237: RD4 = 0;
+  1151  0180  1208               	bcf	8,4	;volatile
+  1152                           
+  1153                           ;genie_en_herbe.c: 238: RD5 = 0;
+  1154  0181  1288               	bcf	8,5	;volatile
+  1155                           
+  1156                           ;genie_en_herbe.c: 239: RD6 = 0;
+  1157  0182  1308               	bcf	8,6	;volatile
+  1158                           
+  1159                           ;genie_en_herbe.c: 240: uart_txStr("L'Equipe B a la main");
+  1160  0183  3016               	movlw	(low ((STR_2-__stringbase)| (0+32768)))& (0+255)
+  1161  0184  120A  118A  21DC  120A  118A  	fcall	_uart_txStr
+  1162                           
+  1163                           ;genie_en_herbe.c: 241: _delay((unsigned long)((5000)*(20e6/4000.0)));
+  1164  0189  307F               	movlw	127
+  1165  018A  00F5               	movwf	??_jdk1+2
+  1166  018B  30D4               	movlw	212
+  1167  018C  00F4               	movwf	??_jdk1+1
+  1168  018D  3031               	movlw	49
+  1169  018E  00F3               	movwf	??_jdk1
+  1170  018F                     u71_27:	
+  1171  018F  0BF3               	decfsz	??_jdk1,f
+  1172  0190  298F               	goto	u71_27
+  1173  0191  0BF4               	decfsz	??_jdk1+1,f
+  1174  0192  298F               	goto	u71_27
+  1175  0193  0BF5               	decfsz	??_jdk1+2,f
+  1176  0194  298F               	goto	u71_27
+  1177  0195  2996               	nop2
+  1178                           
+  1179                           ;genie_en_herbe.c: 242: RD7 = 0;
+  1180  0196  1283               	bcf	3,5	;RP0=0, select bank0
+  1181  0197  1303               	bcf	3,6	;RP1=0, select bank0
+  1182  0198  1388               	bcf	8,7	;volatile
+  1183  0199                     L5:	
+  1184                           
+  1185                           ;genie_en_herbe.c: 243: uart_txStr("L'Equipe A a la main");
+  1186  0199  3001               	movlw	(low ((STR_1-__stringbase)| (0+32768)))& (0+255)
+  1187  019A                     L1:	
+  1188  019A  120A  118A  21DC  120A  118A  	fcall	_uart_txStr
+  1189  019F                     i1l166:	
+  1190  019F  0879               	movf	??_jdk1+6,w
+  1191  01A0  1283               	bcf	3,5	;RP0=0, select bank0
+  1192  01A1  1303               	bcf	3,6	;RP1=0, select bank0
+  1193  01A2  00FF               	movwf	127
+  1194  01A3  0878               	movf	??_jdk1+5,w
+  1195  01A4  008A               	movwf	10
+  1196  01A5  0877               	movf	??_jdk1+4,w
+  1197  01A6  0084               	movwf	4
+  1198  01A7  0E76               	swapf	(??_jdk1+3)^(0+-128),w
+  1199  01A8  0083               	movwf	3
+  1200  01A9  0EFE               	swapf	126,f
+  1201  01AA  0E7E               	swapf	126,w
+  1202  01AB  0009               	retfie
+  1203  01AC                     __end_of_jdk1:	
+  1204                           
+  1205                           	psect	intentry
+  1206  0004                     __pintentry:	
+  1207                           ;incstack = 0
+  1208                           ; Regs used in _jdk1: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+  1209                           
+  1210  0004                     interrupt_function:	
+  1211  007E                     saved_w	set	btemp
+  1212  0004  00FE               	movwf	btemp
+  1213  0005  0E03               	swapf	3,w
+  1214  0006  00F6               	movwf	??_jdk1+3
+  1215  0007  0804               	movf	4,w
+  1216  0008  00F7               	movwf	??_jdk1+4
+  1217  0009  080A               	movf	10,w
+  1218  000A  00F8               	movwf	??_jdk1+5
+  1219  000B  1283               	bcf	3,5	;RP0=0, select bank0
+  1220  000C  1303               	bcf	3,6	;RP1=0, select bank0
+  1221  000D  087F               	movf	btemp+1,w
+  1222  000E  00F9               	movwf	??_jdk1+6
+  1223  000F  120A  118A  281D   	ljmp	_jdk1
+  1224                           
+  1225                           	psect	text3
+  1226  01DC                     __ptext3:	
+  1227 ;; *************** function _uart_txStr *****************
+  1228 ;; Defined at:
+  1229 ;;		line 78 in file "genie_en_herbe.c"
+  1230 ;; Parameters:    Size  Location     Type
+  1231 ;;  str             1    wreg     PTR const unsigned char 
+  1232 ;;		 -> STR_16(21), STR_15(21), STR_14(21), STR_13(21), 
+  1233 ;;		 -> STR_12(21), STR_11(21), STR_10(21), STR_9(21), 
+  1234 ;;		 -> STR_8(21), STR_7(21), STR_6(21), STR_5(21), 
+  1235 ;;		 -> STR_4(21), STR_3(21), STR_2(21), STR_1(21), 
+  1236 ;; Auto vars:     Size  Location     Type
+  1237 ;;  str             1    2[COMMON] PTR const unsigned char 
+  1238 ;;		 -> STR_16(21), STR_15(21), STR_14(21), STR_13(21), 
+  1239 ;;		 -> STR_12(21), STR_11(21), STR_10(21), STR_9(21), 
+  1240 ;;		 -> STR_8(21), STR_7(21), STR_6(21), STR_5(21), 
+  1241 ;;		 -> STR_4(21), STR_3(21), STR_2(21), STR_1(21), 
+  1242 ;; Return value:  Size  Location     Type
+  1243 ;;                  1    wreg      void 
+  1244 ;; Registers used:
+  1245 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+  1246 ;; Tracked objects:
+  1247 ;;		On entry : 0/0
+  1248 ;;		On exit  : 0/0
+  1249 ;;		Unchanged: 0/0
+  1250 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1251 ;;      Params:         0       0       0       0       0
+  1252 ;;      Locals:         1       0       0       0       0
+  1253 ;;      Temps:          1       0       0       0       0
+  1254 ;;      Totals:         2       0       0       0       0
+  1255 ;;Total ram usage:        2 bytes
+  1256 ;; Hardware stack levels used:    1
+  1257 ;; Hardware stack levels required when called:    1
+  1258 ;; This function calls:
+  1259 ;;		_uart_txChar
+  1260 ;; This function is called by:
+  1261 ;;		_jdk1
+  1262 ;; This function uses a non-reentrant model
+  1263 ;;
+  1264                           
+  1265                           
+  1266                           ;psect for function _uart_txStr
+  1267  01DC                     _uart_txStr:	
+  1268                           
+  1269                           ;incstack = 0
+  1270                           ; Regs used in _uart_txStr: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+  1271                           ;uart_txStr@str stored from wreg
+  1272  01DC  00F2               	movwf	uart_txStr@str
+  1273  01DD                     i1l866:	
+  1274                           ;genie_en_herbe.c: 79: while (*str != '\0') {
+  1275                           
+  1276  01DD  0872               	movf	uart_txStr@str,w
+  1277  01DE  0084               	movwf	4
+  1278  01DF  120A  118A  21AC  120A  118A  	fcall	stringdir
+  1279  01E4  3A00               	xorlw	0
+  1280  01E5  1903               	btfsc	3,2
+  1281  01E6  29F8               	goto	i1l868
+  1282                           
+  1283                           ;genie_en_herbe.c: 80: uart_txChar(*str);
+  1284  01E7  0872               	movf	uart_txStr@str,w
+  1285  01E8  0084               	movwf	4
+  1286  01E9  120A  118A  21AC  120A  118A  	fcall	stringdir
+  1287  01EE  120A  118A  223B  120A  118A  	fcall	_uart_txChar
+  1288                           
+  1289                           ;genie_en_herbe.c: 81: str++;
+  1290  01F3  3001               	movlw	1
+  1291  01F4  00F1               	movwf	??_uart_txStr
+  1292  01F5  0871               	movf	??_uart_txStr,w
+  1293  01F6  07F2               	addwf	uart_txStr@str,f
+  1294  01F7  29DD               	goto	i1l866
+  1295  01F8                     i1l868:	
+  1296                           
+  1297                           ;genie_en_herbe.c: 82: }
+  1298                           ;genie_en_herbe.c: 83: uart_txChar('\r');
+  1299  01F8  300D               	movlw	13
+  1300  01F9  120A  118A  223B  120A  118A  	fcall	_uart_txChar
+  1301                           
+  1302                           ;genie_en_herbe.c: 84: uart_txChar('\n');
+  1303  01FE  300A               	movlw	10
+  1304  01FF  120A  118A  223B   	fcall	_uart_txChar
+  1305  0202  0008               	return
+  1306  0203                     __end_of_uart_txStr:	
+  1307                           
+  1308                           	psect	text4
+  1309  023B                     __ptext4:	
+  1310 ;; *************** function _uart_txChar *****************
+  1311 ;; Defined at:
+  1312 ;;		line 73 in file "genie_en_herbe.c"
+  1313 ;; Parameters:    Size  Location     Type
+  1314 ;;  ch              1    wreg     unsigned char 
+  1315 ;; Auto vars:     Size  Location     Type
+  1316 ;;  ch              1    0[COMMON] unsigned char 
+  1317 ;; Return value:  Size  Location     Type
+  1318 ;;                  1    wreg      void 
+  1319 ;; Registers used:
+  1320 ;;		wreg
+  1321 ;; Tracked objects:
+  1322 ;;		On entry : 0/0
+  1323 ;;		On exit  : 0/0
+  1324 ;;		Unchanged: 0/0
+  1325 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1326 ;;      Params:         0       0       0       0       0
+  1327 ;;      Locals:         1       0       0       0       0
+  1328 ;;      Temps:          0       0       0       0       0
+  1329 ;;      Totals:         1       0       0       0       0
+  1330 ;;Total ram usage:        1 bytes
+  1331 ;; Hardware stack levels used:    1
+  1332 ;; This function calls:
+  1333 ;;		Nothing
+  1334 ;; This function is called by:
+  1335 ;;		_uart_txStr
+  1336 ;; This function uses a non-reentrant model
+  1337 ;;
+  1338                           
+  1339                           
+  1340                           ;psect for function _uart_txChar
+  1341  023B                     _uart_txChar:	
+  1342                           
+  1343                           ;incstack = 0
+  1344                           ; Regs used in _uart_txChar: [wreg]
+  1345                           ;uart_txChar@ch stored from wreg
+  1346  023B  00F0               	movwf	uart_txChar@ch
+  1347  023C                     i1l104:	
+  1348                           ;genie_en_herbe.c: 74: while (!TRMT);
+  1349                           
+  1350  023C  1683               	bsf	3,5	;RP0=1, select bank1
+  1351  023D  1303               	bcf	3,6	;RP1=0, select bank1
+  1352  023E  1C98               	btfss	24,1	;volatile
+  1353  023F  2A3C               	goto	i1l104
+  1354                           
+  1355                           ;genie_en_herbe.c: 75: TXREG = ch;
+  1356  0240  0870               	movf	uart_txChar@ch,w
+  1357  0241  1283               	bcf	3,5	;RP0=0, select bank0
+  1358  0242  1303               	bcf	3,6	;RP1=0, select bank0
+  1359  0243  0099               	movwf	25	;volatile
+  1360  0244  0008               	return
+  1361  0245                     __end_of_uart_txChar:	
+  1362  007E                     btemp	set	126	;btemp
+  1363  007E                     wtemp0	set	126
+
+
+Data Sizes:
+    Strings     42
+    Constant    0
+    Data        0
+    BSS         4
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14     10      14
+    BANK0            80      0       0
+    BANK1            80      0       0
+    BANK3            96      0       0
+    BANK2            96      0       0
+
+Pointer List with Targets:
+
+    uart_txStr@str	PTR const unsigned char  size(1) Largest target is 21
+		 -> STR_16(CODE[21]), STR_15(CODE[21]), STR_14(CODE[21]), STR_13(CODE[21]), 
+		 -> STR_12(CODE[21]), STR_11(CODE[21]), STR_10(CODE[21]), STR_9(CODE[21]), 
+		 -> STR_8(CODE[21]), STR_7(CODE[21]), STR_6(CODE[21]), STR_5(CODE[21]), 
+		 -> STR_4(CODE[21]), STR_3(CODE[21]), STR_2(CODE[21]), STR_1(CODE[21]), 
+
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _jdk1 in COMMON
+
+    _jdk1->_uart_txStr
+    _uart_txStr->_uart_txChar
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _jdk1 in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _jdk1 in BANK1
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _jdk1 in BANK3
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _jdk1 in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0       0
+                          _uart_unit
+ ---------------------------------------------------------------------------------
+ (1) _uart_unit                                            0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (2) _jdk1                                                 7     7      0     492
+                                              3 COMMON     7     7      0
+                         _uart_txStr
+ ---------------------------------------------------------------------------------
+ (3) _uart_txStr                                           2     2      0     492
+                                              1 COMMON     2     2      0
+                        _uart_txChar
+ ---------------------------------------------------------------------------------
+ (4) _uart_txChar                                          1     1      0      15
+                                              0 COMMON     1     1      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 4
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _uart_unit
+
+ _jdk1 (ROOT)
+   _uart_txStr
+     _uart_txChar
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMMON            E      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMMON               E      A       E       1      100.0%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+STACK                0      0       0       2        0.0%
+ABS                  0      0       E       3        0.0%
+BITBANK0            50      0       0       4        0.0%
+BITSFR3              0      0       0       4        0.0%
+SFR3                 0      0       0       4        0.0%
+BANK0               50      0       0       5        0.0%
+BITSFR2              0      0       0       5        0.0%
+SFR2                 0      0       0       5        0.0%
+BITBANK1            50      0       0       6        0.0%
+BANK1               50      0       0       7        0.0%
+BITBANK3            60      0       0       8        0.0%
+BANK3               60      0       0       9        0.0%
+BITBANK2            60      0       0      10        0.0%
+BANK2               60      0       0      11        0.0%
+DATA                 0      0       E      12        0.0%
+
+
+Microchip Technology PIC Macro Assembler V1.45 build -152302408 
+Symbol Table                                                                                   Sat Jan 09 10:12:23 2021
+
+                      _c 007D                        _t 007C                        pc 0002  
+            __CFG_CP$OFF 0000                       fsr 0004              __CFG_LVP$ON 0000  
+                    l171 0220                      _GIE 005F                      _RB0 0030  
+                    _RB1 0031                      _RB2 0032                      _RB3 0033  
+                    _RD0 0040                      _RB4 0034                      _RD1 0041  
+                    _RB5 0035                      _RD2 0042                      _RB6 0036  
+                    _RD3 0043                      _RB7 0037                      _RD4 0044  
+                    _RD5 0045                      _RD6 0046                      _RD7 0047  
+           __CFG_CPD$OFF 0000                      fsr0 0004             __CFG_IESO$ON 0000  
+           __CFG_FOSC$HS 0000                     STR_1 01B2                     STR_2 01C7  
+                   STR_3 01B2                     STR_4 01C7                     STR_5 01B2  
+                   STR_6 01C7                     STR_7 01B2                     STR_8 01C7  
+                   STR_9 01C7                     _BRGH 04C2                     _CREN 00C4  
+                   _IOCB 0096                     _PEIE 005E                     _INTE 005C  
+                   _RBIE 005B                     _RBIF 0058                     _RCIE 0465  
+                   _RCIF 0065                     _SPEN 00C7                     _TRMT 04C1  
+                   _TXEN 04C5                     _SYNC 04C4             __CFG_WRT$OFF 0000  
+          __CFG_FCMEN$ON 0000                     _jdk1 001D                     _main 0203  
+                   btemp 007E            __CFG_BOREN$ON 0000                     start 0012  
+                  ?_jdk1 0070                    ?_main 0070                    STR_10 01B2  
+                  STR_11 01C7                    STR_12 01B2                    STR_13 01C7  
+                  STR_14 01B2                    STR_15 01C7                    STR_16 01B2  
+                  _BRG16 0C3B            __CFG_WDTE$OFF 0000                    _ANSEL 0188  
+                  i1l104 023C                    i1l141 0082                    i1l151 011F  
+                  i1l143 00CB                    i1l135 0077                    i1l161 0152  
+                  i1l153 0100                    i1l145 00AC                    i1l137 0058  
+                  i1l155 0148                    i1l147 00F6                    i1l139 00A1  
+                  i1l165 017B                    i1l157 0129                    i1l149 00D6  
+                  i1l166 019F                    i1l159 0171                    i1l880 002E  
+                  i1l866 01DD                    i1l868 01F8                    i1l892 0046  
+                  i1l886 003A                    _RCREG 001A                    _SPBRG 0099  
+                  _PORTB 0006                    u70_27 0166                    u71_27 018F  
+                  u64_27 006C                    u65_27 0096                    u66_27 00C0  
+                  u67_27 00EA                    u68_27 0114                    u69_27 013D  
+                  _TXREG 0019                    _phase 007A                    pclath 000A  
+                  status 0003                    wtemp0 007E           __CFG_MCLRE$OFF 0000  
+        __initialization 0015             __end_of_jdk1 01AC             __end_of_main 0221  
+                 ??_jdk1 0073                   ??_main 0000                   _ANSELH 0189  
+                 _TRISD0 0440                   _TRISD1 0441                   _TRISD2 0442  
+                 _TRISD3 0443                   _TRISD4 0444                   _TRISD5 0445  
+                 _TRISD6 0446                   _TRISD7 0447           __CFG_PWRTE$OFF 0000  
+           ?_uart_txChar 0070                   saved_w 007E  __end_of__initialization 0019  
+         __pcstackCOMMON 0070               __pmaintext 0203               __pintentry 0004  
+     __size_of_uart_unit 001A               __stringtab 01AC                  __ptext1 0221  
+                __ptext2 001D                  __ptext3 01DC                  __ptext4 023B  
+   __size_of_uart_txChar 000A     end_of_initialization 0019        __end_of_uart_unit 023B  
+             _uart_txStr 01DC      start_initialization 0015              ?_uart_txStr 0070  
+            __pbssCOMMON 007A                ___latbits 0002            __pcstackBANK0 0000  
+              __pstrings 01AC        interrupt_function 0004      __size_of_uart_txStr 0027  
+              _uart_unit 0221              __stringbase 01B1            ??_uart_txChar 0070  
+             ?_uart_unit 0070       __end_of__stringtab 01B2        __CFG_BOR4V$BOR40V 0000  
+    __end_of_uart_txChar 0245            __size_of_jdk1 018F            __size_of_main 001E  
+           ??_uart_txStr 0071                 intlevel1 0000       __end_of_uart_txStr 0203  
+              stringcode 01AC              ??_uart_unit 0000            uart_txChar@ch 0070  
+            _uart_txChar 023B                 stringdir 01AC                 stringtab 01AC  
+          uart_txStr@str 0072  

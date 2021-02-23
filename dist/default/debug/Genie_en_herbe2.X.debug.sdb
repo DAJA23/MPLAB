@@ -1,0 +1,146 @@
+[p LITE_MODE AUTOSTATIC PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F887 ]
+[d frameptr 6 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\pic\eeprom.c
+[v _eecpymem eecpymem `(v  1 e 1 0 ]
+"39
+[v _memcpyee memcpyee `(v  1 e 1 0 ]
+"57 F:\Genie_en_herbe2.X\genie_en_herbe.c
+[v _uart_unit uart_unit `(v  1 e 1 0 ]
+"73
+[v _uart_txChar uart_txChar `(v  1 e 1 0 ]
+"78
+[v _uart_txStr uart_txStr `(v  1 e 1 0 ]
+"87
+[v _jdk1 jdk1 `II(v  1 e 1 0 ]
+"536
+[v _main main `(v  1 e 1 0 ]
+"1131 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f887.h
+[v _TXREG TXREG `VEuc  1 e 1 @25 ]
+"1138
+[v _RCREG RCREG `VEuc  1 e 1 @26 ]
+"2414
+[v _IOCB IOCB `VEuc  1 e 1 @150 ]
+"2640
+[v _SPBRG SPBRG `VEuc  1 e 1 @153 ]
+"3385
+[v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
+"3447
+[v _ANSELH ANSELH `VEuc  1 e 1 @393 ]
+"3628
+[v _BRG16 BRG16 `VEb  1 e 0 @3131 ]
+"3646
+[v _BRGH BRGH `VEb  1 e 0 @1218 ]
+"3740
+[v _CREN CREN `VEb  1 e 0 @196 ]
+"3780
+[v _GIE GIE `VEb  1 e 0 @95 ]
+"3798
+[v _INTE INTE `VEb  1 e 0 @92 ]
+"3876
+[v _PEIE PEIE `VEb  1 e 0 @94 ]
+"3918
+[v _RB0 RB0 `VEb  1 e 0 @48 ]
+"3920
+[v _RB1 RB1 `VEb  1 e 0 @49 ]
+"3922
+[v _RB2 RB2 `VEb  1 e 0 @50 ]
+"3924
+[v _RB3 RB3 `VEb  1 e 0 @51 ]
+"3926
+[v _RB4 RB4 `VEb  1 e 0 @52 ]
+"3928
+[v _RB5 RB5 `VEb  1 e 0 @53 ]
+"3930
+[v _RB6 RB6 `VEb  1 e 0 @54 ]
+"3932
+[v _RB7 RB7 `VEb  1 e 0 @55 ]
+"3934
+[v _RBIE RBIE `VEb  1 e 0 @91 ]
+"3936
+[v _RBIF RBIF `VEb  1 e 0 @88 ]
+"3964
+[v _RCIE RCIE `VEb  1 e 0 @1125 ]
+"3966
+[v _RCIF RCIF `VEb  1 e 0 @101 ]
+"3970
+[v _RD0 RD0 `VEb  1 e 0 @64 ]
+"3972
+[v _RD1 RD1 `VEb  1 e 0 @65 ]
+"3974
+[v _RD2 RD2 `VEb  1 e 0 @66 ]
+"3976
+[v _RD3 RD3 `VEb  1 e 0 @67 ]
+"3978
+[v _RD4 RD4 `VEb  1 e 0 @68 ]
+"3980
+[v _RD5 RD5 `VEb  1 e 0 @69 ]
+"3982
+[v _RD6 RD6 `VEb  1 e 0 @70 ]
+"3984
+[v _RD7 RD7 `VEb  1 e 0 @71 ]
+"4022
+[v _SPEN SPEN `VEb  1 e 0 @199 ]
+"4058
+[v _SYNC SYNC `VEb  1 e 0 @1220 ]
+"4164
+[v _TRISD0 TRISD0 `VEb  1 e 0 @1088 ]
+"4166
+[v _TRISD1 TRISD1 `VEb  1 e 0 @1089 ]
+"4168
+[v _TRISD2 TRISD2 `VEb  1 e 0 @1090 ]
+"4170
+[v _TRISD3 TRISD3 `VEb  1 e 0 @1091 ]
+"4172
+[v _TRISD4 TRISD4 `VEb  1 e 0 @1092 ]
+"4174
+[v _TRISD5 TRISD5 `VEb  1 e 0 @1093 ]
+"4176
+[v _TRISD6 TRISD6 `VEb  1 e 0 @1094 ]
+"4178
+[v _TRISD7 TRISD7 `VEb  1 e 0 @1095 ]
+"4188
+[v _TRMT TRMT `VEb  1 e 0 @1217 ]
+"4208
+[v _TXEN TXEN `VEb  1 e 0 @1221 ]
+"51 F:\Genie_en_herbe2.X\genie_en_herbe.c
+[v _phase phase `i  1 e 2 0 ]
+"53
+[v _etape etape `i  1 e 2 0 ]
+"536
+[v _main main `(v  1 e 1 0 ]
+{
+"557
+} 0
+"57
+[v _uart_unit uart_unit `(v  1 e 1 0 ]
+{
+"71
+} 0
+"87
+[v _jdk1 jdk1 `II(v  1 e 1 0 ]
+{
+"534
+} 0
+"78
+[v _uart_txStr uart_txStr `(v  1 e 1 0 ]
+{
+[v uart_txStr@str str `*.24DCuc  1 a 1 wreg ]
+[v uart_txStr@str str `*.24DCuc  1 a 1 wreg ]
+[v uart_txStr@str str `*.24DCuc  1 a 1 2 ]
+"85
+} 0
+"73
+[v _uart_txChar uart_txChar `(v  1 e 1 0 ]
+{
+[v uart_txChar@ch ch `uc  1 a 1 wreg ]
+[v uart_txChar@ch ch `uc  1 a 1 wreg ]
+[v uart_txChar@ch ch `uc  1 a 1 0 ]
+"76
+} 0
