@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v1.45\dat\en_msgs.txt -cs \
   -h+dist/default/debug\Genie_en_herbe2.X.debug.sym \
   --cmf=dist/default/debug\Genie_en_herbe2.X.debug.cmf -z -Q16F887 \
-  -oC:\Users\DAJA23~1\AppData\Local\Temp\s4ls.2 \
+  -oC:\Users\DAJA23~1\AppData\Local\Temp\sb78.2 \
   -Mdist/default/debug/Genie_en_herbe2.X.debug.map -E1 -ver=XC8 \
   -ASTACK=0110h-016fh -pstack=STACK -ACODE=00h-07FFhx4 -ASTRCODE=00h-01FFFh \
   -ASTRING=00h-0FFhx32 -ACONST=00h-0FFhx32 -AENTRY=00h-0FFhx32 \
@@ -18,7 +18,7 @@ Linker command line:
   -pfunctab=ENTRY -ACONFIG=02007h-02008h -pconfig=CONFIG -DCONFIG=2 \
   -AIDLOC=02000h-02003h -pidloc=IDLOC -DIDLOC=2 -AEEDATA=00h-0FFh/02100h \
   -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 \
-  -DENTRY=2 -k C:\Users\DAJA23~1\AppData\Local\Temp\s4ls.obj \
+  -DENTRY=2 -k C:\Users\DAJA23~1\AppData\Local\Temp\sb78.obj \
   dist/default/debug\Genie_en_herbe2.X.debug.obj 
 
 Object code version is 3.11
@@ -28,22 +28,22 @@ Machine type is 16F887
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\DAJA23~1\AppData\Local\Temp\s4ls.obj
+C:\Users\DAJA23~1\AppData\Local\Temp\sb78.obj
                 end_init                             12       12        3        8       0
                 reset_vec                             0        0        3        0       0
                 config                             2007     2007        2     400E       0
 dist/default/debug\Genie_en_herbe2.X.debug.obj
                 cinit                                15       15        B        8       0
                 intentry                              4        4        E        8       0
-                text4                               64B      64B        A      BD8       0
-                text3                               5EC      5EC       27      BD8       0
-                text2                                20       20      59C        8       0
-                text1                               631      631       1A      BD8       0
-                maintext                            613      613       1E      BD8       0
+                text4                               673      673        A      CE6       0
+                text3                               60A      60A       27        8       0
+                text2                                20       20      5EA        8       0
+                text1                               64F      64F       1A        8       0
+                maintext                            631      631       1E        8       0
                 cstackCOMMON                         70       70        A       70       1
                 bssBANK0                             20       20        1       20       1
                 bssCOMMON                            7A       7A        4       70       1
-                strings                             5BC      5BC       30      B78       0
+                strings                             669      669        A      CD2       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
@@ -53,16 +53,16 @@ TOTAL           Name                               Link     Load   Length     Sp
                 cinit                                15       15        B         0
                 intentry                              4        4        E         0
                 reset_vec                             0        0        3         0
-                text4                               64B      64B        A         0
-                text3                               5EC      5EC       27         0
-                text2                                20       20      59C         0
-                text1                               631      631       1A         0
-                maintext                            613      613       1E         0
+                text4                               673      673        A         0
+                text3                               60A      60A       27         0
+                text2                                20       20      5EA         0
+                text1                               64F      64F       1A         0
+                maintext                            631      631       1E         0
 
         CLASS   STRCODE        
 
         CLASS   STRING         
-                strings                             5BC      5BC       30         0
+                strings                             669      669        A         0
 
         CLASS   CONST          
 
@@ -106,11 +106,11 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
 
                 reset_vec                      000000  000003  000003         0       0  CODE        2
-                intentry                       000004  0005B8  0005BC         8       0  CODE        2
+                intentry                       000004  000665  000669         8       0  CODE        2
                 bssBANK0                       000020  000001  000021        20       1  BANK0       1
                 cstackCOMMON                   000070  00000E  00007E        70       1  COMMON      1
-                strings                        0005BC  000030  0005EC       B78       0  STRING      2
-                text3                          0005EC  000069  000655       BD8       0  CODE        2
+                strings                        000669  00000A  000673       CD2       0  STRING      2
+                text4                          000673  00000A  00067D       CE6       0  CODE        2
                 config                         002007  000002  002009      400E       0  CONFIG      2
 
 
@@ -122,12 +122,12 @@ UNUSED ADDRESS RANGES
         BANK2            0110-016F             60           1
         BANK3            0190-01EF             60           1
         CODE             0003-0003              1           2
-                         0655-1FFF            800
+                         067D-1FFF            800
         CONST            0003-0003              1           2
-                         0655-1FFF            100
+                         067D-1FFF            100
         EEDATA           2100-21FF            100           2
         ENTRY            0003-0003              1           2
-                         0655-1FFF            100
+                         067D-1FFF            100
         IDLOC            2000-2003              4           2
         RAM              0021-006F             4F           1
                          00A0-00EF             50
@@ -139,9 +139,9 @@ UNUSED ADDRESS RANGES
         SFR3             0180-018F             10           1
         STACK            0110-016F             60           1
         STRCODE          0003-0003              1           2
-                         0655-1FFF           19AB
+                         067D-1FFF           1983
         STRING           0003-0003              1           2
-                         0655-1FFF            100
+                         067D-1FFF            100
 
                                   Symbol Table
 
@@ -279,38 +279,38 @@ ___int_sp                stack        0000
 ___latbits               (abs)        0002
 ___sp                    stack        0000
 __end_of__initialization cinit        001C
-__end_of__stringtab      strings      05C2
-__end_of_jdk1            text2        05BC
-__end_of_main            maintext     0631
-__end_of_uart_txChar     text4        0655
-__end_of_uart_txStr      text3        0613
-__end_of_uart_unit       text1        064B
+__end_of__stringtab      strings      066F
+__end_of_jdk1            text2        060A
+__end_of_main            maintext     064F
+__end_of_uart_txChar     text4        067D
+__end_of_uart_txStr      text3        0631
+__end_of_uart_unit       text1        0669
 __initialization         cinit        0015
 __pbssBANK0              bssBANK0     0020
 __pbssCOMMON             bssCOMMON    007A
 __pcstackBANK0           cstackBANK0  0000
 __pcstackCOMMON          cstackCOMMON 0070
 __pintentry              intentry     0004
-__pmaintext              maintext     0613
-__pstrings               strings      05BC
-__ptext1                 text1        0631
+__pmaintext              maintext     0631
+__pstrings               strings      0669
+__ptext1                 text1        064F
 __ptext2                 text2        0020
-__ptext3                 text3        05EC
-__ptext4                 text4        064B
+__ptext3                 text3        060A
+__ptext4                 text4        0673
 __size_of_jdk1           (abs)        0000
 __size_of_main           (abs)        0000
 __size_of_uart_txChar    (abs)        0000
 __size_of_uart_txStr     (abs)        0000
 __size_of_uart_unit      (abs)        0000
-__stringbase             strings      05C1
-__stringtab              strings      05BC
+__stringbase             strings      066E
+__stringtab              strings      0669
 _etape                   bssCOMMON    007A
 _jdk1                    text2        0020
-_main                    maintext     0613
+_main                    maintext     0631
 _phase                   bssCOMMON    007C
-_uart_txChar             text4        064B
-_uart_txStr              text3        05EC
-_uart_unit               text1        0631
+_uart_txChar             text4        0673
+_uart_txStr              text3        060A
+_uart_unit               text1        064F
 btemp                    (abs)        007E
 end_of_initialization    cinit        001C
 interrupt_function       intentry     0004
@@ -335,7 +335,7 @@ FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 536 in file "genie_en_herbe.c"
+		line 562 in file "genie_en_herbe.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -427,26 +427,26 @@ Total ram usage:        7 bytes
 		line 78 in file "genie_en_herbe.c"
  Parameters:    Size  Location     Type
   str             1    wreg     PTR const unsigned char 
-		 -> STR_33(21), STR_32(21), STR_31(21), STR_30(21), 
-		 -> STR_29(21), STR_28(21), STR_27(21), STR_26(21), 
-		 -> STR_25(21), STR_24(21), STR_23(21), STR_22(21), 
-		 -> STR_21(21), STR_20(21), STR_19(21), STR_18(21), 
-		 -> STR_17(21), STR_16(21), STR_15(21), STR_14(21), 
-		 -> STR_13(21), STR_12(21), STR_11(21), STR_10(21), 
-		 -> STR_9(21), STR_8(21), STR_7(21), STR_6(21), 
-		 -> STR_5(21), STR_4(21), STR_3(21), STR_2(21), 
-		 -> STR_1(21), 
+		 -> STR_34(2), STR_33(2), STR_32(2), STR_31(2), 
+		 -> STR_30(2), STR_29(2), STR_28(2), STR_27(2), 
+		 -> STR_26(2), STR_25(2), STR_24(2), STR_23(2), 
+		 -> STR_22(2), STR_21(2), STR_20(2), STR_19(2), 
+		 -> STR_18(2), STR_17(2), STR_16(2), STR_15(2), 
+		 -> STR_14(2), STR_13(2), STR_12(2), STR_11(2), 
+		 -> STR_10(2), STR_9(2), STR_8(2), STR_7(2), 
+		 -> STR_6(2), STR_5(2), STR_4(2), STR_3(2), 
+		 -> STR_2(2), STR_1(2), 
  Auto vars:     Size  Location     Type
   str             1    2[COMMON] PTR const unsigned char 
-		 -> STR_33(21), STR_32(21), STR_31(21), STR_30(21), 
-		 -> STR_29(21), STR_28(21), STR_27(21), STR_26(21), 
-		 -> STR_25(21), STR_24(21), STR_23(21), STR_22(21), 
-		 -> STR_21(21), STR_20(21), STR_19(21), STR_18(21), 
-		 -> STR_17(21), STR_16(21), STR_15(21), STR_14(21), 
-		 -> STR_13(21), STR_12(21), STR_11(21), STR_10(21), 
-		 -> STR_9(21), STR_8(21), STR_7(21), STR_6(21), 
-		 -> STR_5(21), STR_4(21), STR_3(21), STR_2(21), 
-		 -> STR_1(21), 
+		 -> STR_34(2), STR_33(2), STR_32(2), STR_31(2), 
+		 -> STR_30(2), STR_29(2), STR_28(2), STR_27(2), 
+		 -> STR_26(2), STR_25(2), STR_24(2), STR_23(2), 
+		 -> STR_22(2), STR_21(2), STR_20(2), STR_19(2), 
+		 -> STR_18(2), STR_17(2), STR_16(2), STR_15(2), 
+		 -> STR_14(2), STR_13(2), STR_12(2), STR_11(2), 
+		 -> STR_10(2), STR_9(2), STR_8(2), STR_7(2), 
+		 -> STR_6(2), STR_5(2), STR_4(2), STR_3(2), 
+		 -> STR_2(2), STR_1(2), 
  Return value:  Size  Location     Type
                   1    wreg      void 
  Registers used:
@@ -504,17 +504,17 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 shared
-		__stringtab    		STRING         	05BC	0000	7
+		__stringtab    		STRING         	0669	0000	7
 		__initialization		CODE           	0015	0000	8
 
 shared estimated size: 15
 
 genie_en_herbe.c
-		_uart_txStr    		CODE           	05EC	0000	40
-		_uart_txChar   		CODE           	064B	0000	11
-		_jdk1          		CODE           	0020	0000	1437
-		_main          		CODE           	0613	0000	31
-		_uart_unit     		CODE           	0631	0000	27
+		_uart_txStr    		CODE           	060A	0000	40
+		_uart_txChar   		CODE           	0673	0000	11
+		_jdk1          		CODE           	0020	0000	1515
+		_main          		CODE           	0631	0000	31
+		_uart_unit     		CODE           	064F	0000	27
 
-genie_en_herbe.c estimated size: 1546
+genie_en_herbe.c estimated size: 1624
 

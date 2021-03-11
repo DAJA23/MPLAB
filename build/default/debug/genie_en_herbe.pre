@@ -2206,7 +2206,7 @@ uart_txChar('\n');
 void interrupt jdk1() {
 if (RCIF) {
 RCIF = 0;
-if (RCREG == 'I' || ((RD0 == 1 || RD1 == 1 || RD2 == 1 || RD3 == 1 || RD4 == 1 || RD5 == 1 || RD6 == 1 || RD7 == 1) && RCREG == 'V')) {
+if (RCREG == 'I' || ((RD0 == 1 || RD1 == 1 || RD2 == 1 || RD3 == 1 || RD4 == 1 || RD5 == 1 || RD6 == 1 || RD7 == 1) && (RCREG == 'V' || RCREG == 'F')) ){
 RD0 = 0;
 RD1 = 0;
 RD2 = 0;
@@ -2250,6 +2250,7 @@ RD7 = 0;
 phase = 2;
 }
 
+
 }
 
 
@@ -2267,17 +2268,18 @@ RD4 = 0;
 RD5 = 0;
 RD6 = 0;
 RD7 = 0;
-uart_txStr("L'Equipe A a la main");
+uart_txStr("A");
 _delay((unsigned long)((3000)*(20e6/4000.0)));
 RD0 = 0;
 phase = 3;
 _delay((unsigned long)((4000)*(20e6/4000.0)));
-if (RCREG == 'I') {
+if (RCREG == 'V') {
 phase = 0;
 } else {
 phase = 3;
-uart_txStr("L'Equipe B a la main");
+uart_txStr("B");
 }
+phase=0;
 }
 while (RB1 == 0 && (phase == 0 || phase == 2)) {
 RD1 = 1;
@@ -2288,17 +2290,18 @@ RD4 = 0;
 RD5 = 0;
 RD6 = 0;
 RD7 = 0;
-uart_txStr("L'Equipe A a la main");
+uart_txStr("A");
 _delay((unsigned long)((3000)*(20e6/4000.0)));
 RD1 = 0;
 phase = 3;
 _delay((unsigned long)((4000)*(20e6/4000.0)));
-if (RCREG == 'I') {
+if (RCREG == 'V') {
 phase = 0;
 } else {
 phase = 3;
-uart_txStr("L'Equipe B a la main");
+uart_txStr("B");
 }
+phase=0;
 }
 while (RB2 == 0 && (phase == 0 || phase == 2)) {
 RD2 = 1;
@@ -2309,17 +2312,18 @@ RD4 = 0;
 RD5 = 0;
 RD6 = 0;
 RD7 = 0;
-uart_txStr("L'Equipe A a la main");
+uart_txStr("A");
 _delay((unsigned long)((3000)*(20e6/4000.0)));
 RD2 = 0;
 phase = 3;
 _delay((unsigned long)((4000)*(20e6/4000.0)));
-if (RCREG == 'I') {
+if (RCREG == 'V') {
 phase = 0;
 } else {
 phase = 3;
-uart_txStr("L'Equipe B a la main");
+uart_txStr("B");
 }
+phase=0;
 }
 while (RB3 == 0 && (phase == 0 || phase == 2)) {
 RD3 = 1;
@@ -2330,17 +2334,18 @@ RD4 = 0;
 RD5 = 0;
 RD6 = 0;
 RD7 = 0;
-uart_txStr("L'Equipe A a la main");
+uart_txStr("A");
 _delay((unsigned long)((3000)*(20e6/4000.0)));
 RD3 = 0;
 phase = 3;
 _delay((unsigned long)((4000)*(20e6/4000.0)));
-if (RCREG == 'I') {
+if (RCREG == 'V') {
 phase = 0;
 } else {
 phase = 3;
-uart_txStr("L'Equipe B a la main");
+uart_txStr("B");
 }
+phase=0;
 }
 while (RB4 == 0 && (phase == 0 || phase == 1)) {
 RD4 = 1;
@@ -2351,17 +2356,18 @@ RD3 = 0;
 RD5 = 0;
 RD6 = 0;
 RD7 = 0;
-uart_txStr("L'Equipe B a la main");
+uart_txStr("B");
 _delay((unsigned long)((3000)*(20e6/4000.0)));
 RD4 = 0;
 phase = 3;
 _delay((unsigned long)((4000)*(20e6/4000.0)));
-if (RCREG == 'I') {
+if (RCREG == 'V') {
 phase = 0;
 } else {
 phase = 3;
-uart_txStr("L'Equipe A a la main");
+uart_txStr("A");
 }
+phase=0;
 }
 while (RB5 == 0 && (phase == 0 || phase == 1)) {
 RD5 = 1;
@@ -2372,17 +2378,18 @@ RD3 = 0;
 RD4 = 0;
 RD6 = 0;
 RD7 = 0;
-uart_txStr("L'Equipe B a la main");
+uart_txStr("B");
 _delay((unsigned long)((3000)*(20e6/4000.0)));
 RD5 = 0;
 phase = 3;
 _delay((unsigned long)((4000)*(20e6/4000.0)));
-if (RCREG == 'I') {
+if (RCREG == 'V') {
 phase = 0;
 } else {
 phase = 3;
-uart_txStr("L'Equipe A a la main");
+uart_txStr("A");
 }
+phase=0;
 }
 while (RB6 == 0 && (phase == 0 || phase == 1)) {
 RD6 = 1;
@@ -2393,17 +2400,18 @@ RD3 = 0;
 RD4 = 0;
 RD5 = 0;
 RD7 = 0;
-uart_txStr("L'Equipe B a la main");
+uart_txStr("B");
 _delay((unsigned long)((3000)*(20e6/4000.0)));
 RD6 = 0;
 phase = 3;
 _delay((unsigned long)((4000)*(20e6/4000.0)));
-if (RCREG == 'I') {
+if (RCREG == 'V') {
 phase = 0;
 } else {
 phase = 3;
-uart_txStr("L'Equipe A a la main");
+uart_txStr("A");
 }
+phase=0;
 }
 while (RB7 == 0 && (phase == 0 || phase == 1)) {
 RD7 = 1;
@@ -2414,17 +2422,18 @@ RD3 = 0;
 RD4 = 0;
 RD5 = 0;
 RD6 = 0;
-uart_txStr("L'Equipe B a la main");
+uart_txStr("B");
 _delay((unsigned long)((3000)*(20e6/4000.0)));
 RD7 = 0;
 phase = 3;
 _delay((unsigned long)((4000)*(20e6/4000.0)));
-if (RCREG == 'I') {
+if (RCREG == 'V') {
 phase = 0;
 } else {
 phase = 3;
-uart_txStr("L'Equipe A a la main");
+uart_txStr("A");
 }
+phase=0;
 }
 
 }
@@ -2438,9 +2447,26 @@ RD4 = 0;
 RD5 = 0;
 RD6 = 0;
 RD7 = 0;
-uart_txStr("L'Equipe A a la main");
-_delay((unsigned long)((6000)*(20e6/4000.0)));
+uart_txStr("A");
+_delay((unsigned long)((2000)*(20e6/4000.0)));
 RD0 = 0;
+phase = 3 ;
+_delay((unsigned long)((6000)*(20e6/4000.0)));
+if(RCREG == 'F'){
+phase = 1;
+if (RB4==0 && phase==1) {
+RD4=1;
+uart_txStr("B");
+phase = 3 ;
+if(RCREG == 'V' || RCREG == 'F'){
+phase = 0;
+}
+}
+}else if( RCREG == 'V'){
+phase = 0 ;
+}
+
+
 } else if (RB1 == 0 && (phase == 0 || phase == 2)) {
 RD1 = 1;
 RD0 = 0;
@@ -2450,7 +2476,7 @@ RD4 = 0;
 RD5 = 0;
 RD6 = 0;
 RD7 = 0;
-uart_txStr("L'Equipe A a la main");
+uart_txStr("A");
 _delay((unsigned long)((6000)*(20e6/4000.0)));
 RD1 = 0;
 } else if (RB2 == 0 && (phase == 0 || phase == 2)) {
@@ -2462,7 +2488,7 @@ RD4 = 0;
 RD5 = 0;
 RD6 = 0;
 RD7 = 0;
-uart_txStr("L'Equipe A a la main");
+uart_txStr("A");
 _delay((unsigned long)((6000)*(20e6/4000.0)));
 RD2 = 0;
 
@@ -2475,7 +2501,7 @@ RD4 = 0;
 RD5 = 0;
 RD6 = 0;
 RD7 = 0;
-uart_txStr("L'Equipe A a la main");
+uart_txStr("A");
 _delay((unsigned long)((6000)*(20e6/4000.0)));
 RD3 = 0;
 } else if (RB4 == 0 && (phase == 0 || phase == 1)) {
@@ -2487,7 +2513,7 @@ RD3 = 0;
 RD5 = 0;
 RD6 = 0;
 RD7 = 0;
-uart_txStr("L'Equipe B a la main");
+uart_txStr("B");
 _delay((unsigned long)((6000)*(20e6/4000.0)));
 RD4 = 0;
 } else if (RB5 == 0 && (phase == 0 || phase == 1)) {
@@ -2499,7 +2525,7 @@ RD3 = 0;
 RD4 = 0;
 RD6 = 0;
 RD7 = 0;
-uart_txStr("L'Equipe B a la main");
+uart_txStr("B");
 _delay((unsigned long)((6000)*(20e6/4000.0)));
 RD5 = 0;
 } else if (RB6 == 0 && (phase == 0 || phase == 1)) {
@@ -2511,7 +2537,7 @@ RD3 = 0;
 RD4 = 0;
 RD5 = 0;
 RD7 = 0;
-uart_txStr("L'Equipe B a la main");
+uart_txStr("B");
 _delay((unsigned long)((6000)*(20e6/4000.0)));
 RD6 = 0;
 
@@ -2524,7 +2550,7 @@ RD3 = 0;
 RD4 = 0;
 RD5 = 0;
 RD6 = 0;
-uart_txStr("L'Equipe B a la main");
+uart_txStr("B");
 _delay((unsigned long)((6000)*(20e6/4000.0)));
 RD7 = 0;
 }
@@ -2540,7 +2566,7 @@ RD4 = 0;
 RD5 = 0;
 RD6 = 0;
 RD7 = 0;
-uart_txStr("L'Equipe A a la main");
+uart_txStr("A");
 _delay((unsigned long)((6000)*(20e6/4000.0)));
 RD0 = 0;
 phase = 3;
@@ -2554,7 +2580,7 @@ RD4 = 1;
 RD5 = 0;
 RD6 = 0;
 RD7 = 0;
-uart_txStr("L'Equipe B a la main");
+uart_txStr("B");
 _delay((unsigned long)((6000)*(20e6/4000.0)));
 RD4 = 0;
 phase = 3;
@@ -2569,7 +2595,7 @@ RD4 = 0;
 RD5 = 0;
 RD6 = 0;
 RD7 = 0;
-uart_txStr("L'Equipe A a la main");
+uart_txStr("A");
 _delay((unsigned long)((6000)*(20e6/4000.0)));
 RD1 = 0;
 } else if (RB2 == 0 && phase == 2) {
@@ -2581,7 +2607,7 @@ RD4 = 0;
 RD5 = 0;
 RD6 = 0;
 RD7 = 0;
-uart_txStr("L'Equipe A a la main");
+uart_txStr("A");
 _delay((unsigned long)((6000)*(20e6/4000.0)));
 RD2 = 0;
 
@@ -2594,7 +2620,7 @@ RD4 = 0;
 RD5 = 0;
 RD6 = 0;
 RD7 = 0;
-uart_txStr("L'Equipe A a la main");
+uart_txStr("A");
 _delay((unsigned long)((6000)*(20e6/4000.0)));
 RD3 = 0;
 } else if (RB4 == 0 && phase == 1) {
@@ -2606,7 +2632,7 @@ RD3 = 0;
 RD5 = 0;
 RD6 = 0;
 RD7 = 0;
-uart_txStr("L'Equipe B a la main");
+uart_txStr("B");
 _delay((unsigned long)((6000)*(20e6/4000.0)));
 RD4 = 0;
 } else if (RB5 == 0 && 0 || phase == 1) {
@@ -2618,7 +2644,7 @@ RD3 = 0;
 RD4 = 0;
 RD6 = 0;
 RD7 = 0;
-uart_txStr("L'Equipe B a la main");
+uart_txStr("B");
 _delay((unsigned long)((6000)*(20e6/4000.0)));
 RD5 = 0;
 } else if (RB6 == 0 && phase == 1) {
@@ -2630,7 +2656,7 @@ RD3 = 0;
 RD4 = 0;
 RD5 = 0;
 RD7 = 0;
-uart_txStr("L'Equipe B a la main");
+uart_txStr("B");
 _delay((unsigned long)((6000)*(20e6/4000.0)));
 RD6 = 0;
 
@@ -2643,7 +2669,7 @@ RD3 = 0;
 RD4 = 0;
 RD5 = 0;
 RD6 = 0;
-uart_txStr("L'Equipe B a la main");
+uart_txStr("B");
 _delay((unsigned long)((6000)*(20e6/4000.0)));
 RD7 = 0;
 }

@@ -1759,9 +1759,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;genie_en_herbe.c: 89: RCIF = 0;
 "89
 [e = _RCIF -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 90: if (RCREG == 'I' || ((RD0 == 1 || RD1 == 1 || RD2 == 1 || RD3 == 1 || RD4 == 1 || RD5 == 1 || RD6 == 1 || RD7 == 1) && RCREG == 'V')) {
+[; ;genie_en_herbe.c: 90: if (RCREG == 'I' || ((RD0 == 1 || RD1 == 1 || RD2 == 1 || RD3 == 1 || RD4 == 1 || RD5 == 1 || RD6 == 1 || RD7 == 1) && (RCREG == 'V' || RCREG == 'F')) ){
 "90
-[e $ ! || == -> _RCREG `ui -> 73 `ui && || || || || || || || == -> _RD0 `i -> 1 `i == -> _RD1 `i -> 1 `i == -> _RD2 `i -> 1 `i == -> _RD3 `i -> 1 `i == -> _RD4 `i -> 1 `i == -> _RD5 `i -> 1 `i == -> _RD6 `i -> 1 `i == -> _RD7 `i -> 1 `i == -> _RCREG `ui -> 86 `ui 149  ]
+[e $ ! || == -> _RCREG `ui -> 73 `ui && || || || || || || || == -> _RD0 `i -> 1 `i == -> _RD1 `i -> 1 `i == -> _RD2 `i -> 1 `i == -> _RD3 `i -> 1 `i == -> _RD4 `i -> 1 `i == -> _RD5 `i -> 1 `i == -> _RD6 `i -> 1 `i == -> _RD7 `i -> 1 `i || == -> _RCREG `ui -> 86 `ui == -> _RCREG `ui -> 70 `ui 149  ]
 {
 [; ;genie_en_herbe.c: 91: RD0 = 0;
 "91
@@ -1907,1463 +1907,1544 @@ Version 3.2 HI-TECH Software Intermediate Code
 "132
 }
 [e :U 157 ]
-"134
+"135
 }
 [e :U 148 ]
 [; ;genie_en_herbe.c: 132: }
-[; ;genie_en_herbe.c: 134: }
-[; ;genie_en_herbe.c: 138: if (RBIF) {
-"138
+[; ;genie_en_herbe.c: 135: }
+[; ;genie_en_herbe.c: 139: if (RBIF) {
+"139
 [e $ ! _RBIF 158  ]
 {
-[; ;genie_en_herbe.c: 139: RBIF = 0;
-"139
+[; ;genie_en_herbe.c: 140: RBIF = 0;
+"140
 [e = _RBIF -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 141: while (etape == 1) {
-"141
+[; ;genie_en_herbe.c: 142: while (etape == 1) {
+"142
 [e $U 159  ]
 [e :U 160 ]
 {
-[; ;genie_en_herbe.c: 142: while (RB0 == 0 && (phase == 0 || phase == 2)) {
-"142
+[; ;genie_en_herbe.c: 143: while (RB0 == 0 && (phase == 0 || phase == 2)) {
+"143
 [e $U 162  ]
 [e :U 163 ]
 {
-[; ;genie_en_herbe.c: 143: RD0 = 1;
-"143
-[e = _RD0 -> -> 1 `i `b ]
-[; ;genie_en_herbe.c: 144: RD1 = 0;
+[; ;genie_en_herbe.c: 144: RD0 = 1;
 "144
-[e = _RD1 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 145: RD2 = 0;
+[e = _RD0 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 145: RD1 = 0;
 "145
-[e = _RD2 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 146: RD3 = 0;
+[e = _RD1 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 146: RD2 = 0;
 "146
-[e = _RD3 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 147: RD4 = 0;
+[e = _RD2 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 147: RD3 = 0;
 "147
-[e = _RD4 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 148: RD5 = 0;
+[e = _RD3 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 148: RD4 = 0;
 "148
-[e = _RD5 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 149: RD6 = 0;
+[e = _RD4 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 149: RD5 = 0;
 "149
-[e = _RD6 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 150: RD7 = 0;
+[e = _RD5 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 150: RD6 = 0;
 "150
-[e = _RD7 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 151: uart_txStr("L'Equipe A a la main");
+[e = _RD6 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 151: RD7 = 0;
 "151
-[e ( _uart_txStr (1 :s 1C ]
-[; ;genie_en_herbe.c: 152: _delay((unsigned long)((3000)*(20e6/4000.0)));
+[e = _RD7 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 152: uart_txStr("A");
 "152
-[e ( __delay (1 -> * -> -> 3000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 153: RD0 = 0;
+[e ( _uart_txStr (1 :s 1C ]
+[; ;genie_en_herbe.c: 153: _delay((unsigned long)((3000)*(20e6/4000.0)));
 "153
-[e = _RD0 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 154: phase = 3;
+[e ( __delay (1 -> * -> -> 3000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 154: RD0 = 0;
 "154
-[e = _phase -> 3 `i ]
-[; ;genie_en_herbe.c: 155: _delay((unsigned long)((4000)*(20e6/4000.0)));
+[e = _RD0 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 155: phase = 3;
 "155
-[e ( __delay (1 -> * -> -> 4000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 156: if (RCREG == 'I') {
+[e = _phase -> 3 `i ]
+[; ;genie_en_herbe.c: 156: _delay((unsigned long)((4000)*(20e6/4000.0)));
 "156
-[e $ ! == -> _RCREG `ui -> 73 `ui 165  ]
-{
-[; ;genie_en_herbe.c: 157: phase = 0;
+[e ( __delay (1 -> * -> -> 4000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 157: if (RCREG == 'V') {
 "157
-[e = _phase -> 0 `i ]
+[e $ ! == -> _RCREG `ui -> 86 `ui 165  ]
+{
+[; ;genie_en_herbe.c: 158: phase = 0;
 "158
+[e = _phase -> 0 `i ]
+"159
 }
-[; ;genie_en_herbe.c: 158: } else {
+[; ;genie_en_herbe.c: 159: } else {
 [e $U 166  ]
 [e :U 165 ]
 {
-[; ;genie_en_herbe.c: 159: phase = 3;
-"159
-[e = _phase -> 3 `i ]
-[; ;genie_en_herbe.c: 160: uart_txStr("L'Equipe B a la main");
+[; ;genie_en_herbe.c: 160: phase = 3;
 "160
-[e ( _uart_txStr (1 :s 2C ]
+[e = _phase -> 3 `i ]
+[; ;genie_en_herbe.c: 161: uart_txStr("B");
 "161
-}
-[e :U 166 ]
+[e ( _uart_txStr (1 :s 2C ]
 "162
 }
+[e :U 166 ]
+[; ;genie_en_herbe.c: 162: }
+[; ;genie_en_herbe.c: 163: phase=0;
+"163
+[e = _phase -> 0 `i ]
+"164
+}
 [e :U 162 ]
-"142
+"143
 [e $ && == -> _RB0 `i -> 0 `i || == _phase -> 0 `i == _phase -> 2 `i 163  ]
 [e :U 164 ]
-[; ;genie_en_herbe.c: 161: }
-[; ;genie_en_herbe.c: 162: }
-[; ;genie_en_herbe.c: 163: while (RB1 == 0 && (phase == 0 || phase == 2)) {
-"163
+[; ;genie_en_herbe.c: 164: }
+[; ;genie_en_herbe.c: 165: while (RB1 == 0 && (phase == 0 || phase == 2)) {
+"165
 [e $U 167  ]
 [e :U 168 ]
 {
-[; ;genie_en_herbe.c: 164: RD1 = 1;
-"164
-[e = _RD1 -> -> 1 `i `b ]
-[; ;genie_en_herbe.c: 165: RD0 = 0;
-"165
-[e = _RD0 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 166: RD2 = 0;
+[; ;genie_en_herbe.c: 166: RD1 = 1;
 "166
-[e = _RD2 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 167: RD3 = 0;
+[e = _RD1 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 167: RD0 = 0;
 "167
-[e = _RD3 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 168: RD4 = 0;
+[e = _RD0 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 168: RD2 = 0;
 "168
-[e = _RD4 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 169: RD5 = 0;
+[e = _RD2 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 169: RD3 = 0;
 "169
-[e = _RD5 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 170: RD6 = 0;
+[e = _RD3 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 170: RD4 = 0;
 "170
-[e = _RD6 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 171: RD7 = 0;
+[e = _RD4 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 171: RD5 = 0;
 "171
-[e = _RD7 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 172: uart_txStr("L'Equipe A a la main");
+[e = _RD5 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 172: RD6 = 0;
 "172
-[e ( _uart_txStr (1 :s 3C ]
-[; ;genie_en_herbe.c: 173: _delay((unsigned long)((3000)*(20e6/4000.0)));
+[e = _RD6 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 173: RD7 = 0;
 "173
-[e ( __delay (1 -> * -> -> 3000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 174: RD1 = 0;
+[e = _RD7 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 174: uart_txStr("A");
 "174
-[e = _RD1 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 175: phase = 3;
+[e ( _uart_txStr (1 :s 3C ]
+[; ;genie_en_herbe.c: 175: _delay((unsigned long)((3000)*(20e6/4000.0)));
 "175
-[e = _phase -> 3 `i ]
-[; ;genie_en_herbe.c: 176: _delay((unsigned long)((4000)*(20e6/4000.0)));
+[e ( __delay (1 -> * -> -> 3000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 176: RD1 = 0;
 "176
-[e ( __delay (1 -> * -> -> 4000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 177: if (RCREG == 'I') {
+[e = _RD1 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 177: phase = 3;
 "177
-[e $ ! == -> _RCREG `ui -> 73 `ui 170  ]
-{
-[; ;genie_en_herbe.c: 178: phase = 0;
+[e = _phase -> 3 `i ]
+[; ;genie_en_herbe.c: 178: _delay((unsigned long)((4000)*(20e6/4000.0)));
 "178
-[e = _phase -> 0 `i ]
+[e ( __delay (1 -> * -> -> 4000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 179: if (RCREG == 'V') {
 "179
+[e $ ! == -> _RCREG `ui -> 86 `ui 170  ]
+{
+[; ;genie_en_herbe.c: 180: phase = 0;
+"180
+[e = _phase -> 0 `i ]
+"181
 }
-[; ;genie_en_herbe.c: 179: } else {
+[; ;genie_en_herbe.c: 181: } else {
 [e $U 171  ]
 [e :U 170 ]
 {
-[; ;genie_en_herbe.c: 180: phase = 3;
-"180
-[e = _phase -> 3 `i ]
-[; ;genie_en_herbe.c: 181: uart_txStr("L'Equipe B a la main");
-"181
-[e ( _uart_txStr (1 :s 4C ]
+[; ;genie_en_herbe.c: 182: phase = 3;
 "182
+[e = _phase -> 3 `i ]
+[; ;genie_en_herbe.c: 183: uart_txStr("B");
+"183
+[e ( _uart_txStr (1 :s 4C ]
+"184
 }
 [e :U 171 ]
-"183
+[; ;genie_en_herbe.c: 184: }
+[; ;genie_en_herbe.c: 185: phase=0;
+"185
+[e = _phase -> 0 `i ]
+"186
 }
 [e :U 167 ]
-"163
+"165
 [e $ && == -> _RB1 `i -> 0 `i || == _phase -> 0 `i == _phase -> 2 `i 168  ]
 [e :U 169 ]
-[; ;genie_en_herbe.c: 182: }
-[; ;genie_en_herbe.c: 183: }
-[; ;genie_en_herbe.c: 184: while (RB2 == 0 && (phase == 0 || phase == 2)) {
-"184
+[; ;genie_en_herbe.c: 186: }
+[; ;genie_en_herbe.c: 187: while (RB2 == 0 && (phase == 0 || phase == 2)) {
+"187
 [e $U 172  ]
 [e :U 173 ]
 {
-[; ;genie_en_herbe.c: 185: RD2 = 1;
-"185
-[e = _RD2 -> -> 1 `i `b ]
-[; ;genie_en_herbe.c: 186: RD0 = 0;
-"186
-[e = _RD0 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 187: RD1 = 0;
-"187
-[e = _RD1 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 188: RD3 = 0;
+[; ;genie_en_herbe.c: 188: RD2 = 1;
 "188
-[e = _RD3 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 189: RD4 = 0;
+[e = _RD2 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 189: RD0 = 0;
 "189
-[e = _RD4 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 190: RD5 = 0;
+[e = _RD0 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 190: RD1 = 0;
 "190
-[e = _RD5 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 191: RD6 = 0;
+[e = _RD1 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 191: RD3 = 0;
 "191
-[e = _RD6 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 192: RD7 = 0;
+[e = _RD3 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 192: RD4 = 0;
 "192
-[e = _RD7 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 193: uart_txStr("L'Equipe A a la main");
+[e = _RD4 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 193: RD5 = 0;
 "193
-[e ( _uart_txStr (1 :s 5C ]
-[; ;genie_en_herbe.c: 194: _delay((unsigned long)((3000)*(20e6/4000.0)));
+[e = _RD5 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 194: RD6 = 0;
 "194
-[e ( __delay (1 -> * -> -> 3000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 195: RD2 = 0;
+[e = _RD6 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 195: RD7 = 0;
 "195
-[e = _RD2 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 196: phase = 3;
+[e = _RD7 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 196: uart_txStr("A");
 "196
-[e = _phase -> 3 `i ]
-[; ;genie_en_herbe.c: 197: _delay((unsigned long)((4000)*(20e6/4000.0)));
+[e ( _uart_txStr (1 :s 5C ]
+[; ;genie_en_herbe.c: 197: _delay((unsigned long)((3000)*(20e6/4000.0)));
 "197
-[e ( __delay (1 -> * -> -> 4000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 198: if (RCREG == 'I') {
+[e ( __delay (1 -> * -> -> 3000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 198: RD2 = 0;
 "198
-[e $ ! == -> _RCREG `ui -> 73 `ui 175  ]
-{
-[; ;genie_en_herbe.c: 199: phase = 0;
+[e = _RD2 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 199: phase = 3;
 "199
-[e = _phase -> 0 `i ]
+[e = _phase -> 3 `i ]
+[; ;genie_en_herbe.c: 200: _delay((unsigned long)((4000)*(20e6/4000.0)));
 "200
+[e ( __delay (1 -> * -> -> 4000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 201: if (RCREG == 'V') {
+"201
+[e $ ! == -> _RCREG `ui -> 86 `ui 175  ]
+{
+[; ;genie_en_herbe.c: 202: phase = 0;
+"202
+[e = _phase -> 0 `i ]
+"203
 }
-[; ;genie_en_herbe.c: 200: } else {
+[; ;genie_en_herbe.c: 203: } else {
 [e $U 176  ]
 [e :U 175 ]
 {
-[; ;genie_en_herbe.c: 201: phase = 3;
-"201
+[; ;genie_en_herbe.c: 204: phase = 3;
+"204
 [e = _phase -> 3 `i ]
-[; ;genie_en_herbe.c: 202: uart_txStr("L'Equipe B a la main");
-"202
+[; ;genie_en_herbe.c: 205: uart_txStr("B");
+"205
 [e ( _uart_txStr (1 :s 6C ]
-"203
+"206
 }
 [e :U 176 ]
-"204
+[; ;genie_en_herbe.c: 206: }
+[; ;genie_en_herbe.c: 207: phase=0;
+"207
+[e = _phase -> 0 `i ]
+"208
 }
 [e :U 172 ]
-"184
+"187
 [e $ && == -> _RB2 `i -> 0 `i || == _phase -> 0 `i == _phase -> 2 `i 173  ]
 [e :U 174 ]
-[; ;genie_en_herbe.c: 203: }
-[; ;genie_en_herbe.c: 204: }
-[; ;genie_en_herbe.c: 205: while (RB3 == 0 && (phase == 0 || phase == 2)) {
-"205
+[; ;genie_en_herbe.c: 208: }
+[; ;genie_en_herbe.c: 209: while (RB3 == 0 && (phase == 0 || phase == 2)) {
+"209
 [e $U 177  ]
 [e :U 178 ]
 {
-[; ;genie_en_herbe.c: 206: RD3 = 1;
-"206
-[e = _RD3 -> -> 1 `i `b ]
-[; ;genie_en_herbe.c: 207: RD0 = 0;
-"207
-[e = _RD0 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 208: RD1 = 0;
-"208
-[e = _RD1 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 209: RD2 = 0;
-"209
-[e = _RD2 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 210: RD4 = 0;
+[; ;genie_en_herbe.c: 210: RD3 = 1;
 "210
-[e = _RD4 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 211: RD5 = 0;
+[e = _RD3 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 211: RD0 = 0;
 "211
-[e = _RD5 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 212: RD6 = 0;
+[e = _RD0 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 212: RD1 = 0;
 "212
-[e = _RD6 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 213: RD7 = 0;
+[e = _RD1 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 213: RD2 = 0;
 "213
-[e = _RD7 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 214: uart_txStr("L'Equipe A a la main");
+[e = _RD2 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 214: RD4 = 0;
 "214
-[e ( _uart_txStr (1 :s 7C ]
-[; ;genie_en_herbe.c: 215: _delay((unsigned long)((3000)*(20e6/4000.0)));
+[e = _RD4 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 215: RD5 = 0;
 "215
-[e ( __delay (1 -> * -> -> 3000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 216: RD3 = 0;
+[e = _RD5 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 216: RD6 = 0;
 "216
-[e = _RD3 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 217: phase = 3;
+[e = _RD6 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 217: RD7 = 0;
 "217
-[e = _phase -> 3 `i ]
-[; ;genie_en_herbe.c: 218: _delay((unsigned long)((4000)*(20e6/4000.0)));
+[e = _RD7 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 218: uart_txStr("A");
 "218
-[e ( __delay (1 -> * -> -> 4000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 219: if (RCREG == 'I') {
+[e ( _uart_txStr (1 :s 7C ]
+[; ;genie_en_herbe.c: 219: _delay((unsigned long)((3000)*(20e6/4000.0)));
 "219
-[e $ ! == -> _RCREG `ui -> 73 `ui 180  ]
-{
-[; ;genie_en_herbe.c: 220: phase = 0;
+[e ( __delay (1 -> * -> -> 3000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 220: RD3 = 0;
 "220
-[e = _phase -> 0 `i ]
+[e = _RD3 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 221: phase = 3;
 "221
+[e = _phase -> 3 `i ]
+[; ;genie_en_herbe.c: 222: _delay((unsigned long)((4000)*(20e6/4000.0)));
+"222
+[e ( __delay (1 -> * -> -> 4000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 223: if (RCREG == 'V') {
+"223
+[e $ ! == -> _RCREG `ui -> 86 `ui 180  ]
+{
+[; ;genie_en_herbe.c: 224: phase = 0;
+"224
+[e = _phase -> 0 `i ]
+"225
 }
-[; ;genie_en_herbe.c: 221: } else {
+[; ;genie_en_herbe.c: 225: } else {
 [e $U 181  ]
 [e :U 180 ]
 {
-[; ;genie_en_herbe.c: 222: phase = 3;
-"222
+[; ;genie_en_herbe.c: 226: phase = 3;
+"226
 [e = _phase -> 3 `i ]
-[; ;genie_en_herbe.c: 223: uart_txStr("L'Equipe B a la main");
-"223
+[; ;genie_en_herbe.c: 227: uart_txStr("B");
+"227
 [e ( _uart_txStr (1 :s 8C ]
-"224
+"228
 }
 [e :U 181 ]
-"225
+[; ;genie_en_herbe.c: 228: }
+[; ;genie_en_herbe.c: 229: phase=0;
+"229
+[e = _phase -> 0 `i ]
+"230
 }
 [e :U 177 ]
-"205
+"209
 [e $ && == -> _RB3 `i -> 0 `i || == _phase -> 0 `i == _phase -> 2 `i 178  ]
 [e :U 179 ]
-[; ;genie_en_herbe.c: 224: }
-[; ;genie_en_herbe.c: 225: }
-[; ;genie_en_herbe.c: 226: while (RB4 == 0 && (phase == 0 || phase == 1)) {
-"226
+[; ;genie_en_herbe.c: 230: }
+[; ;genie_en_herbe.c: 231: while (RB4 == 0 && (phase == 0 || phase == 1)) {
+"231
 [e $U 182  ]
 [e :U 183 ]
 {
-[; ;genie_en_herbe.c: 227: RD4 = 1;
-"227
-[e = _RD4 -> -> 1 `i `b ]
-[; ;genie_en_herbe.c: 228: RD0 = 0;
-"228
-[e = _RD0 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 229: RD1 = 0;
-"229
-[e = _RD1 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 230: RD2 = 0;
-"230
-[e = _RD2 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 231: RD3 = 0;
-"231
-[e = _RD3 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 232: RD5 = 0;
+[; ;genie_en_herbe.c: 232: RD4 = 1;
 "232
-[e = _RD5 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 233: RD6 = 0;
+[e = _RD4 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 233: RD0 = 0;
 "233
-[e = _RD6 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 234: RD7 = 0;
+[e = _RD0 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 234: RD1 = 0;
 "234
-[e = _RD7 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 235: uart_txStr("L'Equipe B a la main");
+[e = _RD1 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 235: RD2 = 0;
 "235
-[e ( _uart_txStr (1 :s 9C ]
-[; ;genie_en_herbe.c: 236: _delay((unsigned long)((3000)*(20e6/4000.0)));
+[e = _RD2 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 236: RD3 = 0;
 "236
-[e ( __delay (1 -> * -> -> 3000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 237: RD4 = 0;
+[e = _RD3 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 237: RD5 = 0;
 "237
-[e = _RD4 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 238: phase = 3;
+[e = _RD5 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 238: RD6 = 0;
 "238
-[e = _phase -> 3 `i ]
-[; ;genie_en_herbe.c: 239: _delay((unsigned long)((4000)*(20e6/4000.0)));
+[e = _RD6 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 239: RD7 = 0;
 "239
-[e ( __delay (1 -> * -> -> 4000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 240: if (RCREG == 'I') {
+[e = _RD7 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 240: uart_txStr("B");
 "240
-[e $ ! == -> _RCREG `ui -> 73 `ui 185  ]
-{
-[; ;genie_en_herbe.c: 241: phase = 0;
+[e ( _uart_txStr (1 :s 9C ]
+[; ;genie_en_herbe.c: 241: _delay((unsigned long)((3000)*(20e6/4000.0)));
 "241
-[e = _phase -> 0 `i ]
+[e ( __delay (1 -> * -> -> 3000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 242: RD4 = 0;
 "242
-}
-[; ;genie_en_herbe.c: 242: } else {
-[e $U 186  ]
-[e :U 185 ]
-{
+[e = _RD4 -> -> 0 `i `b ]
 [; ;genie_en_herbe.c: 243: phase = 3;
 "243
 [e = _phase -> 3 `i ]
-[; ;genie_en_herbe.c: 244: uart_txStr("L'Equipe A a la main");
+[; ;genie_en_herbe.c: 244: _delay((unsigned long)((4000)*(20e6/4000.0)));
 "244
-[e ( _uart_txStr (1 :s 10C ]
+[e ( __delay (1 -> * -> -> 4000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 245: if (RCREG == 'V') {
 "245
+[e $ ! == -> _RCREG `ui -> 86 `ui 185  ]
+{
+[; ;genie_en_herbe.c: 246: phase = 0;
+"246
+[e = _phase -> 0 `i ]
+"247
+}
+[; ;genie_en_herbe.c: 247: } else {
+[e $U 186  ]
+[e :U 185 ]
+{
+[; ;genie_en_herbe.c: 248: phase = 3;
+"248
+[e = _phase -> 3 `i ]
+[; ;genie_en_herbe.c: 249: uart_txStr("A");
+"249
+[e ( _uart_txStr (1 :s 10C ]
+"250
 }
 [e :U 186 ]
-"246
+[; ;genie_en_herbe.c: 250: }
+[; ;genie_en_herbe.c: 251: phase=0;
+"251
+[e = _phase -> 0 `i ]
+"252
 }
 [e :U 182 ]
-"226
+"231
 [e $ && == -> _RB4 `i -> 0 `i || == _phase -> 0 `i == _phase -> 1 `i 183  ]
 [e :U 184 ]
-[; ;genie_en_herbe.c: 245: }
-[; ;genie_en_herbe.c: 246: }
-[; ;genie_en_herbe.c: 247: while (RB5 == 0 && (phase == 0 || phase == 1)) {
-"247
+[; ;genie_en_herbe.c: 252: }
+[; ;genie_en_herbe.c: 253: while (RB5 == 0 && (phase == 0 || phase == 1)) {
+"253
 [e $U 187  ]
 [e :U 188 ]
 {
-[; ;genie_en_herbe.c: 248: RD5 = 1;
-"248
-[e = _RD5 -> -> 1 `i `b ]
-[; ;genie_en_herbe.c: 249: RD0 = 0;
-"249
-[e = _RD0 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 250: RD1 = 0;
-"250
-[e = _RD1 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 251: RD2 = 0;
-"251
-[e = _RD2 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 252: RD3 = 0;
-"252
-[e = _RD3 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 253: RD4 = 0;
-"253
-[e = _RD4 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 254: RD6 = 0;
+[; ;genie_en_herbe.c: 254: RD5 = 1;
 "254
-[e = _RD6 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 255: RD7 = 0;
+[e = _RD5 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 255: RD0 = 0;
 "255
-[e = _RD7 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 256: uart_txStr("L'Equipe B a la main");
+[e = _RD0 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 256: RD1 = 0;
 "256
-[e ( _uart_txStr (1 :s 11C ]
-[; ;genie_en_herbe.c: 257: _delay((unsigned long)((3000)*(20e6/4000.0)));
+[e = _RD1 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 257: RD2 = 0;
 "257
-[e ( __delay (1 -> * -> -> 3000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 258: RD5 = 0;
+[e = _RD2 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 258: RD3 = 0;
 "258
-[e = _RD5 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 259: phase = 3;
+[e = _RD3 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 259: RD4 = 0;
 "259
-[e = _phase -> 3 `i ]
-[; ;genie_en_herbe.c: 260: _delay((unsigned long)((4000)*(20e6/4000.0)));
+[e = _RD4 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 260: RD6 = 0;
 "260
-[e ( __delay (1 -> * -> -> 4000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 261: if (RCREG == 'I') {
+[e = _RD6 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 261: RD7 = 0;
 "261
-[e $ ! == -> _RCREG `ui -> 73 `ui 190  ]
-{
-[; ;genie_en_herbe.c: 262: phase = 0;
+[e = _RD7 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 262: uart_txStr("B");
 "262
-[e = _phase -> 0 `i ]
+[e ( _uart_txStr (1 :s 11C ]
+[; ;genie_en_herbe.c: 263: _delay((unsigned long)((3000)*(20e6/4000.0)));
 "263
+[e ( __delay (1 -> * -> -> 3000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 264: RD5 = 0;
+"264
+[e = _RD5 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 265: phase = 3;
+"265
+[e = _phase -> 3 `i ]
+[; ;genie_en_herbe.c: 266: _delay((unsigned long)((4000)*(20e6/4000.0)));
+"266
+[e ( __delay (1 -> * -> -> 4000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 267: if (RCREG == 'V') {
+"267
+[e $ ! == -> _RCREG `ui -> 86 `ui 190  ]
+{
+[; ;genie_en_herbe.c: 268: phase = 0;
+"268
+[e = _phase -> 0 `i ]
+"269
 }
-[; ;genie_en_herbe.c: 263: } else {
+[; ;genie_en_herbe.c: 269: } else {
 [e $U 191  ]
 [e :U 190 ]
 {
-[; ;genie_en_herbe.c: 264: phase = 3;
-"264
+[; ;genie_en_herbe.c: 270: phase = 3;
+"270
 [e = _phase -> 3 `i ]
-[; ;genie_en_herbe.c: 265: uart_txStr("L'Equipe A a la main");
-"265
+[; ;genie_en_herbe.c: 271: uart_txStr("A");
+"271
 [e ( _uart_txStr (1 :s 12C ]
-"266
+"272
 }
 [e :U 191 ]
-"267
+[; ;genie_en_herbe.c: 272: }
+[; ;genie_en_herbe.c: 273: phase=0;
+"273
+[e = _phase -> 0 `i ]
+"274
 }
 [e :U 187 ]
-"247
+"253
 [e $ && == -> _RB5 `i -> 0 `i || == _phase -> 0 `i == _phase -> 1 `i 188  ]
 [e :U 189 ]
-[; ;genie_en_herbe.c: 266: }
-[; ;genie_en_herbe.c: 267: }
-[; ;genie_en_herbe.c: 268: while (RB6 == 0 && (phase == 0 || phase == 1)) {
-"268
+[; ;genie_en_herbe.c: 274: }
+[; ;genie_en_herbe.c: 275: while (RB6 == 0 && (phase == 0 || phase == 1)) {
+"275
 [e $U 192  ]
 [e :U 193 ]
 {
-[; ;genie_en_herbe.c: 269: RD6 = 1;
-"269
-[e = _RD6 -> -> 1 `i `b ]
-[; ;genie_en_herbe.c: 270: RD0 = 0;
-"270
-[e = _RD0 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 271: RD1 = 0;
-"271
-[e = _RD1 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 272: RD2 = 0;
-"272
-[e = _RD2 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 273: RD3 = 0;
-"273
-[e = _RD3 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 274: RD4 = 0;
-"274
-[e = _RD4 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 275: RD5 = 0;
-"275
-[e = _RD5 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 276: RD7 = 0;
+[; ;genie_en_herbe.c: 276: RD6 = 1;
 "276
-[e = _RD7 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 277: uart_txStr("L'Equipe B a la main");
+[e = _RD6 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 277: RD0 = 0;
 "277
-[e ( _uart_txStr (1 :s 13C ]
-[; ;genie_en_herbe.c: 278: _delay((unsigned long)((3000)*(20e6/4000.0)));
+[e = _RD0 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 278: RD1 = 0;
 "278
-[e ( __delay (1 -> * -> -> 3000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 279: RD6 = 0;
+[e = _RD1 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 279: RD2 = 0;
 "279
-[e = _RD6 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 280: phase = 3;
+[e = _RD2 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 280: RD3 = 0;
 "280
-[e = _phase -> 3 `i ]
-[; ;genie_en_herbe.c: 281: _delay((unsigned long)((4000)*(20e6/4000.0)));
+[e = _RD3 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 281: RD4 = 0;
 "281
-[e ( __delay (1 -> * -> -> 4000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 282: if (RCREG == 'I') {
+[e = _RD4 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 282: RD5 = 0;
 "282
-[e $ ! == -> _RCREG `ui -> 73 `ui 195  ]
-{
-[; ;genie_en_herbe.c: 283: phase = 0;
+[e = _RD5 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 283: RD7 = 0;
 "283
-[e = _phase -> 0 `i ]
+[e = _RD7 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 284: uart_txStr("B");
 "284
+[e ( _uart_txStr (1 :s 13C ]
+[; ;genie_en_herbe.c: 285: _delay((unsigned long)((3000)*(20e6/4000.0)));
+"285
+[e ( __delay (1 -> * -> -> 3000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 286: RD6 = 0;
+"286
+[e = _RD6 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 287: phase = 3;
+"287
+[e = _phase -> 3 `i ]
+[; ;genie_en_herbe.c: 288: _delay((unsigned long)((4000)*(20e6/4000.0)));
+"288
+[e ( __delay (1 -> * -> -> 4000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 289: if (RCREG == 'V') {
+"289
+[e $ ! == -> _RCREG `ui -> 86 `ui 195  ]
+{
+[; ;genie_en_herbe.c: 290: phase = 0;
+"290
+[e = _phase -> 0 `i ]
+"291
 }
-[; ;genie_en_herbe.c: 284: } else {
+[; ;genie_en_herbe.c: 291: } else {
 [e $U 196  ]
 [e :U 195 ]
 {
-[; ;genie_en_herbe.c: 285: phase = 3;
-"285
+[; ;genie_en_herbe.c: 292: phase = 3;
+"292
 [e = _phase -> 3 `i ]
-[; ;genie_en_herbe.c: 286: uart_txStr("L'Equipe A a la main");
-"286
+[; ;genie_en_herbe.c: 293: uart_txStr("A");
+"293
 [e ( _uart_txStr (1 :s 14C ]
-"287
+"294
 }
 [e :U 196 ]
-"288
+[; ;genie_en_herbe.c: 294: }
+[; ;genie_en_herbe.c: 295: phase=0;
+"295
+[e = _phase -> 0 `i ]
+"296
 }
 [e :U 192 ]
-"268
+"275
 [e $ && == -> _RB6 `i -> 0 `i || == _phase -> 0 `i == _phase -> 1 `i 193  ]
 [e :U 194 ]
-[; ;genie_en_herbe.c: 287: }
-[; ;genie_en_herbe.c: 288: }
-[; ;genie_en_herbe.c: 289: while (RB7 == 0 && (phase == 0 || phase == 1)) {
-"289
+[; ;genie_en_herbe.c: 296: }
+[; ;genie_en_herbe.c: 297: while (RB7 == 0 && (phase == 0 || phase == 1)) {
+"297
 [e $U 197  ]
 [e :U 198 ]
 {
-[; ;genie_en_herbe.c: 290: RD7 = 1;
-"290
-[e = _RD7 -> -> 1 `i `b ]
-[; ;genie_en_herbe.c: 291: RD0 = 0;
-"291
-[e = _RD0 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 292: RD1 = 0;
-"292
-[e = _RD1 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 293: RD2 = 0;
-"293
-[e = _RD2 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 294: RD3 = 0;
-"294
-[e = _RD3 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 295: RD4 = 0;
-"295
-[e = _RD4 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 296: RD5 = 0;
-"296
-[e = _RD5 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 297: RD6 = 0;
-"297
-[e = _RD6 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 298: uart_txStr("L'Equipe B a la main");
+[; ;genie_en_herbe.c: 298: RD7 = 1;
 "298
-[e ( _uart_txStr (1 :s 15C ]
-[; ;genie_en_herbe.c: 299: _delay((unsigned long)((3000)*(20e6/4000.0)));
+[e = _RD7 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 299: RD0 = 0;
 "299
-[e ( __delay (1 -> * -> -> 3000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 300: RD7 = 0;
+[e = _RD0 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 300: RD1 = 0;
 "300
-[e = _RD7 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 301: phase = 3;
+[e = _RD1 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 301: RD2 = 0;
 "301
-[e = _phase -> 3 `i ]
-[; ;genie_en_herbe.c: 302: _delay((unsigned long)((4000)*(20e6/4000.0)));
+[e = _RD2 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 302: RD3 = 0;
 "302
-[e ( __delay (1 -> * -> -> 4000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 303: if (RCREG == 'I') {
+[e = _RD3 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 303: RD4 = 0;
 "303
-[e $ ! == -> _RCREG `ui -> 73 `ui 200  ]
-{
-[; ;genie_en_herbe.c: 304: phase = 0;
+[e = _RD4 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 304: RD5 = 0;
 "304
-[e = _phase -> 0 `i ]
+[e = _RD5 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 305: RD6 = 0;
 "305
+[e = _RD6 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 306: uart_txStr("B");
+"306
+[e ( _uart_txStr (1 :s 15C ]
+[; ;genie_en_herbe.c: 307: _delay((unsigned long)((3000)*(20e6/4000.0)));
+"307
+[e ( __delay (1 -> * -> -> 3000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 308: RD7 = 0;
+"308
+[e = _RD7 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 309: phase = 3;
+"309
+[e = _phase -> 3 `i ]
+[; ;genie_en_herbe.c: 310: _delay((unsigned long)((4000)*(20e6/4000.0)));
+"310
+[e ( __delay (1 -> * -> -> 4000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 311: if (RCREG == 'V') {
+"311
+[e $ ! == -> _RCREG `ui -> 86 `ui 200  ]
+{
+[; ;genie_en_herbe.c: 312: phase = 0;
+"312
+[e = _phase -> 0 `i ]
+"313
 }
-[; ;genie_en_herbe.c: 305: } else {
+[; ;genie_en_herbe.c: 313: } else {
 [e $U 201  ]
 [e :U 200 ]
 {
-[; ;genie_en_herbe.c: 306: phase = 3;
-"306
+[; ;genie_en_herbe.c: 314: phase = 3;
+"314
 [e = _phase -> 3 `i ]
-[; ;genie_en_herbe.c: 307: uart_txStr("L'Equipe A a la main");
-"307
+[; ;genie_en_herbe.c: 315: uart_txStr("A");
+"315
 [e ( _uart_txStr (1 :s 16C ]
-"308
+"316
 }
 [e :U 201 ]
-"309
+[; ;genie_en_herbe.c: 316: }
+[; ;genie_en_herbe.c: 317: phase=0;
+"317
+[e = _phase -> 0 `i ]
+"318
 }
 [e :U 197 ]
-"289
+"297
 [e $ && == -> _RB7 `i -> 0 `i || == _phase -> 0 `i == _phase -> 1 `i 198  ]
 [e :U 199 ]
-"311
+"320
 }
 [e :U 159 ]
-"141
+"142
 [e $ == _etape -> 1 `i 160  ]
 [e :U 161 ]
-[; ;genie_en_herbe.c: 308: }
-[; ;genie_en_herbe.c: 309: }
-[; ;genie_en_herbe.c: 311: }
-[; ;genie_en_herbe.c: 312: while (etape == 2) {
-"312
+[; ;genie_en_herbe.c: 318: }
+[; ;genie_en_herbe.c: 320: }
+[; ;genie_en_herbe.c: 321: while (etape == 2) {
+"321
 [e $U 202  ]
 [e :U 203 ]
 {
-[; ;genie_en_herbe.c: 313: if (RB0 == 0 && (phase == 0 || phase == 2)) {
-"313
+[; ;genie_en_herbe.c: 322: if (RB0 == 0 && (phase == 0 || phase == 2)) {
+"322
 [e $ ! && == -> _RB0 `i -> 0 `i || == _phase -> 0 `i == _phase -> 2 `i 205  ]
 {
-[; ;genie_en_herbe.c: 314: RD0 = 1;
-"314
-[e = _RD0 -> -> 1 `i `b ]
-[; ;genie_en_herbe.c: 315: RD1 = 0;
-"315
-[e = _RD1 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 316: RD2 = 0;
-"316
-[e = _RD2 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 317: RD3 = 0;
-"317
-[e = _RD3 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 318: RD4 = 0;
-"318
-[e = _RD4 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 319: RD5 = 0;
-"319
-[e = _RD5 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 320: RD6 = 0;
-"320
-[e = _RD6 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 321: RD7 = 0;
-"321
-[e = _RD7 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 322: uart_txStr("L'Equipe A a la main");
-"322
-[e ( _uart_txStr (1 :s 17C ]
-[; ;genie_en_herbe.c: 323: _delay((unsigned long)((6000)*(20e6/4000.0)));
+[; ;genie_en_herbe.c: 323: RD0 = 1;
 "323
-[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 324: RD0 = 0;
+[e = _RD0 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 324: RD1 = 0;
 "324
-[e = _RD0 -> -> 0 `i `b ]
+[e = _RD1 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 325: RD2 = 0;
 "325
-}
-[; ;genie_en_herbe.c: 325: } else if (RB1 == 0 && (phase == 0 || phase == 2)) {
-[e $U 206  ]
-[e :U 205 ]
-[e $ ! && == -> _RB1 `i -> 0 `i || == _phase -> 0 `i == _phase -> 2 `i 207  ]
-{
-[; ;genie_en_herbe.c: 326: RD1 = 1;
-"326
-[e = _RD1 -> -> 1 `i `b ]
-[; ;genie_en_herbe.c: 327: RD0 = 0;
-"327
-[e = _RD0 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 328: RD2 = 0;
-"328
 [e = _RD2 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 329: RD3 = 0;
-"329
+[; ;genie_en_herbe.c: 326: RD3 = 0;
+"326
 [e = _RD3 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 330: RD4 = 0;
-"330
+[; ;genie_en_herbe.c: 327: RD4 = 0;
+"327
 [e = _RD4 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 331: RD5 = 0;
-"331
+[; ;genie_en_herbe.c: 328: RD5 = 0;
+"328
 [e = _RD5 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 332: RD6 = 0;
-"332
+[; ;genie_en_herbe.c: 329: RD6 = 0;
+"329
 [e = _RD6 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 333: RD7 = 0;
-"333
+[; ;genie_en_herbe.c: 330: RD7 = 0;
+"330
 [e = _RD7 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 334: uart_txStr("L'Equipe A a la main");
+[; ;genie_en_herbe.c: 331: uart_txStr("A");
+"331
+[e ( _uart_txStr (1 :s 17C ]
+[; ;genie_en_herbe.c: 332: _delay((unsigned long)((2000)*(20e6/4000.0)));
+"332
+[e ( __delay (1 -> * -> -> 2000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 333: RD0 = 0;
+"333
+[e = _RD0 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 334: phase = 3 ;
 "334
-[e ( _uart_txStr (1 :s 18C ]
+[e = _phase -> 3 `i ]
 [; ;genie_en_herbe.c: 335: _delay((unsigned long)((6000)*(20e6/4000.0)));
 "335
 [e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 336: RD1 = 0;
+[; ;genie_en_herbe.c: 336: if(RCREG == 'F'){
 "336
-[e = _RD1 -> -> 0 `i `b ]
+[e $ ! == -> _RCREG `ui -> 70 `ui 206  ]
+{
+[; ;genie_en_herbe.c: 337: phase = 1;
 "337
-}
-[; ;genie_en_herbe.c: 337: } else if (RB2 == 0 && (phase == 0 || phase == 2)) {
-[e $U 208  ]
-[e :U 207 ]
-[e $ ! && == -> _RB2 `i -> 0 `i || == _phase -> 0 `i == _phase -> 2 `i 209  ]
-{
-[; ;genie_en_herbe.c: 338: RD2 = 1;
+[e = _phase -> 1 `i ]
+[; ;genie_en_herbe.c: 338: if (RB4==0 && phase==1) {
 "338
-[e = _RD2 -> -> 1 `i `b ]
-[; ;genie_en_herbe.c: 339: RD0 = 0;
-"339
-[e = _RD0 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 340: RD1 = 0;
-"340
-[e = _RD1 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 341: RD3 = 0;
-"341
-[e = _RD3 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 342: RD4 = 0;
-"342
-[e = _RD4 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 343: RD5 = 0;
-"343
-[e = _RD5 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 344: RD6 = 0;
-"344
-[e = _RD6 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 345: RD7 = 0;
-"345
-[e = _RD7 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 346: uart_txStr("L'Equipe A a la main");
-"346
-[e ( _uart_txStr (1 :s 19C ]
-[; ;genie_en_herbe.c: 347: _delay((unsigned long)((6000)*(20e6/4000.0)));
-"347
-[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 348: RD2 = 0;
-"348
-[e = _RD2 -> -> 0 `i `b ]
-"350
-}
-[; ;genie_en_herbe.c: 350: } else if (RB3 == 0 && (phase == 0 || phase == 2)) {
-[e $U 210  ]
-[e :U 209 ]
-[e $ ! && == -> _RB3 `i -> 0 `i || == _phase -> 0 `i == _phase -> 2 `i 211  ]
+[e $ ! && == -> _RB4 `i -> 0 `i == _phase -> 1 `i 207  ]
 {
-[; ;genie_en_herbe.c: 351: RD3 = 1;
+[; ;genie_en_herbe.c: 339: RD4=1;
+"339
+[e = _RD4 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 340: uart_txStr("B");
+"340
+[e ( _uart_txStr (1 :s 18C ]
+[; ;genie_en_herbe.c: 341: phase = 3 ;
+"341
+[e = _phase -> 3 `i ]
+[; ;genie_en_herbe.c: 342: if(RCREG == 'V' || RCREG == 'F'){
+"342
+[e $ ! || == -> _RCREG `ui -> 86 `ui == -> _RCREG `ui -> 70 `ui 208  ]
+{
+[; ;genie_en_herbe.c: 343: phase = 0;
+"343
+[e = _phase -> 0 `i ]
+"344
+}
+[e :U 208 ]
+"345
+}
+[e :U 207 ]
+"346
+}
+[; ;genie_en_herbe.c: 344: }
+[; ;genie_en_herbe.c: 345: }
+[; ;genie_en_herbe.c: 346: }else if( RCREG == 'V'){
+[e $U 209  ]
+[e :U 206 ]
+[e $ ! == -> _RCREG `ui -> 86 `ui 210  ]
+{
+[; ;genie_en_herbe.c: 347: phase = 0 ;
+"347
+[e = _phase -> 0 `i ]
+"348
+}
+[e :U 210 ]
 "351
-[e = _RD3 -> -> 1 `i `b ]
-[; ;genie_en_herbe.c: 352: RD0 = 0;
+[e :U 209 ]
+}
+[; ;genie_en_herbe.c: 348: }
+[; ;genie_en_herbe.c: 351: } else if (RB1 == 0 && (phase == 0 || phase == 2)) {
+[e $U 211  ]
+[e :U 205 ]
+[e $ ! && == -> _RB1 `i -> 0 `i || == _phase -> 0 `i == _phase -> 2 `i 212  ]
+{
+[; ;genie_en_herbe.c: 352: RD1 = 1;
 "352
-[e = _RD0 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 353: RD1 = 0;
+[e = _RD1 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 353: RD0 = 0;
 "353
-[e = _RD1 -> -> 0 `i `b ]
+[e = _RD0 -> -> 0 `i `b ]
 [; ;genie_en_herbe.c: 354: RD2 = 0;
 "354
 [e = _RD2 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 355: RD4 = 0;
+[; ;genie_en_herbe.c: 355: RD3 = 0;
 "355
-[e = _RD4 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 356: RD5 = 0;
-"356
-[e = _RD5 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 357: RD6 = 0;
-"357
-[e = _RD6 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 358: RD7 = 0;
-"358
-[e = _RD7 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 359: uart_txStr("L'Equipe A a la main");
-"359
-[e ( _uart_txStr (1 :s 20C ]
-[; ;genie_en_herbe.c: 360: _delay((unsigned long)((6000)*(20e6/4000.0)));
-"360
-[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 361: RD3 = 0;
-"361
 [e = _RD3 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 356: RD4 = 0;
+"356
+[e = _RD4 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 357: RD5 = 0;
+"357
+[e = _RD5 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 358: RD6 = 0;
+"358
+[e = _RD6 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 359: RD7 = 0;
+"359
+[e = _RD7 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 360: uart_txStr("A");
+"360
+[e ( _uart_txStr (1 :s 19C ]
+[; ;genie_en_herbe.c: 361: _delay((unsigned long)((6000)*(20e6/4000.0)));
+"361
+[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 362: RD1 = 0;
 "362
-}
-[; ;genie_en_herbe.c: 362: } else if (RB4 == 0 && (phase == 0 || phase == 1)) {
-[e $U 212  ]
-[e :U 211 ]
-[e $ ! && == -> _RB4 `i -> 0 `i || == _phase -> 0 `i == _phase -> 1 `i 213  ]
-{
-[; ;genie_en_herbe.c: 363: RD4 = 1;
-"363
-[e = _RD4 -> -> 1 `i `b ]
-[; ;genie_en_herbe.c: 364: RD0 = 0;
-"364
-[e = _RD0 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 365: RD1 = 0;
-"365
 [e = _RD1 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 366: RD2 = 0;
+"363
+}
+[; ;genie_en_herbe.c: 363: } else if (RB2 == 0 && (phase == 0 || phase == 2)) {
+[e $U 213  ]
+[e :U 212 ]
+[e $ ! && == -> _RB2 `i -> 0 `i || == _phase -> 0 `i == _phase -> 2 `i 214  ]
+{
+[; ;genie_en_herbe.c: 364: RD2 = 1;
+"364
+[e = _RD2 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 365: RD0 = 0;
+"365
+[e = _RD0 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 366: RD1 = 0;
 "366
-[e = _RD2 -> -> 0 `i `b ]
+[e = _RD1 -> -> 0 `i `b ]
 [; ;genie_en_herbe.c: 367: RD3 = 0;
 "367
 [e = _RD3 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 368: RD5 = 0;
+[; ;genie_en_herbe.c: 368: RD4 = 0;
 "368
-[e = _RD5 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 369: RD6 = 0;
+[e = _RD4 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 369: RD5 = 0;
 "369
-[e = _RD6 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 370: RD7 = 0;
+[e = _RD5 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 370: RD6 = 0;
 "370
-[e = _RD7 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 371: uart_txStr("L'Equipe B a la main");
+[e = _RD6 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 371: RD7 = 0;
 "371
-[e ( _uart_txStr (1 :s 21C ]
-[; ;genie_en_herbe.c: 372: _delay((unsigned long)((6000)*(20e6/4000.0)));
+[e = _RD7 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 372: uart_txStr("A");
 "372
-[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 373: RD4 = 0;
+[e ( _uart_txStr (1 :s 20C ]
+[; ;genie_en_herbe.c: 373: _delay((unsigned long)((6000)*(20e6/4000.0)));
 "373
-[e = _RD4 -> -> 0 `i `b ]
+[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 374: RD2 = 0;
 "374
-}
-[; ;genie_en_herbe.c: 374: } else if (RB5 == 0 && (phase == 0 || phase == 1)) {
-[e $U 214  ]
-[e :U 213 ]
-[e $ ! && == -> _RB5 `i -> 0 `i || == _phase -> 0 `i == _phase -> 1 `i 215  ]
-{
-[; ;genie_en_herbe.c: 375: RD5 = 1;
-"375
-[e = _RD5 -> -> 1 `i `b ]
-[; ;genie_en_herbe.c: 376: RD0 = 0;
+[e = _RD2 -> -> 0 `i `b ]
 "376
-[e = _RD0 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 377: RD1 = 0;
+}
+[; ;genie_en_herbe.c: 376: } else if (RB3 == 0 && (phase == 0 || phase == 2)) {
+[e $U 215  ]
+[e :U 214 ]
+[e $ ! && == -> _RB3 `i -> 0 `i || == _phase -> 0 `i == _phase -> 2 `i 216  ]
+{
+[; ;genie_en_herbe.c: 377: RD3 = 1;
 "377
-[e = _RD1 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 378: RD2 = 0;
+[e = _RD3 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 378: RD0 = 0;
 "378
-[e = _RD2 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 379: RD3 = 0;
+[e = _RD0 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 379: RD1 = 0;
 "379
-[e = _RD3 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 380: RD4 = 0;
+[e = _RD1 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 380: RD2 = 0;
 "380
-[e = _RD4 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 381: RD6 = 0;
+[e = _RD2 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 381: RD4 = 0;
 "381
-[e = _RD6 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 382: RD7 = 0;
+[e = _RD4 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 382: RD5 = 0;
 "382
-[e = _RD7 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 383: uart_txStr("L'Equipe B a la main");
+[e = _RD5 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 383: RD6 = 0;
 "383
-[e ( _uart_txStr (1 :s 22C ]
-[; ;genie_en_herbe.c: 384: _delay((unsigned long)((6000)*(20e6/4000.0)));
-"384
-[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 385: RD5 = 0;
-"385
-[e = _RD5 -> -> 0 `i `b ]
-"386
-}
-[; ;genie_en_herbe.c: 386: } else if (RB6 == 0 && (phase == 0 || phase == 1)) {
-[e $U 216  ]
-[e :U 215 ]
-[e $ ! && == -> _RB6 `i -> 0 `i || == _phase -> 0 `i == _phase -> 1 `i 217  ]
-{
-[; ;genie_en_herbe.c: 387: RD6 = 1;
-"387
-[e = _RD6 -> -> 1 `i `b ]
-[; ;genie_en_herbe.c: 388: RD0 = 0;
-"388
-[e = _RD0 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 389: RD1 = 0;
-"389
-[e = _RD1 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 390: RD2 = 0;
-"390
-[e = _RD2 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 391: RD3 = 0;
-"391
-[e = _RD3 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 392: RD4 = 0;
-"392
-[e = _RD4 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 393: RD5 = 0;
-"393
-[e = _RD5 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 394: RD7 = 0;
-"394
-[e = _RD7 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 395: uart_txStr("L'Equipe B a la main");
-"395
-[e ( _uart_txStr (1 :s 23C ]
-[; ;genie_en_herbe.c: 396: _delay((unsigned long)((6000)*(20e6/4000.0)));
-"396
-[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 397: RD6 = 0;
-"397
 [e = _RD6 -> -> 0 `i `b ]
-"399
-}
-[; ;genie_en_herbe.c: 399: } else if (RB7 == 0 && (phase == 0 || phase == 1)) {
-[e $U 218  ]
-[e :U 217 ]
-[e $ ! && == -> _RB7 `i -> 0 `i || == _phase -> 0 `i == _phase -> 1 `i 219  ]
-{
-[; ;genie_en_herbe.c: 400: RD7 = 1;
-"400
-[e = _RD7 -> -> 1 `i `b ]
-[; ;genie_en_herbe.c: 401: RD0 = 0;
-"401
-[e = _RD0 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 402: RD1 = 0;
-"402
-[e = _RD1 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 403: RD2 = 0;
-"403
-[e = _RD2 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 404: RD3 = 0;
-"404
+[; ;genie_en_herbe.c: 384: RD7 = 0;
+"384
+[e = _RD7 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 385: uart_txStr("A");
+"385
+[e ( _uart_txStr (1 :s 21C ]
+[; ;genie_en_herbe.c: 386: _delay((unsigned long)((6000)*(20e6/4000.0)));
+"386
+[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 387: RD3 = 0;
+"387
 [e = _RD3 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 405: RD4 = 0;
-"405
-[e = _RD4 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 406: RD5 = 0;
-"406
+"388
+}
+[; ;genie_en_herbe.c: 388: } else if (RB4 == 0 && (phase == 0 || phase == 1)) {
+[e $U 217  ]
+[e :U 216 ]
+[e $ ! && == -> _RB4 `i -> 0 `i || == _phase -> 0 `i == _phase -> 1 `i 218  ]
+{
+[; ;genie_en_herbe.c: 389: RD4 = 1;
+"389
+[e = _RD4 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 390: RD0 = 0;
+"390
+[e = _RD0 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 391: RD1 = 0;
+"391
+[e = _RD1 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 392: RD2 = 0;
+"392
+[e = _RD2 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 393: RD3 = 0;
+"393
+[e = _RD3 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 394: RD5 = 0;
+"394
 [e = _RD5 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 395: RD6 = 0;
+"395
+[e = _RD6 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 396: RD7 = 0;
+"396
+[e = _RD7 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 397: uart_txStr("B");
+"397
+[e ( _uart_txStr (1 :s 22C ]
+[; ;genie_en_herbe.c: 398: _delay((unsigned long)((6000)*(20e6/4000.0)));
+"398
+[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 399: RD4 = 0;
+"399
+[e = _RD4 -> -> 0 `i `b ]
+"400
+}
+[; ;genie_en_herbe.c: 400: } else if (RB5 == 0 && (phase == 0 || phase == 1)) {
+[e $U 219  ]
+[e :U 218 ]
+[e $ ! && == -> _RB5 `i -> 0 `i || == _phase -> 0 `i == _phase -> 1 `i 220  ]
+{
+[; ;genie_en_herbe.c: 401: RD5 = 1;
+"401
+[e = _RD5 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 402: RD0 = 0;
+"402
+[e = _RD0 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 403: RD1 = 0;
+"403
+[e = _RD1 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 404: RD2 = 0;
+"404
+[e = _RD2 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 405: RD3 = 0;
+"405
+[e = _RD3 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 406: RD4 = 0;
+"406
+[e = _RD4 -> -> 0 `i `b ]
 [; ;genie_en_herbe.c: 407: RD6 = 0;
 "407
 [e = _RD6 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 408: uart_txStr("L'Equipe B a la main");
+[; ;genie_en_herbe.c: 408: RD7 = 0;
 "408
-[e ( _uart_txStr (1 :s 24C ]
-[; ;genie_en_herbe.c: 409: _delay((unsigned long)((6000)*(20e6/4000.0)));
+[e = _RD7 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 409: uart_txStr("B");
 "409
-[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 410: RD7 = 0;
+[e ( _uart_txStr (1 :s 23C ]
+[; ;genie_en_herbe.c: 410: _delay((unsigned long)((6000)*(20e6/4000.0)));
 "410
-[e = _RD7 -> -> 0 `i `b ]
-"411
-}
-[e :U 219 ]
-"412
-[e :U 218 ]
-[e :U 216 ]
-[e :U 214 ]
-[e :U 212 ]
-[e :U 210 ]
-[e :U 208 ]
-[e :U 206 ]
-}
-[e :U 202 ]
-"312
-[e $ == _etape -> 2 `i 203  ]
-[e :U 204 ]
-[; ;genie_en_herbe.c: 411: }
-[; ;genie_en_herbe.c: 412: }
-[; ;genie_en_herbe.c: 414: while (etape == 3) {
-"414
-[e $U 220  ]
-[e :U 221 ]
-{
-[; ;genie_en_herbe.c: 415: if (RB0 == 0 && phase == 2) {
-"415
-[e $ ! && == -> _RB0 `i -> 0 `i == _phase -> 2 `i 223  ]
-{
-[; ;genie_en_herbe.c: 416: RD0 = 1;
-"416
-[e = _RD0 -> -> 1 `i `b ]
-[; ;genie_en_herbe.c: 417: RD1 = 0;
-"417
-[e = _RD1 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 418: RD2 = 0;
-"418
-[e = _RD2 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 419: RD3 = 0;
-"419
-[e = _RD3 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 420: RD4 = 0;
-"420
-[e = _RD4 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 421: RD5 = 0;
-"421
-[e = _RD5 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 422: RD6 = 0;
-"422
-[e = _RD6 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 423: RD7 = 0;
-"423
-[e = _RD7 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 424: uart_txStr("L'Equipe A a la main");
-"424
-[e ( _uart_txStr (1 :s 25C ]
-[; ;genie_en_herbe.c: 425: _delay((unsigned long)((6000)*(20e6/4000.0)));
-"425
 [e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 426: RD0 = 0;
-"426
-[e = _RD0 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 427: phase = 3;
-"427
-[e = _phase -> 3 `i ]
-[; ;genie_en_herbe.c: 428: _delay((unsigned long)((4000)*(20e6/4000.0)));
-"428
-[e ( __delay (1 -> * -> -> 4000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 429: if (RCREG == 'I') {
-"429
-[e $ ! == -> _RCREG `ui -> 73 `ui 224  ]
+[; ;genie_en_herbe.c: 411: RD5 = 0;
+"411
+[e = _RD5 -> -> 0 `i `b ]
+"412
+}
+[; ;genie_en_herbe.c: 412: } else if (RB6 == 0 && (phase == 0 || phase == 1)) {
+[e $U 221  ]
+[e :U 220 ]
+[e $ ! && == -> _RB6 `i -> 0 `i || == _phase -> 0 `i == _phase -> 1 `i 222  ]
 {
-[; ;genie_en_herbe.c: 430: phase = 0;
+[; ;genie_en_herbe.c: 413: RD6 = 1;
+"413
+[e = _RD6 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 414: RD0 = 0;
+"414
+[e = _RD0 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 415: RD1 = 0;
+"415
+[e = _RD1 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 416: RD2 = 0;
+"416
+[e = _RD2 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 417: RD3 = 0;
+"417
+[e = _RD3 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 418: RD4 = 0;
+"418
+[e = _RD4 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 419: RD5 = 0;
+"419
+[e = _RD5 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 420: RD7 = 0;
+"420
+[e = _RD7 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 421: uart_txStr("B");
+"421
+[e ( _uart_txStr (1 :s 24C ]
+[; ;genie_en_herbe.c: 422: _delay((unsigned long)((6000)*(20e6/4000.0)));
+"422
+[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 423: RD6 = 0;
+"423
+[e = _RD6 -> -> 0 `i `b ]
+"425
+}
+[; ;genie_en_herbe.c: 425: } else if (RB7 == 0 && (phase == 0 || phase == 1)) {
+[e $U 223  ]
+[e :U 222 ]
+[e $ ! && == -> _RB7 `i -> 0 `i || == _phase -> 0 `i == _phase -> 1 `i 224  ]
+{
+[; ;genie_en_herbe.c: 426: RD7 = 1;
+"426
+[e = _RD7 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 427: RD0 = 0;
+"427
+[e = _RD0 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 428: RD1 = 0;
+"428
+[e = _RD1 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 429: RD2 = 0;
+"429
+[e = _RD2 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 430: RD3 = 0;
 "430
-[e = _phase -> 0 `i ]
+[e = _RD3 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 431: RD4 = 0;
 "431
+[e = _RD4 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 432: RD5 = 0;
+"432
+[e = _RD5 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 433: RD6 = 0;
+"433
+[e = _RD6 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 434: uart_txStr("B");
+"434
+[e ( _uart_txStr (1 :s 25C ]
+[; ;genie_en_herbe.c: 435: _delay((unsigned long)((6000)*(20e6/4000.0)));
+"435
+[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 436: RD7 = 0;
+"436
+[e = _RD7 -> -> 0 `i `b ]
+"437
 }
 [e :U 224 ]
-[; ;genie_en_herbe.c: 431: }
-[; ;genie_en_herbe.c: 433: if (RB4 == 0) {
-"433
-[e $ ! == -> _RB4 `i -> 0 `i 225  ]
-{
-[; ;genie_en_herbe.c: 434: RD4 = 1;
-"434
-[e = _RD4 -> -> 1 `i `b ]
-[; ;genie_en_herbe.c: 435: RD5 = 0;
-"435
-[e = _RD5 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 436: RD6 = 0;
-"436
-[e = _RD6 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 437: RD7 = 0;
-"437
-[e = _RD7 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 438: uart_txStr("L'Equipe B a la main");
 "438
-[e ( _uart_txStr (1 :s 26C ]
-[; ;genie_en_herbe.c: 439: _delay((unsigned long)((6000)*(20e6/4000.0)));
-"439
-[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 440: RD4 = 0;
-"440
-[e = _RD4 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 441: phase = 3;
-"441
-[e = _phase -> 3 `i ]
-"442
-}
-[e :U 225 ]
-"444
-}
-[; ;genie_en_herbe.c: 442: }
-[; ;genie_en_herbe.c: 444: } else if (RB1 == 0 && phase == 2) {
-[e $U 226  ]
 [e :U 223 ]
-[e $ ! && == -> _RB1 `i -> 0 `i == _phase -> 2 `i 227  ]
+[e :U 221 ]
+[e :U 219 ]
+[e :U 217 ]
+[e :U 215 ]
+[e :U 213 ]
+[e :U 211 ]
+}
+[e :U 202 ]
+"321
+[e $ == _etape -> 2 `i 203  ]
+[e :U 204 ]
+[; ;genie_en_herbe.c: 437: }
+[; ;genie_en_herbe.c: 438: }
+[; ;genie_en_herbe.c: 440: while (etape == 3) {
+"440
+[e $U 225  ]
+[e :U 226 ]
 {
-[; ;genie_en_herbe.c: 445: RD1 = 1;
+[; ;genie_en_herbe.c: 441: if (RB0 == 0 && phase == 2) {
+"441
+[e $ ! && == -> _RB0 `i -> 0 `i == _phase -> 2 `i 228  ]
+{
+[; ;genie_en_herbe.c: 442: RD0 = 1;
+"442
+[e = _RD0 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 443: RD1 = 0;
+"443
+[e = _RD1 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 444: RD2 = 0;
+"444
+[e = _RD2 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 445: RD3 = 0;
 "445
-[e = _RD1 -> -> 1 `i `b ]
-[; ;genie_en_herbe.c: 446: RD0 = 0;
+[e = _RD3 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 446: RD4 = 0;
 "446
-[e = _RD0 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 447: RD2 = 0;
+[e = _RD4 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 447: RD5 = 0;
 "447
-[e = _RD2 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 448: RD3 = 0;
+[e = _RD5 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 448: RD6 = 0;
 "448
-[e = _RD3 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 449: RD4 = 0;
+[e = _RD6 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 449: RD7 = 0;
 "449
-[e = _RD4 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 450: RD5 = 0;
+[e = _RD7 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 450: uart_txStr("A");
 "450
-[e = _RD5 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 451: RD6 = 0;
+[e ( _uart_txStr (1 :s 26C ]
+[; ;genie_en_herbe.c: 451: _delay((unsigned long)((6000)*(20e6/4000.0)));
 "451
-[e = _RD6 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 452: RD7 = 0;
+[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 452: RD0 = 0;
 "452
-[e = _RD7 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 453: uart_txStr("L'Equipe A a la main");
+[e = _RD0 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 453: phase = 3;
 "453
-[e ( _uart_txStr (1 :s 27C ]
-[; ;genie_en_herbe.c: 454: _delay((unsigned long)((6000)*(20e6/4000.0)));
+[e = _phase -> 3 `i ]
+[; ;genie_en_herbe.c: 454: _delay((unsigned long)((4000)*(20e6/4000.0)));
 "454
-[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 455: RD1 = 0;
+[e ( __delay (1 -> * -> -> 4000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 455: if (RCREG == 'I') {
 "455
-[e = _RD1 -> -> 0 `i `b ]
+[e $ ! == -> _RCREG `ui -> 73 `ui 229  ]
+{
+[; ;genie_en_herbe.c: 456: phase = 0;
 "456
-}
-[; ;genie_en_herbe.c: 456: } else if (RB2 == 0 && phase == 2) {
-[e $U 228  ]
-[e :U 227 ]
-[e $ ! && == -> _RB2 `i -> 0 `i == _phase -> 2 `i 229  ]
-{
-[; ;genie_en_herbe.c: 457: RD2 = 1;
+[e = _phase -> 0 `i ]
 "457
-[e = _RD2 -> -> 1 `i `b ]
-[; ;genie_en_herbe.c: 458: RD0 = 0;
-"458
-[e = _RD0 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 459: RD1 = 0;
-"459
-[e = _RD1 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 460: RD3 = 0;
-"460
-[e = _RD3 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 461: RD4 = 0;
-"461
-[e = _RD4 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 462: RD5 = 0;
-"462
-[e = _RD5 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 463: RD6 = 0;
-"463
-[e = _RD6 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 464: RD7 = 0;
-"464
-[e = _RD7 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 465: uart_txStr("L'Equipe A a la main");
-"465
-[e ( _uart_txStr (1 :s 28C ]
-[; ;genie_en_herbe.c: 466: _delay((unsigned long)((6000)*(20e6/4000.0)));
-"466
-[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 467: RD2 = 0;
-"467
-[e = _RD2 -> -> 0 `i `b ]
-"469
 }
-[; ;genie_en_herbe.c: 469: } else if (RB3 == 0 && phase == 2) {
-[e $U 230  ]
 [e :U 229 ]
-[e $ ! && == -> _RB3 `i -> 0 `i == _phase -> 2 `i 231  ]
+[; ;genie_en_herbe.c: 457: }
+[; ;genie_en_herbe.c: 459: if (RB4 == 0) {
+"459
+[e $ ! == -> _RB4 `i -> 0 `i 230  ]
 {
-[; ;genie_en_herbe.c: 470: RD3 = 1;
+[; ;genie_en_herbe.c: 460: RD4 = 1;
+"460
+[e = _RD4 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 461: RD5 = 0;
+"461
+[e = _RD5 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 462: RD6 = 0;
+"462
+[e = _RD6 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 463: RD7 = 0;
+"463
+[e = _RD7 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 464: uart_txStr("B");
+"464
+[e ( _uart_txStr (1 :s 27C ]
+[; ;genie_en_herbe.c: 465: _delay((unsigned long)((6000)*(20e6/4000.0)));
+"465
+[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 466: RD4 = 0;
+"466
+[e = _RD4 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 467: phase = 3;
+"467
+[e = _phase -> 3 `i ]
+"468
+}
+[e :U 230 ]
 "470
-[e = _RD3 -> -> 1 `i `b ]
-[; ;genie_en_herbe.c: 471: RD0 = 0;
+}
+[; ;genie_en_herbe.c: 468: }
+[; ;genie_en_herbe.c: 470: } else if (RB1 == 0 && phase == 2) {
+[e $U 231  ]
+[e :U 228 ]
+[e $ ! && == -> _RB1 `i -> 0 `i == _phase -> 2 `i 232  ]
+{
+[; ;genie_en_herbe.c: 471: RD1 = 1;
 "471
-[e = _RD0 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 472: RD1 = 0;
+[e = _RD1 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 472: RD0 = 0;
 "472
-[e = _RD1 -> -> 0 `i `b ]
+[e = _RD0 -> -> 0 `i `b ]
 [; ;genie_en_herbe.c: 473: RD2 = 0;
 "473
 [e = _RD2 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 474: RD4 = 0;
+[; ;genie_en_herbe.c: 474: RD3 = 0;
 "474
-[e = _RD4 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 475: RD5 = 0;
-"475
-[e = _RD5 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 476: RD6 = 0;
-"476
-[e = _RD6 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 477: RD7 = 0;
-"477
-[e = _RD7 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 478: uart_txStr("L'Equipe A a la main");
-"478
-[e ( _uart_txStr (1 :s 29C ]
-[; ;genie_en_herbe.c: 479: _delay((unsigned long)((6000)*(20e6/4000.0)));
-"479
-[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 480: RD3 = 0;
-"480
 [e = _RD3 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 475: RD4 = 0;
+"475
+[e = _RD4 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 476: RD5 = 0;
+"476
+[e = _RD5 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 477: RD6 = 0;
+"477
+[e = _RD6 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 478: RD7 = 0;
+"478
+[e = _RD7 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 479: uart_txStr("A");
+"479
+[e ( _uart_txStr (1 :s 28C ]
+[; ;genie_en_herbe.c: 480: _delay((unsigned long)((6000)*(20e6/4000.0)));
+"480
+[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 481: RD1 = 0;
 "481
-}
-[; ;genie_en_herbe.c: 481: } else if (RB4 == 0 && phase == 1) {
-[e $U 232  ]
-[e :U 231 ]
-[e $ ! && == -> _RB4 `i -> 0 `i == _phase -> 1 `i 233  ]
-{
-[; ;genie_en_herbe.c: 482: RD4 = 1;
-"482
-[e = _RD4 -> -> 1 `i `b ]
-[; ;genie_en_herbe.c: 483: RD0 = 0;
-"483
-[e = _RD0 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 484: RD1 = 0;
-"484
 [e = _RD1 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 485: RD2 = 0;
+"482
+}
+[; ;genie_en_herbe.c: 482: } else if (RB2 == 0 && phase == 2) {
+[e $U 233  ]
+[e :U 232 ]
+[e $ ! && == -> _RB2 `i -> 0 `i == _phase -> 2 `i 234  ]
+{
+[; ;genie_en_herbe.c: 483: RD2 = 1;
+"483
+[e = _RD2 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 484: RD0 = 0;
+"484
+[e = _RD0 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 485: RD1 = 0;
 "485
-[e = _RD2 -> -> 0 `i `b ]
+[e = _RD1 -> -> 0 `i `b ]
 [; ;genie_en_herbe.c: 486: RD3 = 0;
 "486
 [e = _RD3 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 487: RD5 = 0;
+[; ;genie_en_herbe.c: 487: RD4 = 0;
 "487
-[e = _RD5 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 488: RD6 = 0;
+[e = _RD4 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 488: RD5 = 0;
 "488
-[e = _RD6 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 489: RD7 = 0;
+[e = _RD5 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 489: RD6 = 0;
 "489
-[e = _RD7 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 490: uart_txStr("L'Equipe B a la main");
+[e = _RD6 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 490: RD7 = 0;
 "490
-[e ( _uart_txStr (1 :s 30C ]
-[; ;genie_en_herbe.c: 491: _delay((unsigned long)((6000)*(20e6/4000.0)));
+[e = _RD7 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 491: uart_txStr("A");
 "491
-[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 492: RD4 = 0;
+[e ( _uart_txStr (1 :s 29C ]
+[; ;genie_en_herbe.c: 492: _delay((unsigned long)((6000)*(20e6/4000.0)));
 "492
-[e = _RD4 -> -> 0 `i `b ]
+[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 493: RD2 = 0;
 "493
-}
-[; ;genie_en_herbe.c: 493: } else if (RB5 == 0 && 0 || phase == 1) {
-[e $U 234  ]
-[e :U 233 ]
-[e $ ! || && == -> _RB5 `i -> 0 `i != -> 0 `i -> 0 `i == _phase -> 1 `i 235  ]
-{
-[; ;genie_en_herbe.c: 494: RD5 = 1;
-"494
-[e = _RD5 -> -> 1 `i `b ]
-[; ;genie_en_herbe.c: 495: RD0 = 0;
+[e = _RD2 -> -> 0 `i `b ]
 "495
-[e = _RD0 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 496: RD1 = 0;
+}
+[; ;genie_en_herbe.c: 495: } else if (RB3 == 0 && phase == 2) {
+[e $U 235  ]
+[e :U 234 ]
+[e $ ! && == -> _RB3 `i -> 0 `i == _phase -> 2 `i 236  ]
+{
+[; ;genie_en_herbe.c: 496: RD3 = 1;
 "496
-[e = _RD1 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 497: RD2 = 0;
+[e = _RD3 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 497: RD0 = 0;
 "497
-[e = _RD2 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 498: RD3 = 0;
+[e = _RD0 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 498: RD1 = 0;
 "498
-[e = _RD3 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 499: RD4 = 0;
+[e = _RD1 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 499: RD2 = 0;
 "499
-[e = _RD4 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 500: RD6 = 0;
+[e = _RD2 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 500: RD4 = 0;
 "500
-[e = _RD6 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 501: RD7 = 0;
+[e = _RD4 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 501: RD5 = 0;
 "501
-[e = _RD7 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 502: uart_txStr("L'Equipe B a la main");
+[e = _RD5 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 502: RD6 = 0;
 "502
-[e ( _uart_txStr (1 :s 31C ]
-[; ;genie_en_herbe.c: 503: _delay((unsigned long)((6000)*(20e6/4000.0)));
-"503
-[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 504: RD5 = 0;
-"504
-[e = _RD5 -> -> 0 `i `b ]
-"505
-}
-[; ;genie_en_herbe.c: 505: } else if (RB6 == 0 && phase == 1) {
-[e $U 236  ]
-[e :U 235 ]
-[e $ ! && == -> _RB6 `i -> 0 `i == _phase -> 1 `i 237  ]
-{
-[; ;genie_en_herbe.c: 506: RD6 = 1;
-"506
-[e = _RD6 -> -> 1 `i `b ]
-[; ;genie_en_herbe.c: 507: RD0 = 0;
-"507
-[e = _RD0 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 508: RD1 = 0;
-"508
-[e = _RD1 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 509: RD2 = 0;
-"509
-[e = _RD2 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 510: RD3 = 0;
-"510
-[e = _RD3 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 511: RD4 = 0;
-"511
-[e = _RD4 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 512: RD5 = 0;
-"512
-[e = _RD5 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 513: RD7 = 0;
-"513
-[e = _RD7 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 514: uart_txStr("L'Equipe B a la main");
-"514
-[e ( _uart_txStr (1 :s 32C ]
-[; ;genie_en_herbe.c: 515: _delay((unsigned long)((6000)*(20e6/4000.0)));
-"515
-[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 516: RD6 = 0;
-"516
 [e = _RD6 -> -> 0 `i `b ]
-"518
-}
-[; ;genie_en_herbe.c: 518: } else if (RB7 == 0 && phase == 1) {
-[e $U 238  ]
-[e :U 237 ]
-[e $ ! && == -> _RB7 `i -> 0 `i == _phase -> 1 `i 239  ]
-{
-[; ;genie_en_herbe.c: 519: RD7 = 1;
-"519
-[e = _RD7 -> -> 1 `i `b ]
-[; ;genie_en_herbe.c: 520: RD0 = 0;
-"520
-[e = _RD0 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 521: RD1 = 0;
-"521
-[e = _RD1 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 522: RD2 = 0;
-"522
-[e = _RD2 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 523: RD3 = 0;
-"523
+[; ;genie_en_herbe.c: 503: RD7 = 0;
+"503
+[e = _RD7 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 504: uart_txStr("A");
+"504
+[e ( _uart_txStr (1 :s 30C ]
+[; ;genie_en_herbe.c: 505: _delay((unsigned long)((6000)*(20e6/4000.0)));
+"505
+[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 506: RD3 = 0;
+"506
 [e = _RD3 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 524: RD4 = 0;
-"524
-[e = _RD4 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 525: RD5 = 0;
-"525
+"507
+}
+[; ;genie_en_herbe.c: 507: } else if (RB4 == 0 && phase == 1) {
+[e $U 237  ]
+[e :U 236 ]
+[e $ ! && == -> _RB4 `i -> 0 `i == _phase -> 1 `i 238  ]
+{
+[; ;genie_en_herbe.c: 508: RD4 = 1;
+"508
+[e = _RD4 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 509: RD0 = 0;
+"509
+[e = _RD0 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 510: RD1 = 0;
+"510
+[e = _RD1 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 511: RD2 = 0;
+"511
+[e = _RD2 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 512: RD3 = 0;
+"512
+[e = _RD3 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 513: RD5 = 0;
+"513
 [e = _RD5 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 514: RD6 = 0;
+"514
+[e = _RD6 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 515: RD7 = 0;
+"515
+[e = _RD7 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 516: uart_txStr("B");
+"516
+[e ( _uart_txStr (1 :s 31C ]
+[; ;genie_en_herbe.c: 517: _delay((unsigned long)((6000)*(20e6/4000.0)));
+"517
+[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 518: RD4 = 0;
+"518
+[e = _RD4 -> -> 0 `i `b ]
+"519
+}
+[; ;genie_en_herbe.c: 519: } else if (RB5 == 0 && 0 || phase == 1) {
+[e $U 239  ]
+[e :U 238 ]
+[e $ ! || && == -> _RB5 `i -> 0 `i != -> 0 `i -> 0 `i == _phase -> 1 `i 240  ]
+{
+[; ;genie_en_herbe.c: 520: RD5 = 1;
+"520
+[e = _RD5 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 521: RD0 = 0;
+"521
+[e = _RD0 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 522: RD1 = 0;
+"522
+[e = _RD1 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 523: RD2 = 0;
+"523
+[e = _RD2 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 524: RD3 = 0;
+"524
+[e = _RD3 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 525: RD4 = 0;
+"525
+[e = _RD4 -> -> 0 `i `b ]
 [; ;genie_en_herbe.c: 526: RD6 = 0;
 "526
 [e = _RD6 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 527: uart_txStr("L'Equipe B a la main");
+[; ;genie_en_herbe.c: 527: RD7 = 0;
 "527
-[e ( _uart_txStr (1 :s 33C ]
-[; ;genie_en_herbe.c: 528: _delay((unsigned long)((6000)*(20e6/4000.0)));
-"528
-[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
-[; ;genie_en_herbe.c: 529: RD7 = 0;
-"529
 [e = _RD7 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 528: uart_txStr("B");
+"528
+[e ( _uart_txStr (1 :s 32C ]
+[; ;genie_en_herbe.c: 529: _delay((unsigned long)((6000)*(20e6/4000.0)));
+"529
+[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 530: RD5 = 0;
 "530
-}
-[e :U 239 ]
+[e = _RD5 -> -> 0 `i `b ]
 "531
-[e :U 238 ]
-[e :U 236 ]
-[e :U 234 ]
-[e :U 232 ]
-[e :U 230 ]
-[e :U 228 ]
-[e :U 226 ]
 }
-[e :U 220 ]
-"414
-[e $ == _etape -> 3 `i 221  ]
-[e :U 222 ]
+[; ;genie_en_herbe.c: 531: } else if (RB6 == 0 && phase == 1) {
+[e $U 241  ]
+[e :U 240 ]
+[e $ ! && == -> _RB6 `i -> 0 `i == _phase -> 1 `i 242  ]
+{
+[; ;genie_en_herbe.c: 532: RD6 = 1;
 "532
+[e = _RD6 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 533: RD0 = 0;
+"533
+[e = _RD0 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 534: RD1 = 0;
+"534
+[e = _RD1 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 535: RD2 = 0;
+"535
+[e = _RD2 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 536: RD3 = 0;
+"536
+[e = _RD3 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 537: RD4 = 0;
+"537
+[e = _RD4 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 538: RD5 = 0;
+"538
+[e = _RD5 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 539: RD7 = 0;
+"539
+[e = _RD7 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 540: uart_txStr("B");
+"540
+[e ( _uart_txStr (1 :s 33C ]
+[; ;genie_en_herbe.c: 541: _delay((unsigned long)((6000)*(20e6/4000.0)));
+"541
+[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 542: RD6 = 0;
+"542
+[e = _RD6 -> -> 0 `i `b ]
+"544
+}
+[; ;genie_en_herbe.c: 544: } else if (RB7 == 0 && phase == 1) {
+[e $U 243  ]
+[e :U 242 ]
+[e $ ! && == -> _RB7 `i -> 0 `i == _phase -> 1 `i 244  ]
+{
+[; ;genie_en_herbe.c: 545: RD7 = 1;
+"545
+[e = _RD7 -> -> 1 `i `b ]
+[; ;genie_en_herbe.c: 546: RD0 = 0;
+"546
+[e = _RD0 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 547: RD1 = 0;
+"547
+[e = _RD1 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 548: RD2 = 0;
+"548
+[e = _RD2 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 549: RD3 = 0;
+"549
+[e = _RD3 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 550: RD4 = 0;
+"550
+[e = _RD4 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 551: RD5 = 0;
+"551
+[e = _RD5 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 552: RD6 = 0;
+"552
+[e = _RD6 -> -> 0 `i `b ]
+[; ;genie_en_herbe.c: 553: uart_txStr("B");
+"553
+[e ( _uart_txStr (1 :s 34C ]
+[; ;genie_en_herbe.c: 554: _delay((unsigned long)((6000)*(20e6/4000.0)));
+"554
+[e ( __delay (1 -> * -> -> 6000 `i `d / .20e6 .4000.0 `ul ]
+[; ;genie_en_herbe.c: 555: RD7 = 0;
+"555
+[e = _RD7 -> -> 0 `i `b ]
+"556
+}
+[e :U 244 ]
+"557
+[e :U 243 ]
+[e :U 241 ]
+[e :U 239 ]
+[e :U 237 ]
+[e :U 235 ]
+[e :U 233 ]
+[e :U 231 ]
+}
+[e :U 225 ]
+"440
+[e $ == _etape -> 3 `i 226  ]
+[e :U 227 ]
+"558
 }
 [e :U 158 ]
-[; ;genie_en_herbe.c: 530: }
-[; ;genie_en_herbe.c: 531: }
-[; ;genie_en_herbe.c: 532: }
-[; ;genie_en_herbe.c: 534: }
-"534
+[; ;genie_en_herbe.c: 556: }
+[; ;genie_en_herbe.c: 557: }
+[; ;genie_en_herbe.c: 558: }
+[; ;genie_en_herbe.c: 560: }
+"560
 [e :UE 147 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"536
+"562
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;genie_en_herbe.c: 536: void main(void) {
+[; ;genie_en_herbe.c: 562: void main(void) {
 [e :U _main ]
 [f ]
-[; ;genie_en_herbe.c: 537: ANSEL = 0;
-"537
+[; ;genie_en_herbe.c: 563: ANSEL = 0;
+"563
 [e = _ANSEL -> -> 0 `i `uc ]
-[; ;genie_en_herbe.c: 538: ANSELH = 0;
-"538
+[; ;genie_en_herbe.c: 564: ANSELH = 0;
+"564
 [e = _ANSELH -> -> 0 `i `uc ]
-[; ;genie_en_herbe.c: 539: TRISD0 = 0;
-"539
+[; ;genie_en_herbe.c: 565: TRISD0 = 0;
+"565
 [e = _TRISD0 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 540: TRISD1 = 0;
-"540
+[; ;genie_en_herbe.c: 566: TRISD1 = 0;
+"566
 [e = _TRISD1 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 541: TRISD2 = 0;
-"541
+[; ;genie_en_herbe.c: 567: TRISD2 = 0;
+"567
 [e = _TRISD2 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 542: TRISD3 = 0;
-"542
+[; ;genie_en_herbe.c: 568: TRISD3 = 0;
+"568
 [e = _TRISD3 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 543: TRISD4 = 0;
-"543
+[; ;genie_en_herbe.c: 569: TRISD4 = 0;
+"569
 [e = _TRISD4 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 544: TRISD5 = 0;
-"544
+[; ;genie_en_herbe.c: 570: TRISD5 = 0;
+"570
 [e = _TRISD5 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 545: TRISD6 = 0;
-"545
+[; ;genie_en_herbe.c: 571: TRISD6 = 0;
+"571
 [e = _TRISD6 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 546: TRISD7 = 0;
-"546
+[; ;genie_en_herbe.c: 572: TRISD7 = 0;
+"572
 [e = _TRISD7 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 547: RD0 = 0;
-"547
+[; ;genie_en_herbe.c: 573: RD0 = 0;
+"573
 [e = _RD0 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 548: RD1 = 0;
-"548
+[; ;genie_en_herbe.c: 574: RD1 = 0;
+"574
 [e = _RD1 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 549: RD2 = 0;
-"549
+[; ;genie_en_herbe.c: 575: RD2 = 0;
+"575
 [e = _RD2 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 550: RD3 = 0;
-"550
+[; ;genie_en_herbe.c: 576: RD3 = 0;
+"576
 [e = _RD3 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 551: RD4 = 0;
-"551
+[; ;genie_en_herbe.c: 577: RD4 = 0;
+"577
 [e = _RD4 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 552: RD5 = 0;
-"552
+[; ;genie_en_herbe.c: 578: RD5 = 0;
+"578
 [e = _RD5 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 553: RD6 = 0;
-"553
+[; ;genie_en_herbe.c: 579: RD6 = 0;
+"579
 [e = _RD6 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 554: RD7 = 0;
-"554
+[; ;genie_en_herbe.c: 580: RD7 = 0;
+"580
 [e = _RD7 -> -> 0 `i `b ]
-[; ;genie_en_herbe.c: 555: uart_unit();
-"555
+[; ;genie_en_herbe.c: 581: uart_unit();
+"581
 [e ( _uart_unit ..  ]
-[; ;genie_en_herbe.c: 556: while (1);
-"556
-[e :U 242 ]
-[e :U 241 ]
-[e $U 242  ]
-[e :U 243 ]
-[; ;genie_en_herbe.c: 557: }
-"557
-[e :UE 240 ]
+[; ;genie_en_herbe.c: 582: while (1);
+"582
+[e :U 247 ]
+[e :U 246 ]
+[e $U 247  ]
+[e :U 248 ]
+[; ;genie_en_herbe.c: 583: }
+"583
+[e :UE 245 ]
 }
-[a 2C 76 39 69 113 117 105 112 101 32 66 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 4C 76 39 69 113 117 105 112 101 32 66 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 6C 76 39 69 113 117 105 112 101 32 66 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 8C 76 39 69 113 117 105 112 101 32 66 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 9C 76 39 69 113 117 105 112 101 32 66 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 11C 76 39 69 113 117 105 112 101 32 66 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 13C 76 39 69 113 117 105 112 101 32 66 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 15C 76 39 69 113 117 105 112 101 32 66 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 21C 76 39 69 113 117 105 112 101 32 66 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 22C 76 39 69 113 117 105 112 101 32 66 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 23C 76 39 69 113 117 105 112 101 32 66 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 24C 76 39 69 113 117 105 112 101 32 66 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 26C 76 39 69 113 117 105 112 101 32 66 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 30C 76 39 69 113 117 105 112 101 32 66 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 31C 76 39 69 113 117 105 112 101 32 66 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 32C 76 39 69 113 117 105 112 101 32 66 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 33C 76 39 69 113 117 105 112 101 32 66 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 1C 76 39 69 113 117 105 112 101 32 65 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 3C 76 39 69 113 117 105 112 101 32 65 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 5C 76 39 69 113 117 105 112 101 32 65 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 7C 76 39 69 113 117 105 112 101 32 65 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 10C 76 39 69 113 117 105 112 101 32 65 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 12C 76 39 69 113 117 105 112 101 32 65 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 14C 76 39 69 113 117 105 112 101 32 65 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 16C 76 39 69 113 117 105 112 101 32 65 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 17C 76 39 69 113 117 105 112 101 32 65 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 18C 76 39 69 113 117 105 112 101 32 65 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 19C 76 39 69 113 117 105 112 101 32 65 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 20C 76 39 69 113 117 105 112 101 32 65 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 25C 76 39 69 113 117 105 112 101 32 65 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 27C 76 39 69 113 117 105 112 101 32 65 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 28C 76 39 69 113 117 105 112 101 32 65 32 97 32 108 97 32 109 97 105 110 0 ]
-[a 29C 76 39 69 113 117 105 112 101 32 65 32 97 32 108 97 32 109 97 105 110 0 ]
+[a 2C 66 0 ]
+[a 4C 66 0 ]
+[a 6C 66 0 ]
+[a 8C 66 0 ]
+[a 9C 66 0 ]
+[a 11C 66 0 ]
+[a 13C 66 0 ]
+[a 15C 66 0 ]
+[a 18C 66 0 ]
+[a 22C 66 0 ]
+[a 23C 66 0 ]
+[a 24C 66 0 ]
+[a 25C 66 0 ]
+[a 27C 66 0 ]
+[a 31C 66 0 ]
+[a 32C 66 0 ]
+[a 33C 66 0 ]
+[a 34C 66 0 ]
+[a 1C 65 0 ]
+[a 3C 65 0 ]
+[a 5C 65 0 ]
+[a 7C 65 0 ]
+[a 10C 65 0 ]
+[a 12C 65 0 ]
+[a 14C 65 0 ]
+[a 16C 65 0 ]
+[a 17C 65 0 ]
+[a 19C 65 0 ]
+[a 20C 65 0 ]
+[a 21C 65 0 ]
+[a 26C 65 0 ]
+[a 28C 65 0 ]
+[a 29C 65 0 ]
+[a 30C 65 0 ]

@@ -565,7 +565,7 @@
         <property key="warningmessagebreakoptions.warningmessages" value="holdstate"/>
       </Simulator>
       <VSMViewerPlatformTool>
-        <property key="design.file" value="Génie en Herbe ERP.pdsprj"/>
+        <property key="design.file" value="../Génie en Herbe ERP.pdsprj"/>
         <property key="target.ip.address" value="localhost"/>
         <property key="target.ip.port" value="8001"/>
       </VSMViewerPlatformTool>

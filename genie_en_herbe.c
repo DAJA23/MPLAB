@@ -55,6 +55,7 @@ int etape = 0;
 //Mode 8bits
 
 void uart_unit(void) {
+    T0CS = 1;
     TXEN = 1;
     SYNC = 0;
     BRGH = 1;
@@ -67,7 +68,7 @@ void uart_unit(void) {
     INTE = 1;
     RCIE = 1; //interruption pour la recption de données
     RBIE = 1;
-    IOCB = 0xFF; //Activation des interruptions sur les ports B
+    IOCB = 0xFF; //Activation des interruptions sur les ports Bzoom 
 }
 
 void uart_txChar(unsigned char ch) {
@@ -87,78 +88,90 @@ void uart_txStr(unsigned const char *str) {
 void interrupt jdk1() {
     if (RCIF) {
         RCIF = 0;
-        if (RCREG == 'I' || ((LA1 == 1 || LA2 == 1 || LA3 == 1 || LA4 == 1 || LB1 == 1 || LB2 == 1 || LB3 == 1 || LB4 == 1) && RCREG == 'V')) {
-            LA1 = 0;
-            LA2 = 0;
-            LA3 = 0;
-            LA4 = 0;
-            LB1 = 0;
-            LB2 = 0;
-            LB3 = 0;
-            LB4 = 0;
-            phase = 0;
-        }
-        if (RCREG == 'Q') {
-            LA1 = 1;
-            LA2 = 1;
-            LA3 = 1;
-            LA4 = 1;
-            LB1 = 1;
-            LB2 = 1;
-            LB3 = 1;
-            LB4 = 1;
-            phase = 3;
-        }
-        if (RCREG == '1') {
-            etape = 1; //Etape 1 du je Vrai ou Faux
-        } else if (RCREG == '2') {
-            etape = 2; //Etape 
-        } else if (RCREG == '3') {
-            etape = 3; //Etape 1 du je Vrai ou Faux
-        }
-        if (RCREG == 'B') {
-            LA1 = 0;
-            LA2 = 0;
-            LA3 = 0;
-            LA4 = 0;
-            phase = 1;
-        }
-        if (RCREG == 'A') {
-            LB1 = 0;
-            LB2 = 0;
-            LB3 = 0;
-            LB4 = 0;
-            phase = 2;
-        }
-
-    }
-
-
-    //Envoi des données au logiciel 
-    if (RBIF) {
-        RBIF = 0;
-        //Etape 1
-        while (etape == 1) {
-            while (A1 == 0 && (phase == 0 || phase == 2)) {
-                LA1 = 1;
-                LA2 = 0;
-                LA3 = 0;
-                LA4 = 0;
+        switch (RCREG) {
+            case 'A':
                 LB1 = 0;
                 LB2 = 0;
                 LB3 = 0;
                 LB4 = 0;
-                uart_txStr("L'Equipe A a la main");
+                phase = 1;
+                break;
+            case 'B':
+                LA1 = 0;
+                LA2 = 0;
+                LA3 = 0;
+                LA4 = 0;
+                phase = 2;
+                break;
+            case '1':
+                etape = 1;
+                break;
+            case '2':
+                etape = 2;
+                break;
+            case '3':
+                etape = 3;
+                break;
+            case 'V':
+                if (etape == 1) {
+                    if (phase == 1 || phase == 2) {
+                        LA1 = 1;
+                        LA2 = 1;
+                        LA3 = 1;
+                        LA4 = 1;
+                        LB1 = 1;
+                        LB2 = 1;
+                        LB3 = 1;
+                        LB4 = 1;
+                        phase = 3;
+                    }
+                }
+                break;
+            case 'F':
+                if (etape == 1) {
+                    if (phase == 1) {
+                        phase = 2;
+                    }
+                    else if (phase == 2) {
+                        phase = 1;
+                    }
+                }
+                break;
+            case 'Q':
+                if (etape == 1) {
+                    if(phase == 3)
+                    LA1 = 0;
+                    LA2 = 0;
+                    LA3 = 0;
+                    LA4 = 0;
+                    LB1 = 0;
+                    LB2 = 0;
+                    LB3 = 0;
+                    LB4 = 0;
+                    phase = 0;
+                }
+                break;
+        }
+    }
+    //Envoi des données au logiciel 
+    if (RBIF) {
+        RBIF = 0;
+        //Etape 1
+        if (etape == 1) {
+            if (A1 == 0 && (phase == 0 || phase == 1)) {
+                LA1 = 1;
+                uart_txStr("A");
                 __delay_ms(3000);
                 LA1 = 0;
                 phase = 3;
                 __delay_ms(4000);
-                if (RCREG == 'I') {
+                if (RCREG == 'V') {
                     phase = 0;
                 } else {
                     phase = 3;
-                    uart_txStr("L'Equipe B a la main");
+                    uart_txStr("B");
                 }
+                phase = 0;
             }
             while (A2 == 0 && (phase == 0 || phase == 2)) {
                 LA2 = 1;
@@ -169,17 +182,18 @@ void interrupt jdk1() {
                 LB2 = 0;
                 LB3 = 0;
                 LB4 = 0;
-                uart_txStr("L'Equipe A a la main");
+                uart_txStr("A");
                 __delay_ms(3000);
                 LA2 = 0;
                 phase = 3;
                 __delay_ms(4000);
-                if (RCREG == 'I') {
+                if (RCREG == 'V') {
                     phase = 0;
                 } else {
                     phase = 3;
-                    uart_txStr("L'Equipe B a la main");
+                    uart_txStr("B");
                 }
+                phase = 0;
             }
             while (A3 == 0 && (phase == 0 || phase == 2)) {
                 LA3 = 1;
@@ -190,17 +204,18 @@ void interrupt jdk1() {
                 LB2 = 0;
                 LB3 = 0;
                 LB4 = 0;
-                uart_txStr("L'Equipe A a la main");
+                uart_txStr("A");
                 __delay_ms(3000);
                 LA3 = 0;
                 phase = 3;
                 __delay_ms(4000);
-                if (RCREG == 'I') {
+                if (RCREG == 'V') {
                     phase = 0;
                 } else {
                     phase = 3;
-                    uart_txStr("L'Equipe B a la main");
+                    uart_txStr("B");
                 }
+                phase = 0;
             }
             while (A4 == 0 && (phase == 0 || phase == 2)) {
                 LA4 = 1;
@@ -211,17 +226,18 @@ void interrupt jdk1() {
                 LB2 = 0;
                 LB3 = 0;
                 LB4 = 0;
-                uart_txStr("L'Equipe A a la main");
+                uart_txStr("A");
                 __delay_ms(3000);
                 LA4 = 0;
                 phase = 3;
                 __delay_ms(4000);
-                if (RCREG == 'I') {
+                if (RCREG == 'V') {
                     phase = 0;
                 } else {
                     phase = 3;
-                    uart_txStr("L'Equipe B a la main");
+                    uart_txStr("B");
                 }
+                phase = 0;
             }
             while (B1 == 0 && (phase == 0 || phase == 1)) {
                 LB1 = 1;
@@ -232,17 +248,18 @@ void interrupt jdk1() {
                 LB2 = 0;
                 LB3 = 0;
                 LB4 = 0;
-                uart_txStr("L'Equipe B a la main");
+                uart_txStr("B");
                 __delay_ms(3000);
                 LB1 = 0;
                 phase = 3;
                 __delay_ms(4000);
-                if (RCREG == 'I') {
+                if (RCREG == 'V') {
                     phase = 0;
                 } else {
                     phase = 3;
-                    uart_txStr("L'Equipe A a la main");
+                    uart_txStr("A");
                 }
+                phase = 0;
             }
             while (B2 == 0 && (phase == 0 || phase == 1)) {
                 LB2 = 1;
@@ -253,17 +270,18 @@ void interrupt jdk1() {
                 LB1 = 0;
                 LB3 = 0;
                 LB4 = 0;
-                uart_txStr("L'Equipe B a la main");
+                uart_txStr("B");
                 __delay_ms(3000);
                 LB2 = 0;
                 phase = 3;
                 __delay_ms(4000);
-                if (RCREG == 'I') {
+                if (RCREG == 'V') {
                     phase = 0;
                 } else {
                     phase = 3;
-                    uart_txStr("L'Equipe A a la main");
+                    uart_txStr("A");
                 }
+                phase = 0;
             }
             while (B3 == 0 && (phase == 0 || phase == 1)) {
                 LB3 = 1;
@@ -274,17 +292,18 @@ void interrupt jdk1() {
                 LB1 = 0;
                 LB2 = 0;
                 LB4 = 0;
-                uart_txStr("L'Equipe B a la main");
+                uart_txStr("B");
                 __delay_ms(3000);
                 LB3 = 0;
                 phase = 3;
                 __delay_ms(4000);
-                if (RCREG == 'I') {
+                if (RCREG == 'V') {
                     phase = 0;
                 } else {
                     phase = 3;
-                    uart_txStr("L'Equipe A a la main");
+                    uart_txStr("A");
                 }
+                phase = 0;
             }
             while (B4 == 0 && (phase == 0 || phase == 1)) {
                 LB4 = 1;
@@ -295,17 +314,18 @@ void interrupt jdk1() {
                 LB1 = 0;
                 LB2 = 0;
                 LB3 = 0;
-                uart_txStr("L'Equipe B a la main");
+                uart_txStr("B");
                 __delay_ms(3000);
                 LB4 = 0;
                 phase = 3;
                 __delay_ms(4000);
-                if (RCREG == 'I') {
+                if (RCREG == 'V') {
                     phase = 0;
                 } else {
                     phase = 3;
-                    uart_txStr("L'Equipe A a la main");
+                    uart_txStr("A");
                 }
+                phase = 0;
             }
             //Etape 2
         }
@@ -319,9 +339,26 @@ void interrupt jdk1() {
                 LB2 = 0;
                 LB3 = 0;
                 LB4 = 0;
-                uart_txStr("L'Equipe A a la main");
-                __delay_ms(6000);
+                uart_txStr("A");
+                __delay_ms(2000);
                 LA1 = 0;
+                phase = 3;
+                __delay_ms(6000);
+                if (RCREG == 'F') {
+                    phase = 1;
+                    if (B1 == 0 && phase == 1) {
+                        LB1 = 1;
+                        uart_txStr("B");
+                        phase = 3;
+                        if (RCREG == 'V' || RCREG == 'F') {
+                            phase = 0;
+                        }
+                    }
+                } else if (RCREG == 'V') {
+                    phase = 0;
+                }
+
+
             } else if (A2 == 0 && (phase == 0 || phase == 2)) {
                 LA2 = 1;
                 LA1 = 0;
@@ -331,7 +368,7 @@ void interrupt jdk1() {
                 LB2 = 0;
                 LB3 = 0;
                 LB4 = 0;
-                uart_txStr("L'Equipe A a la main");
+                uart_txStr("A");
                 __delay_ms(6000);
                 LA2 = 0;
             } else if (A3 == 0 && (phase == 0 || phase == 2)) {
@@ -343,7 +380,7 @@ void interrupt jdk1() {
                 LB2 = 0;
                 LB3 = 0;
                 LB4 = 0;
-                uart_txStr("L'Equipe A a la main");
+                uart_txStr("A");
                 __delay_ms(6000);
                 LA3 = 0;
 
@@ -356,7 +393,7 @@ void interrupt jdk1() {
                 LB2 = 0;
                 LB3 = 0;
                 LB4 = 0;
-                uart_txStr("L'Equipe A a la main");
+                uart_txStr("A");
                 __delay_ms(6000);
                 LA4 = 0;
             } else if (B1 == 0 && (phase == 0 || phase == 1)) {
@@ -368,7 +405,7 @@ void interrupt jdk1() {
                 LB2 = 0;
                 LB3 = 0;
                 LB4 = 0;
-                uart_txStr("L'Equipe B a la main");
+                uart_txStr("B");
                 __delay_ms(6000);
                 LB1 = 0;
             } else if (B2 == 0 && (phase == 0 || phase == 1)) {
@@ -380,7 +417,7 @@ void interrupt jdk1() {
                 LB1 = 0;
                 LB3 = 0;
                 LB4 = 0;
-                uart_txStr("L'Equipe B a la main");
+                uart_txStr("B");
                 __delay_ms(6000);
                 LB2 = 0;
             } else if (B3 == 0 && (phase == 0 || phase == 1)) {
@@ -392,7 +429,7 @@ void interrupt jdk1() {
                 LB1 = 0;
                 LB2 = 0;
                 LB4 = 0;
-                uart_txStr("L'Equipe B a la main");
+                uart_txStr("B");
                 __delay_ms(6000);
                 LB3 = 0;
 
@@ -405,7 +442,7 @@ void interrupt jdk1() {
                 LB1 = 0;
                 LB2 = 0;
                 LB3 = 0;
-                uart_txStr("L'Equipe B a la main");
+                uart_txStr("B");
                 __delay_ms(6000);
                 LB4 = 0;
             }
@@ -421,7 +458,7 @@ void interrupt jdk1() {
                 LB2 = 0;
                 LB3 = 0;
                 LB4 = 0;
-                uart_txStr("L'Equipe A a la main");
+                uart_txStr("A");
                 __delay_ms(6000);
                 LA1 = 0;
                 phase = 3;
@@ -435,7 +472,7 @@ void interrupt jdk1() {
                     LB2 = 0;
                     LB3 = 0;
                     LB4 = 0;
-                    uart_txStr("L'Equipe B a la main");
+                    uart_txStr("B");
                     __delay_ms(6000);
                     LB1 = 0;
                     phase = 3;
@@ -450,7 +487,7 @@ void interrupt jdk1() {
                 LB2 = 0;
                 LB3 = 0;
                 LB4 = 0;
-                uart_txStr("L'Equipe A a la main");
+                uart_txStr("A");
                 __delay_ms(6000);
                 LA2 = 0;
             } else if (A3 == 0 && phase == 2) {
@@ -462,7 +499,7 @@ void interrupt jdk1() {
                 LB2 = 0;
                 LB3 = 0;
                 LB4 = 0;
-                uart_txStr("L'Equipe A a la main");
+                uart_txStr("A");
                 __delay_ms(6000);
                 LA3 = 0;
 
@@ -475,7 +512,7 @@ void interrupt jdk1() {
                 LB2 = 0;
                 LB3 = 0;
                 LB4 = 0;
-                uart_txStr("L'Equipe A a la main");
+                uart_txStr("A");
                 __delay_ms(6000);
                 LA4 = 0;
             } else if (B1 == 0 && phase == 1) {
@@ -487,7 +524,7 @@ void interrupt jdk1() {
                 LB2 = 0;
                 LB3 = 0;
                 LB4 = 0;
-                uart_txStr("L'Equipe B a la main");
+                uart_txStr("B");
                 __delay_ms(6000);
                 LB1 = 0;
             } else if (B2 == 0 && 0 || phase == 1) {
@@ -499,7 +536,7 @@ void interrupt jdk1() {
                 LB1 = 0;
                 LB3 = 0;
                 LB4 = 0;
-                uart_txStr("L'Equipe B a la main");
+                uart_txStr("B");
                 __delay_ms(6000);
                 LB2 = 0;
             } else if (B3 == 0 && phase == 1) {
@@ -511,7 +548,7 @@ void interrupt jdk1() {
                 LB1 = 0;
                 LB2 = 0;
                 LB4 = 0;
-                uart_txStr("L'Equipe B a la main");
+                uart_txStr("B");
                 __delay_ms(6000);
                 LB3 = 0;
 
@@ -524,7 +561,7 @@ void interrupt jdk1() {
                 LB1 = 0;
                 LB2 = 0;
                 LB3 = 0;
-                uart_txStr("L'Equipe B a la main");
+                uart_txStr("B");
                 __delay_ms(6000);
                 LB4 = 0;
             }
