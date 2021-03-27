@@ -48,14 +48,20 @@
 #define _XTAL_FREQ  20e6
 #include <string.h>
 #include <xc.h>
-int phase;
+int phase = 3;
 char t;
 int etape = 0;
+short cnt1, cnt2, cnt3;
 // Fréquence de transmission 9600 Baud
 //Mode 8bits
 
 void uart_unit(void) {
-    T0CS = 1;
+    T0CS = 0;
+    PSA = 0;
+    PS0 = 1;
+    PS1 = 1;
+    T0IE = 1;
+    PS2 = 1;
     TXEN = 1;
     SYNC = 0;
     BRGH = 1;
@@ -84,486 +90,509 @@ void uart_txStr(unsigned const char *str) {
     uart_txChar('\r');
     uart_txChar('\n');
 }
+//Commentaire pour mieux comprendre le programme
+//phase=0 veut dire aucune équipe n'a la main
 
 void interrupt jdk1() {
     if (RCIF) {
         RCIF = 0;
         switch (RCREG) {
             case 'A':
-                LB1 = 0;
-                LB2 = 0;
-                LB3 = 0;
-                LB4 = 0;
-                phase = 1;
+                    LB1 = 0;
+                    LB2 = 0;
+                    LB3 = 0;
+                    LB4 = 0;
+                    phase = 1;
+                    uart_txStr("EA");
                 break;
             case 'B':
-                LA1 = 0;
-                LA2 = 0;
-                LA3 = 0;
-                LA4 = 0;
-                phase = 2;
+                    LA1 = 0;
+                    LA2 = 0;
+                    LA3 = 0;
+                    LA4 = 0;
+                    phase = 2;
+                    uart_txStr("EB");
                 break;
             case '1':
-                etape = 1;
+                if (phase == 3 || phase == 1 || phase == 2 || phase == 4 || phase == 5 || phase == 6 || phase == 7) {
+                    etape = 1; // ETAPE 1 du jeu
+                    phase = 0; // phase d'initialisation
+                }
                 break;
             case '2':
-                etape = 2;
+                if (phase == 3 || phase == 1 || phase == 2 || phase == 4 || phase == 5 || phase == 6 || phase == 7) {
+                    etape = 2; // ETAPE 2 du jeu
+                    phase = 0;
+                }
                 break;
             case '3':
-                etape = 3;
+                if (phase == 3 || phase == 1 || phase == 2 || phase == 4 || phase == 5 || phase == 6 || phase == 7) {
+                    etape = 3; // Etape 3 du jeu
+                    phase = 0;
+                }
+                break;
+             case '4':
+                if (phase == 3 || phase == 1 || phase == 2 || phase == 4 || phase == 5 || phase == 6 || phase == 7) {
+                    etape = 4; // Etape 4 du jeu
+                    phase = 0;
+                }
+                break;
+            case 'I':
+                phase = 3; //phase ou A et B n'ont pas la main
                 break;
             case 'V':
-                if (etape == 1) {
+                if (etape == 1 || etape == 2 || etape == 3 || etape == 4) {
                     if (phase == 1 || phase == 2) {
-                        LA1 = 1;
-                        LA2 = 1;
-                        LA3 = 1;
-                        LA4 = 1;
-                        LB1 = 1;
-                        LB2 = 1;
-                        LB3 = 1;
-                        LB4 = 1;
+                        LA1 = 0;
+                        LA2 = 0;
+                        LA3 = 0;
+                        LA4 = 0;
+                        LB1 = 0;
+                        LB2 = 0;
+                        LB3 = 0;
+                        LB4 = 0;
                         phase = 3;
                     }
                 }
                 break;
             case 'F':
-                if (etape == 1) {
+                  if (etape == 1) {
                     if (phase == 1) {
-                        phase = 2;
+                        LA1 = 0;
+                        LA2 = 0;
+                        LA3 = 0;
+                        LA4 = 0;
+                        phase = 10;
+                    } else if (phase == 2) {
+                        LB1 = 0;
+                        LB2 = 0;
+                        LB3 = 0;
+                        LB4 = 0;
+                        phase = 11;
+                    } else if (phase == 8 || phase == 9) {
+                        phase = 3;
                     }
-                    else if (phase == 2) {
-                        phase = 1;
+                }
+                if (etape == 2) {
+                    if (phase == 1) {
+                        phase = 2; // phase ou equipe B a la main
+                        uart_txStr("EB");
+                        LA1 = 0;
+                        LA2 = 0;
+                        LA3 = 0;
+                        LA4 = 0;
+                        LB1 = 0;
+                        LB2 = 0;
+                        LB3 = 0;
+                        LB4 = 0;
+                    } else if (phase == 2) {
+                        phase = 1; // phase ou equipe A a la main
+                        uart_txStr("EA");
+                        LA1 = 0;
+                        LA2 = 0;
+                        LA3 = 0;
+                        LA4 = 0;
+                        LB1 = 0;
+                        LB2 = 0;
+                        LB3 = 0;
+                        LB4 = 0;
+                    }
+                }
+                if (etape == 3) {
+                    if (phase == 1) {
+                        LA1 = 0;
+                        LA2 = 0;
+                        LA3 = 0;
+                        LA4 = 0;
+                        phase = 6;
+                    } else if (phase == 2) {
+                        LB1 = 0;
+                        LB2 = 0;
+                        LB3 = 0;
+                        LB4 = 0;
+                        phase = 7;
+                    } else if (phase == 4 || phase == 5) {
+                        phase = 3;
+                    }
+                }
+                if (etape == 4) {
+                    if (phase == 1 || phase == 2) {
+                        LA1 = 0;
+                        LA2 = 0;
+                        LA3 = 0;
+                        LA4 = 0;
+                        LB1 = 0;
+                        LB2 = 0;
+                        LB3 = 0;
+                        LB4 = 0;
+                        phase = 3;
                     }
                 }
                 break;
             case 'Q':
-                if (etape == 1) {
-                    if(phase == 3)
-                    LA1 = 0;
-                    LA2 = 0;
-                    LA3 = 0;
-                    LA4 = 0;
-                    LB1 = 0;
-                    LB2 = 0;
-                    LB3 = 0;
-                    LB4 = 0;
-                    phase = 0;
+                if (etape == 2) {
+                    if (phase == 1 || phase == 2 || phase == 3) {
+                        LA1 = 0;
+                        LA2 = 0;
+                        LA3 = 0;
+                        LA4 = 0;
+                        LB1 = 0;
+                        LB2 = 0;
+                        LB3 = 0;
+                        LB4 = 0;
+                        phase = 0;
+                    }
+                } else if (etape == 3 || etape == 4) {
+                    if (phase == 1 || phase == 2 || phase == 3) {
+                        LA1 = 0;
+                        LA2 = 0;
+                        LA3 = 0;
+                        LA4 = 0;
+                        LB1 = 0;
+                        LB2 = 0;
+                        LB3 = 0;
+                        LB4 = 0;
+                        phase = 0;
+                    }
                 }
                 break;
         }
     }
+    // timer
+    if (T0IF) {
+        T0IF = 0;
+        TMR0 = 60;
+
+        if (cnt2 > 400) {
+            cnt2 = 0;
+            LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
+        } else if (cnt2 > 0) {
+            cnt2++;
+        }
+
+        if (cnt3 > 400) {
+            cnt3 = 0;
+            LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
+        } else if (cnt3 > 0) {
+            cnt3++;
+        }
+
+    }
+
+
+
     //Envoi des données au logiciel 
     if (RBIF) {
         RBIF = 0;
-        //Etape 1
-        if (etape == 1) {
-            if (A1 == 0 && (phase == 0 || phase == 1)) {
+        
+             //Etape 1 du jeu
+              if (etape == 1) {
+            if (A1 == 0 && phase == 1) {
                 LA1 = 1;
-                uart_txStr("A");
-                __delay_ms(3000);
-                LA1 = 0;
-                phase = 3;
-                __delay_ms(4000);
-                if (RCREG == 'V') {
-                    phase = 0;
-                } else {
-                    phase = 3;
-                    uart_txStr("B");
-                }
-                phase = 0;
-            }
-            while (A2 == 0 && (phase == 0 || phase == 2)) {
+           
+                cnt3 = 1;
+            } else if (A2 == 0 && phase == 1) {
                 LA2 = 1;
-                LA1 = 0;
-                LA3 = 0;
-                LA4 = 0;
-                LB1 = 0;
-                LB2 = 0;
-                LB3 = 0;
-                LB4 = 0;
-                uart_txStr("A");
-                __delay_ms(3000);
-                LA2 = 0;
-                phase = 3;
-                __delay_ms(4000);
-                if (RCREG == 'V') {
-                    phase = 0;
-                } else {
-                    phase = 3;
-                    uart_txStr("B");
-                }
-                phase = 0;
-            }
-            while (A3 == 0 && (phase == 0 || phase == 2)) {
+               
+                cnt3 = 1;
+            } else if (A3 == 0 && phase == 1) {
                 LA3 = 1;
-                LA1 = 0;
-                LA2 = 0;
-                LA4 = 0;
-                LB1 = 0;
-                LB2 = 0;
-                LB3 = 0;
-                LB4 = 0;
-                uart_txStr("A");
-                __delay_ms(3000);
-                LA3 = 0;
-                phase = 3;
-                __delay_ms(4000);
-                if (RCREG == 'V') {
-                    phase = 0;
-                } else {
-                    phase = 3;
-                    uart_txStr("B");
-                }
-                phase = 0;
-            }
-            while (A4 == 0 && (phase == 0 || phase == 2)) {
+                
+                cnt3 = 1;
+            } else if (A4 == 0 && phase == 1) {
                 LA4 = 1;
-                LA1 = 0;
-                LA2 = 0;
-                LA3 = 0;
-                LB1 = 0;
-                LB2 = 0;
-                LB3 = 0;
-                LB4 = 0;
-                uart_txStr("A");
-                __delay_ms(3000);
-                LA4 = 0;
-                phase = 3;
-                __delay_ms(4000);
-                if (RCREG == 'V') {
-                    phase = 0;
-                } else {
-                    phase = 3;
-                    uart_txStr("B");
-                }
-                phase = 0;
-            }
-            while (B1 == 0 && (phase == 0 || phase == 1)) {
+               
+                cnt3 = 1;
+            } else if (B1 == 0 && phase == 2) {
                 LB1 = 1;
-                LA1 = 0;
-                LA2 = 0;
-                LA3 = 0;
-                LA4 = 0;
-                LB2 = 0;
-                LB3 = 0;
-                LB4 = 0;
-                uart_txStr("B");
-                __delay_ms(3000);
-                LB1 = 0;
-                phase = 3;
-                __delay_ms(4000);
-                if (RCREG == 'V') {
-                    phase = 0;
-                } else {
-                    phase = 3;
-                    uart_txStr("A");
-                }
-                phase = 0;
-            }
-            while (B2 == 0 && (phase == 0 || phase == 1)) {
+               
+                cnt3 = 1;
+            } else if (B2 == 0 && phase == 2) {
                 LB2 = 1;
-                LA1 = 0;
-                LA2 = 0;
-                LA3 = 0;
-                LA4 = 0;
-                LB1 = 0;
-                LB3 = 0;
-                LB4 = 0;
-                uart_txStr("B");
-                __delay_ms(3000);
-                LB2 = 0;
-                phase = 3;
-                __delay_ms(4000);
-                if (RCREG == 'V') {
-                    phase = 0;
-                } else {
-                    phase = 3;
-                    uart_txStr("A");
-                }
-                phase = 0;
-            }
-            while (B3 == 0 && (phase == 0 || phase == 1)) {
+                
+                cnt3 = 1;
+            } else if (B3 == 0 && phase == 2) {
                 LB3 = 1;
-                LA1 = 0;
-                LA2 = 0;
-                LA3 = 0;
-                LA4 = 0;
-                LB1 = 0;
-                LB2 = 0;
-                LB4 = 0;
-                uart_txStr("B");
-                __delay_ms(3000);
-                LB3 = 0;
-                phase = 3;
-                __delay_ms(4000);
-                if (RCREG == 'V') {
-                    phase = 0;
-                } else {
-                    phase = 3;
-                    uart_txStr("A");
-                }
-                phase = 0;
-            }
-            while (B4 == 0 && (phase == 0 || phase == 1)) {
+                
+                cnt3 = 1;
+            } else if (B4 == 0 && phase == 2) {
                 LB4 = 1;
-                LA1 = 0;
-                LA2 = 0;
-                LA3 = 0;
-                LA4 = 0;
-                LB1 = 0;
-                LB2 = 0;
-                LB3 = 0;
-                uart_txStr("B");
-                __delay_ms(3000);
-                LB4 = 0;
-                phase = 3;
-                __delay_ms(4000);
-                if (RCREG == 'V') {
-                    phase = 0;
-                } else {
-                    phase = 3;
-                    uart_txStr("A");
-                }
-                phase = 0;
-            }
-            //Etape 2
-        }
-        while (etape == 2) {
-            if (A1 == 0 && (phase == 0 || phase == 2)) {
+               
+                cnt3 = 1;
+            }else if (A1 == 0 && phase == 11) {
                 LA1 = 1;
-                LA2 = 0;
-                LA3 = 0;
-                LA4 = 0;
-                LB1 = 0;
-                LB2 = 0;
-                LB3 = 0;
-                LB4 = 0;
-                uart_txStr("A");
-                __delay_ms(2000);
-                LA1 = 0;
-                phase = 3;
-                __delay_ms(6000);
-                if (RCREG == 'F') {
-                    phase = 1;
-                    if (B1 == 0 && phase == 1) {
-                        LB1 = 1;
-                        uart_txStr("B");
-                        phase = 3;
-                        if (RCREG == 'V' || RCREG == 'F') {
-                            phase = 0;
-                        }
-                    }
-                } else if (RCREG == 'V') {
-                    phase = 0;
-                }
-
-
-            } else if (A2 == 0 && (phase == 0 || phase == 2)) {
+                uart_txStr("EA");
+                cnt2 = 1;
+                phase = 8;
+            } else if (A2 == 0 && phase == 11) {
                 LA2 = 1;
-                LA1 = 0;
-                LA3 = 0;
-                LA4 = 0;
-                LB1 = 0;
-                LB2 = 0;
-                LB3 = 0;
-                LB4 = 0;
-                uart_txStr("A");
-                __delay_ms(6000);
-                LA2 = 0;
-            } else if (A3 == 0 && (phase == 0 || phase == 2)) {
+                uart_txStr("EA");
+                cnt2 = 1;
+                phase = 8;
+            } else if (A3 == 0 && phase == 11) {
                 LA3 = 1;
-                LA1 = 0;
-                LA2 = 0;
-                LA4 = 0;
-                LB1 = 0;
-                LB2 = 0;
-                LB3 = 0;
-                LB4 = 0;
-                uart_txStr("A");
-                __delay_ms(6000);
-                LA3 = 0;
-
-            } else if (A4 == 0 && (phase == 0 || phase == 2)) {
+                uart_txStr("EA");
+                cnt2 = 1;
+                phase = 8;
+            } else if (A4 == 0 && phase == 11) {
                 LA4 = 1;
-                LA1 = 0;
-                LA2 = 0;
-                LA3 = 0;
-                LB1 = 0;
-                LB2 = 0;
-                LB3 = 0;
-                LB4 = 0;
-                uart_txStr("A");
-                __delay_ms(6000);
-                LA4 = 0;
-            } else if (B1 == 0 && (phase == 0 || phase == 1)) {
+                uart_txStr("EA");
+                cnt2 = 1;
+                phase = 8;
+            } else if (B1 == 0 && phase == 10) {
                 LB1 = 1;
-                LA1 = 0;
-                LA2 = 0;
-                LA3 = 0;
-                LA4 = 0;
-                LB2 = 0;
-                LB3 = 0;
-                LB4 = 0;
-                uart_txStr("B");
-                __delay_ms(6000);
-                LB1 = 0;
-            } else if (B2 == 0 && (phase == 0 || phase == 1)) {
+                uart_txStr("EB");
+                cnt2 = 1;
+                phase = 9;
+            } else if (B2 == 0 && phase == 10) {
                 LB2 = 1;
-                LA1 = 0;
-                LA2 = 0;
-                LA3 = 0;
-                LA4 = 0;
-                LB1 = 0;
-                LB3 = 0;
-                LB4 = 0;
-                uart_txStr("B");
-                __delay_ms(6000);
-                LB2 = 0;
-            } else if (B3 == 0 && (phase == 0 || phase == 1)) {
+                uart_txStr("EB");
+                cnt2 = 1;
+                phase = 9;
+            } else if (B3 == 0 && phase == 10) {
                 LB3 = 1;
-                LA1 = 0;
-                LA2 = 0;
-                LA3 = 0;
-                LA4 = 0;
-                LB1 = 0;
-                LB2 = 0;
-                LB4 = 0;
-                uart_txStr("B");
-                __delay_ms(6000);
-                LB3 = 0;
-
-            } else if (B4 == 0 && (phase == 0 || phase == 1)) {
+                uart_txStr("EB");
+                cnt2 = 1;
+                phase = 9;
+            } else if (B4 == 0 && phase == 10) {
                 LB4 = 1;
-                LA1 = 0;
-                LA2 = 0;
-                LA3 = 0;
-                LA4 = 0;
-                LB1 = 0;
-                LB2 = 0;
-                LB3 = 0;
-                uart_txStr("B");
-                __delay_ms(6000);
-                LB4 = 0;
+                uart_txStr("EB");
+                cnt2 = 1;
+                phase = 9;
             }
         }
+        
+        
+        
+        
+        
+        
+
+
+
+        //Etape 2
+        if (etape == 2) {
+            if (A1 == 0 && phase == 0) {
+                LB1 = 0;
+                LB2 = 0;
+                LB3 = 0;
+                LB4 = 0;
+                phase = 1;
+                LA1 = 1;
+                uart_txStr("EA");
+            } else if (A2 == 0 && phase == 0) {
+                LB1 = 0;
+                LB2 = 0;
+                LB3 = 0;
+                LB4 = 0;
+                phase = 1;
+                LA2 = 1;
+                uart_txStr("EA");
+                
+            } else if (A3 == 0 && phase == 0) {
+                LB1 = 0;
+                LB2 = 0;
+                LB3 = 0;
+                LB4 = 0;
+                phase = 1;
+                LA3 = 1;
+                uart_txStr("EA");
+                
+            } else if (A4 == 0 && phase == 0) {
+                LB1 = 0;
+                LB2 = 0;
+                LB3 = 0;
+                LB4 = 0;
+                phase = 1;
+                LA4 = 1;
+                uart_txStr("EA");
+               
+            } else if (B1 == 0 && phase == 0) {
+                LA1 = 0;
+                LA2 = 0;
+                LA3 = 0;
+                LA4 = 0;
+                phase = 2;
+                LB1 = 1;
+                uart_txStr("EB");
+                
+            } else if (B2 == 0 && phase == 0) {
+                LA1 = 0;
+                LA2 = 0;
+                LA3 = 0;
+                LA4 = 0;
+                phase = 2;
+                LB2 = 1;
+                uart_txStr("EB");
+                
+            } else if (B3 == 0 && phase == 0) {
+                LA1 = 0;
+                LA2 = 0;
+                LA3 = 0;
+                LA4 = 0;
+                phase = 2;
+                LB3 = 1;
+                uart_txStr("EB");
+                
+            } else if (B4 == 0 && phase == 0) {
+                LA1 = 0;
+                LA2 = 0;
+                LA3 = 0;
+                LA4 = 0;
+                phase = 2;
+                LB4 = 1;
+                uart_txStr("EB");
+                
+            }
+        }
+
+
+
+
+
+
+
+
+
+
         //Etape 3
-        while (etape == 3) {
-            if (A1 == 0 && phase == 2) {
+        if (etape == 3) {
+            if (A1 == 0 && phase == 0) {
+                phase = 1;
                 LA1 = 1;
-                LA2 = 0;
-                LA3 = 0;
-                LA4 = 0;
-                LB1 = 0;
-                LB2 = 0;
-                LB3 = 0;
-                LB4 = 0;
-                uart_txStr("A");
-                __delay_ms(6000);
-                LA1 = 0;
-                phase = 3;
-                __delay_ms(4000);
-                if (RCREG == 'I') {
-                    phase = 0;
-                }
-
-                if (B1 == 0) {
-                    LB1 = 1;
-                    LB2 = 0;
-                    LB3 = 0;
-                    LB4 = 0;
-                    uart_txStr("B");
-                    __delay_ms(6000);
-                    LB1 = 0;
-                    phase = 3;
-                }
-
-            } else if (A2 == 0 && phase == 2) {
+                uart_txStr("EA");
+                cnt2 = 1;
+            } else if (A2 == 0 && phase == 0) {
+                phase = 1;
                 LA2 = 1;
-                LA1 = 0;
-                LA3 = 0;
-                LA4 = 0;
-                LB1 = 0;
-                LB2 = 0;
-                LB3 = 0;
-                LB4 = 0;
-                uart_txStr("A");
-                __delay_ms(6000);
-                LA2 = 0;
-            } else if (A3 == 0 && phase == 2) {
+                uart_txStr("EA");
+                cnt2 = 1;
+            } else if (A3 == 0 && phase == 0) {
+                phase = 1;
                 LA3 = 1;
-                LA1 = 0;
-                LA2 = 0;
-                LA4 = 0;
-                LB1 = 0;
-                LB2 = 0;
-                LB3 = 0;
-                LB4 = 0;
-                uart_txStr("A");
-                __delay_ms(6000);
-                LA3 = 0;
-
-            } else if (A4 == 0 && phase == 2) {
+                uart_txStr("EA");
+                cnt2 = 1;
+            } else if (A4 == 0 && phase == 0) {
+                phase = 1;
                 LA4 = 1;
-                LA1 = 0;
-                LA2 = 0;
-                LA3 = 0;
-                LB1 = 0;
-                LB2 = 0;
-                LB3 = 0;
-                LB4 = 0;
-                uart_txStr("A");
-                __delay_ms(6000);
-                LA4 = 0;
-            } else if (B1 == 0 && phase == 1) {
+                uart_txStr("EA");
+                cnt2 = 1;
+            } else if (B1 == 0 && phase == 0) {
+                phase = 2;
                 LB1 = 1;
-                LA1 = 0;
-                LA2 = 0;
-                LA3 = 0;
-                LA4 = 0;
-                LB2 = 0;
-                LB3 = 0;
-                LB4 = 0;
-                uart_txStr("B");
-                __delay_ms(6000);
-                LB1 = 0;
-            } else if (B2 == 0 && 0 || phase == 1) {
+                uart_txStr("EB");
+                cnt2 = 1;
+            } else if (B2 == 0 && phase == 0) {
+                phase = 2;
                 LB2 = 1;
-                LA1 = 0;
-                LA2 = 0;
-                LA3 = 0;
-                LA4 = 0;
-                LB1 = 0;
-                LB3 = 0;
-                LB4 = 0;
-                uart_txStr("B");
-                __delay_ms(6000);
-                LB2 = 0;
-            } else if (B3 == 0 && phase == 1) {
+                uart_txStr("EB");
+                cnt2 = 1;
+            } else if (B3 == 0 && phase == 0) {
+                phase = 2;
                 LB3 = 1;
-                LA1 = 0;
-                LA2 = 0;
-                LA3 = 0;
-                LA4 = 0;
-                LB1 = 0;
-                LB2 = 0;
-                LB4 = 0;
-                uart_txStr("B");
-                __delay_ms(6000);
-                LB3 = 0;
-
-            } else if (B4 == 0 && phase == 1) {
+                uart_txStr("EB");
+                cnt2 = 1;
+            } else if (B4 == 0 && phase == 0) {
+                phase = 2;
                 LB4 = 1;
-                LA1 = 0;
-                LA2 = 0;
-                LA3 = 0;
-                LA4 = 0;
-                LB1 = 0;
-                LB2 = 0;
-                LB3 = 0;
-                uart_txStr("B");
-                __delay_ms(6000);
-                LB4 = 0;
+                uart_txStr("EB");
+                cnt2 = 1;
+            } else if (A1 == 0 && phase == 7) {
+                LA1 = 1;
+                uart_txStr("EA");
+                cnt2 = 1;
+                phase = 4;
+            } else if (A2 == 0 && phase == 7) {
+                LA2 = 1;
+                uart_txStr("EA");
+                cnt2 = 1;
+                phase = 4;
+            } else if (A3 == 0 && phase == 7) {
+                LA3 = 1;
+                uart_txStr("EA");
+                cnt2 = 1;
+                phase = 4;
+            } else if (A4 == 0 && phase == 7) {
+                LA4 = 1;
+                uart_txStr("EA");
+                cnt2 = 1;
+                phase = 4;
+            } else if (B1 == 0 && phase == 6) {
+                LB1 = 1;
+                uart_txStr("EB");
+                cnt2 = 1;
+                phase = 5;
+            } else if (B2 == 0 && phase == 6) {
+                LB2 = 1;
+                uart_txStr("EB");
+                cnt2 = 1;
+                phase = 5;
+            } else if (B3 == 0 && phase == 6) {
+                LB3 = 1;
+                uart_txStr("EB");
+                cnt2 = 1;
+                phase = 5;
+            } else if (B4 == 0 && phase == 6) {
+                LB4 = 1;
+                uart_txStr("EB");
+                cnt2 = 1;
+                phase = 5;
+            }
+        }
+
+
+
+
+
+
+
+
+        //Etape 4
+        if (etape == 4) {
+            if (A1 == 0 && phase == 1) {
+                LA1 = 1;
+                cnt3 = 1;
+            } else if (A2 == 0 && phase == 1) {
+                LA2 = 1;
+                cnt3 = 1;
+            } else if (A3 == 0 && phase == 1) {
+                LA3 = 1;
+                
+                cnt3 = 1;
+            } else if (A4 == 0 && phase == 1) {
+                LA4 = 1;
+                
+                cnt3 = 1;
+            } else if (B1 == 0 && phase == 2) {
+                LB1 = 1;
+                
+                cnt3 = 1;
+            } else if (B2 == 0 && phase == 2) {
+                LB2 = 1;
+                
+                cnt3 = 1;
+            } else if (B3 == 0 && phase == 2) {
+                LB3 = 1;
+              
+                cnt3 = 1;
+            } else if (B4 == 0 && phase == 2) {
+                LB4 = 1;
+                
+                cnt3 = 1;
             }
         }
     }
