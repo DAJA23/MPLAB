@@ -102,6 +102,10 @@ void interrupt jdk1() {
                     LB2 = 0;
                     LB3 = 0;
                     LB4 = 0;
+                    LA1 = 1;
+                    LA2 = 1;
+                    LA3 = 1;
+                    LA4 = 1;
                     phase = 1;
                     uart_txStr("EA");
                 break;
@@ -110,6 +114,10 @@ void interrupt jdk1() {
                     LA2 = 0;
                     LA3 = 0;
                     LA4 = 0;
+                    LB1 = 1;
+                    LB2 = 1;
+                    LB3 = 1;
+                    LB4 = 1;
                     phase = 2;
                     uart_txStr("EB");
                 break;
@@ -162,12 +170,20 @@ void interrupt jdk1() {
                         LA2 = 0;
                         LA3 = 0;
                         LA4 = 0;
+                        LB1 = 1;
+                        LB2 = 1;
+                        LB3 = 1;
+                        LB4 = 1;
                         phase = 10;
                     } else if (phase == 2) {
                         LB1 = 0;
                         LB2 = 0;
                         LB3 = 0;
                         LB4 = 0;
+                        LA1 = 1;
+                        LA2 = 1;
+                        LA3 = 1;
+                        LA4 = 1;
                         phase = 11;
                     } else if (phase == 8 || phase == 9) {
                         phase = 3;
@@ -204,12 +220,20 @@ void interrupt jdk1() {
                         LA2 = 0;
                         LA3 = 0;
                         LA4 = 0;
+                        LB1 = 1;
+                        LB2 = 1;
+                        LB3 = 1;
+                        LB4 = 1;
                         phase = 6;
                     } else if (phase == 2) {
                         LB1 = 0;
                         LB2 = 0;
                         LB3 = 0;
                         LB4 = 0;
+                        LA1 = 1;
+                        LA2 = 1;
+                        LA3 = 1;
+                        LA4 = 1;
                         phase = 7;
                     } else if (phase == 4 || phase == 5) {
                         phase = 3;
@@ -303,73 +327,193 @@ void interrupt jdk1() {
               if (etape == 1) {
             if (A1 == 0 && phase == 1) {
                 LA1 = 1;
-           
+                
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
                 cnt3 = 1;
             } else if (A2 == 0 && phase == 1) {
                 LA2 = 1;
-               
+               LA1 = 0;
+           
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
                 cnt3 = 1;
             } else if (A3 == 0 && phase == 1) {
                 LA3 = 1;
-                
+                LA1 = 0;
+            LA2 = 0;
+           
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
                 cnt3 = 1;
             } else if (A4 == 0 && phase == 1) {
                 LA4 = 1;
-               
+               LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+           
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
                 cnt3 = 1;
             } else if (B1 == 0 && phase == 2) {
                 LB1 = 1;
-               
+               LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
                 cnt3 = 1;
             } else if (B2 == 0 && phase == 2) {
                 LB2 = 1;
-                
+                LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            
+            LB3 = 0;
+            LB4 = 0;
                 cnt3 = 1;
             } else if (B3 == 0 && phase == 2) {
                 LB3 = 1;
-                
+                LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+           
+            LB4 = 0;
                 cnt3 = 1;
             } else if (B4 == 0 && phase == 2) {
                 LB4 = 1;
-               
+               LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            
                 cnt3 = 1;
             }else if (A1 == 0 && phase == 11) {
                 LA1 = 1;
+               
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
                 uart_txStr("EA");
                 cnt2 = 1;
                 phase = 8;
             } else if (A2 == 0 && phase == 11) {
                 LA2 = 1;
+                LA1 = 0;
+           
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
                 uart_txStr("EA");
                 cnt2 = 1;
                 phase = 8;
             } else if (A3 == 0 && phase == 11) {
                 LA3 = 1;
+                LA1 = 0;
+            LA2 = 0;
+            
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
                 uart_txStr("EA");
                 cnt2 = 1;
                 phase = 8;
             } else if (A4 == 0 && phase == 11) {
                 LA4 = 1;
+                LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+            
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
                 uart_txStr("EA");
                 cnt2 = 1;
                 phase = 8;
             } else if (B1 == 0 && phase == 10) {
                 LB1 = 1;
+                LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+           
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
                 uart_txStr("EB");
                 cnt2 = 1;
                 phase = 9;
             } else if (B2 == 0 && phase == 10) {
                 LB2 = 1;
+                LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            
+            LB3 = 0;
+            LB4 = 0;
                 uart_txStr("EB");
                 cnt2 = 1;
                 phase = 9;
             } else if (B3 == 0 && phase == 10) {
                 LB3 = 1;
+                LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+            
+            LB4 = 0;
                 uart_txStr("EB");
                 cnt2 = 1;
                 phase = 9;
             } else if (B4 == 0 && phase == 10) {
                 LB4 = 1;
+                LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            
                 uart_txStr("EB");
                 cnt2 = 1;
                 phase = 9;
@@ -474,80 +618,208 @@ void interrupt jdk1() {
             if (A1 == 0 && phase == 0) {
                 phase = 1;
                 LA1 = 1;
+                
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
                 uart_txStr("EA");
                 cnt2 = 1;
             } else if (A2 == 0 && phase == 0) {
                 phase = 1;
                 LA2 = 1;
+                LA1 = 0;
+            
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
                 uart_txStr("EA");
                 cnt2 = 1;
             } else if (A3 == 0 && phase == 0) {
                 phase = 1;
                 LA3 = 1;
+                LA1 = 0;
+            LA2 = 0;
+            
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
                 uart_txStr("EA");
                 cnt2 = 1;
             } else if (A4 == 0 && phase == 0) {
                 phase = 1;
                 LA4 = 1;
+                LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+            
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
                 uart_txStr("EA");
                 cnt2 = 1;
             } else if (B1 == 0 && phase == 0) {
                 phase = 2;
                 LB1 = 1;
+                LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
                 uart_txStr("EB");
                 cnt2 = 1;
             } else if (B2 == 0 && phase == 0) {
                 phase = 2;
                 LB2 = 1;
+                LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            
+            LB3 = 0;
+            LB4 = 0;
                 uart_txStr("EB");
                 cnt2 = 1;
             } else if (B3 == 0 && phase == 0) {
                 phase = 2;
                 LB3 = 1;
+                LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+            
+            LB4 = 0;
                 uart_txStr("EB");
                 cnt2 = 1;
             } else if (B4 == 0 && phase == 0) {
                 phase = 2;
                 LB4 = 1;
+                LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            
                 uart_txStr("EB");
                 cnt2 = 1;
             } else if (A1 == 0 && phase == 7) {
                 LA1 = 1;
+               
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
                 uart_txStr("EA");
                 cnt2 = 1;
                 phase = 4;
             } else if (A2 == 0 && phase == 7) {
                 LA2 = 1;
+                LA1 = 0;
+            
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
                 uart_txStr("EA");
                 cnt2 = 1;
                 phase = 4;
             } else if (A3 == 0 && phase == 7) {
                 LA3 = 1;
+                LA1 = 0;
+            LA2 = 0;
+            
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
                 uart_txStr("EA");
                 cnt2 = 1;
                 phase = 4;
             } else if (A4 == 0 && phase == 7) {
                 LA4 = 1;
+                LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+           
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
                 uart_txStr("EA");
                 cnt2 = 1;
                 phase = 4;
             } else if (B1 == 0 && phase == 6) {
                 LB1 = 1;
+                LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
                 uart_txStr("EB");
                 cnt2 = 1;
                 phase = 5;
             } else if (B2 == 0 && phase == 6) {
                 LB2 = 1;
+                LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            
+            LB3 = 0;
+            LB4 = 0;
                 uart_txStr("EB");
                 cnt2 = 1;
                 phase = 5;
             } else if (B3 == 0 && phase == 6) {
                 LB3 = 1;
+                LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+            
+            LB4 = 0;
                 uart_txStr("EB");
                 cnt2 = 1;
                 phase = 5;
             } else if (B4 == 0 && phase == 6) {
                 LB4 = 1;
+                LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            
                 uart_txStr("EB");
                 cnt2 = 1;
                 phase = 5;
@@ -565,33 +837,91 @@ void interrupt jdk1() {
         if (etape == 4) {
             if (A1 == 0 && phase == 1) {
                 LA1 = 1;
+                
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
                 cnt3 = 1;
             } else if (A2 == 0 && phase == 1) {
                 LA2 = 1;
+                LA1 = 0;
+            
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
                 cnt3 = 1;
             } else if (A3 == 0 && phase == 1) {
                 LA3 = 1;
-                
+                LA1 = 0;
+            LA2 = 0;
+            
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
                 cnt3 = 1;
             } else if (A4 == 0 && phase == 1) {
                 LA4 = 1;
-                
+                LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+            
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
                 cnt3 = 1;
             } else if (B1 == 0 && phase == 2) {
                 LB1 = 1;
-                
+                LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            
+            LB2 = 0;
+            LB3 = 0;
+            LB4 = 0;
                 cnt3 = 1;
             } else if (B2 == 0 && phase == 2) {
                 LB2 = 1;
-                
+                LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            
+            LB3 = 0;
+            LB4 = 0;
                 cnt3 = 1;
             } else if (B3 == 0 && phase == 2) {
                 LB3 = 1;
-              
+              LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+           
+            LB4 = 0;
                 cnt3 = 1;
             } else if (B4 == 0 && phase == 2) {
                 LB4 = 1;
-                
+                LA1 = 0;
+            LA2 = 0;
+            LA3 = 0;
+            LA4 = 0;
+            LB1 = 0;
+            LB2 = 0;
+            LB3 = 0;
+            
                 cnt3 = 1;
             }
         }
